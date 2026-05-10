@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Product Details | YANARA Fashions</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main style="padding-top:120px; max-width:1200px; margin:0 auto; padding-inline:20px;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(350px, 1fr)); gap:50px;">
+            
+            <div id="product-image-container" style="border:1px solid var(--border); background:var(--bg2);">
+                <img id="main-product-img" src="" alt="Loading..." style="width:100%; display:block;">
+            </div>
+
+            <div id="product-info">
+                <h1 id="p-name" style="font-family:serif; color:var(--white); margin-bottom:10px;"></h1>
+                <p id="p-price" style="color:var(--gold); font-size:20px; margin-bottom:20px;"></p>
+                
+                <div style="margin-bottom:30px;">
+                    <p style="font-size:11px; text-transform:uppercase; color:var(--gray); margin-bottom:10px;">Select Color</p>
+                    <div id="color-swatches" style="display:flex; gap:12px;"></div>
+                </div>
+
+                <div style="margin-bottom:30px;">
+                    <p style="font-size:11px; text-transform:uppercase; color:var(--gray); margin-bottom:10px;">Select Size</p>
+                    <div style="display:flex; gap:10px;">
+                        <button class="size-btn">S</button>
+                        <button class="size-btn">M</button>
+                        <button class="size-btn">L</button>
+                        <button class="size-btn">XL</button>
+                    </div>
+                </div>
+
+                <button onclick="addToCartFromDetail()" style="width:100%; background:var(--gold); color:black; padding:15px; border:none; font-weight:bold; cursor:pointer;">ADD TO CART</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="yanara-colors.js"></script> 
+    <script src="yanara-fixes.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. GET THE PRODUCT ID FROM THE URL
+    // Deep Logic: If the URL is product-detail.html?id=BZ01BL, this grabs 'BZ01BL'
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('id');
+
+    if (productId) {
+        // 2. FIND THE PRODUCT AND ITS FAMILY
+        const mainProduct = products.find(p => p.code === productId) || products[0];
+        const group = getGroupFor(mainProduct.code);
+        
+        // 3. FILL THE PAGE WITH DATA
+        document.getElementById('p-name').textContent = mainProduct.name;
+        document.getElementById('p-price').textContent = "₹" + mainProduct.price.toLocaleString();
+        document.getElementById('main-product-img').src = mainProduct.image;
+
+        // 4. GENERATE COLOR SWATCHES
+        // Deep Logic: This looks at every product in the 'Family' and creates a circle
+        const swatchContainer = document.getElementById('color-swatches');
+        group.codes.forEach(code => {
+            const colorCode = code.slice(-2); // Grabs 'BL' from 'BZ01BL'
+            const colorData = COLOR_MAP[colorCode];
+            
+            if (colorData) {
+                const circle = document.createElement('div');
+                circle.style.cssText = `
+                    width: 30px; height: 30px; border-radius: 50%; 
+                    background: ${colorData.hex}; cursor: pointer;
+                    border: 2px solid ${code === productId ? 'var(--gold)' : 'transparent'};
+                `;
+                
+                // THE MAGIC CLICK:
+                circle.onclick = () => {
+                    // Update image and text when clicked
+                    const selectedVariant = products.find(p => p.code === code);
+                    document.getElementById('main-product-img').src = selectedVariant.image;
+                    
+                    // Reset all borders and highlight this one
+                    document.querySelectorAll('#color-swatches div').forEach(d => d.style.borderColor = 'transparent');
+                    circle.style.borderColor = 'var(--gold)';
+                };
+                
+                swatchContainer.appendChild(circle);
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>
