@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YANARA Fashions — Sign In</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+/* ── DARK THEME (default) ── */
+:root{
+  --bg:#0d0d0d;--bg2:#1a1a1a;--bg3:#222;--gold:#c9a96e;--gold2:#a8844a;
+  --white:#e8e8e8;--gray:#888;--gray2:#555;--border:rgba(255,255,255,0.08);
+  --btn-text:#000;--input-bg:#1a1a1a;--swatch-border:rgba(255,255,255,0.2);
+  --overlay:rgba(0,0,0,0.55);--font:"Segoe UI",system-ui,sans-serif
+}
+/* ── LIGHT THEME (Pure Linen) ── */
+:root[data-theme="light"]{
+  --bg:#FDFAF5;--bg2:#F5F0E6;--bg3:#EDE6D6;--gold:#b8954f;--gold2:#9a7a3c;
+  --white:#2A2218;--gray:#9A8E7E;--gray2:#b5ab9b;--border:rgba(42,34,24,0.12);
+  --btn-text:#FDFAF5;--input-bg:#F5F0E6;--swatch-border:rgba(42,34,24,0.2);
+  --overlay:rgba(40,34,24,0.4)
+}
+body{background:var(--bg);color:var(--white);font-family:var(--font);font-size:14px;line-height:1.6;min-height:100vh;transition:background .3s,color .3s}
+
+/* ── LAYOUT ── */
+.auth-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+
+/* ── LEFT: BRAND SHOWCASE ── */
+.auth-brand{position:relative;background:var(--bg2);display:flex;flex-direction:column;justify-content:space-between;padding:48px;overflow:hidden}
+.auth-brand::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--overlay),transparent);z-index:1}
+.brand-bgicon{position:absolute;right:-40px;bottom:-40px;font-size:340px;color:var(--gold);opacity:0.05;z-index:0}
+.brand-top{position:relative;z-index:2}
+.brand-logo{font-size:22px;font-weight:700;letter-spacing:6px;text-transform:uppercase;cursor:pointer;color:var(--white)}
+.brand-logo span{color:var(--gold);font-size:11px;display:block;letter-spacing:4px;font-weight:400;margin-top:2px}
+.brand-mid{position:relative;z-index:2}
+.brand-tag{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.brand-tag::before{content:"";width:30px;height:1px;background:var(--gold)}
+.brand-title{font-size:clamp(28px,3.5vw,46px);font-weight:300;line-height:1.15;letter-spacing:-1px;margin-bottom:18px}
+.brand-title strong{font-weight:800}
+.brand-desc{font-size:13px;color:var(--gray);line-height:1.9;max-width:380px}
+.brand-feats{position:relative;z-index:2;display:flex;flex-direction:column;gap:14px}
+.brand-feat{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--gray)}
+.brand-feat i{color:var(--gold);font-size:18px}
+
+/* ── RIGHT: FORM ── */
+.auth-form-side{display:flex;align-items:center;justify-content:center;padding:48px;position:relative}
+.theme-toggle{position:absolute;top:24px;right:24px;background:transparent;border:1px solid var(--border);color:var(--white);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s}
+.theme-toggle:hover{border-color:var(--gold);color:var(--gold)}
+.auth-box{width:100%;max-width:380px}
+.auth-box-logo{display:none;text-align:center;margin-bottom:28px}
+.auth-box-logo .l{font-size:20px;font-weight:700;letter-spacing:5px;color:var(--white)}
+.auth-box-logo .s{font-size:10px;color:var(--gold);letter-spacing:3px}
+.auth-welcome{font-size:24px;font-weight:300;margin-bottom:6px}
+.auth-welcome strong{font-weight:700}
+.auth-sub{font-size:12px;color:var(--gray);margin-bottom:28px}
+
+/* ── TABS ── */
+.auth-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:26px}
+.auth-tab{flex:1;text-align:center;padding:12px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;margin-bottom:-1px}
+.auth-tab.on{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── FORM FIELDS ── */
+.fld{margin-bottom:16px}
+.fld label{display:block;font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:6px}
+.fld input{width:100%;background:var(--input-bg);border:1px solid var(--border);color:var(--white);padding:11px 13px;font-size:13px;outline:none;transition:border-color .2s;font-family:inherit}
+.fld input:focus{border-color:var(--gold)}
+.fld-row{display:flex;gap:10px}
+.fld-row .fld{flex:1}
+.fld-pass{position:relative}
+.fld-pass .eye{position:absolute;right:11px;top:32px;color:var(--gray);cursor:pointer;font-size:15px}
+.fld-pass .eye:hover{color:var(--gold)}
+
+.auth-opts{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;font-size:11px}
+.auth-opts label{display:flex;align-items:center;gap:6px;color:var(--gray);cursor:pointer}
+.auth-opts input{accent-color:var(--gold)}
+.auth-opts .link{color:var(--gold);cursor:pointer}
+
+.btn-primary{width:100%;background:var(--gold);color:var(--btn-text);border:none;padding:13px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.btn-primary:hover{background:var(--gold2)}
+
+.auth-switch{text-align:center;margin-top:20px;font-size:11px;color:var(--gray)}
+.auth-switch .link{color:var(--gold);cursor:pointer;font-weight:600}
+
+.auth-divider{display:flex;align-items:center;gap:12px;margin:22px 0;color:var(--gray2);font-size:10px;letter-spacing:1px}
+.auth-divider::before,.auth-divider::after{content:"";flex:1;height:1px;background:var(--border)}
+
+.auth-msg{padding:10px 13px;font-size:11px;margin-bottom:16px;display:none;letter-spacing:.5px}
+.auth-msg.err{display:block;background:rgba(255,68,68,0.1);border:1px solid rgba(255,68,68,0.3);color:#ff7777}
+.auth-msg.ok{display:block;background:rgba(201,169,110,0.12);border:1px solid var(--gold);color:var(--gold)}
+
+.back-home{position:absolute;top:24px;left:24px;font-size:11px;color:var(--gray);cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s;text-decoration:none}
+.back-home:hover{color:var(--gold)}
+
+/* ── LOGGED-IN STATE ── */
+.logged-state{display:none;text-align:center}
+.logged-state.show{display:block}
+.logged-avatar{width:64px;height:64px;border-radius:50%;background:var(--bg2);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:var(--gold);margin:0 auto 18px}
+.logged-name{font-size:20px;font-weight:600;margin-bottom:4px}
+.logged-email{font-size:12px;color:var(--gray);margin-bottom:24px}
+.logged-btns{display:flex;flex-direction:column;gap:10px}
+.btn-outline{width:100%;background:transparent;border:1px solid var(--border);color:var(--white);padding:12px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:850px){
+  .auth-wrap{grid-template-columns:1fr}
+  .auth-brand{display:none}
+  .auth-box-logo{display:block}
+  .auth-form-side{padding:32px 24px;min-height:100vh}
+}
+@media(max-width:460px){
+  .auth-form-side{padding:24px 18px}
+  .fld-row{flex-direction:column;gap:0}
+  .theme-toggle{top:16px;right:16px}
+  .back-home{top:16px;left:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="auth-wrap">
+
+  <!-- LEFT: BRAND SHOWCASE -->
+  <div class="auth-brand">
+    <div class="brand-bgicon"><i class="ti ti-hanger"></i></div>
+    <div class="brand-top">
+      <div class="brand-logo" onclick="goHome()">YANARA<span>Fashions</span></div>
+    </div>
+    <div class="brand-mid">
+      <div class="brand-tag">Premium Ethnic Wear</div>
+      <h1 class="brand-title">Welcome to<br><strong>YANARA</strong></h1>
+      <p class="brand-desc">Join our community to enjoy a personalised shopping experience — track your orders, save your favourites, and discover handcrafted ethnic wear by award-winning designer Ramya.</p>
+    </div>
+    <div class="brand-feats">
+      <div class="brand-feat"><i class="ti ti-package"></i> Track your orders in real-time</div>
+      <div class="brand-feat"><i class="ti ti-heart"></i> Save favourites to your wishlist</div>
+      <div class="brand-feat"><i class="ti ti-truck-delivery"></i> Faster checkout every time</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div class="auth-form-side">
+    <a class="back-home" onclick="goHome()"><i class="ti ti-arrow-left"></i> Back to store</a>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme"><i class="ti ti-moon" id="theme-icon"></i></button>
+
+    <div class="auth-box">
+      <div class="auth-box-logo">
+        <div class="l">YANARA</div>
+        <div class="s">FASHIONS</div>
+      </div>
+
+      <!-- LOGGED-IN STATE -->
+      <div class="logged-state" id="logged-state">
+        <div class="logged-avatar" id="logged-avatar">P</div>
+        <div class="logged-name" id="logged-name">Welcome back</div>
+        <div class="logged-email" id="logged-email"></div>
+        <div class="logged-btns">
+          <button class="btn-primary" onclick="goHome()">Continue Shopping</button>
+          <button class="btn-outline" onclick="logout()">Log Out</button>
+        </div>
+      </div>
+
+      <!-- AUTH FORMS -->
+      <div id="auth-forms">
+        <div class="auth-welcome">Hello <strong>Again</strong></div>
+        <div class="auth-sub" id="auth-sub">Sign in to continue to YANARA</div>
+
+        <div class="auth-tabs">
+          <div class="auth-tab on" id="tab-signin" onclick="switchTab('signin')">Sign In</div>
+          <div class="auth-tab" id="tab-signup" onclick="switchTab('signup')">Create Account</div>
+        </div>
+
+        <div class="auth-msg" id="auth-msg"></div>
+
+        <!-- SIGN IN FORM -->
+        <div id="form-signin">
+          <div class="fld">
+            <label>Email Address</label>
+            <input type="email" id="si-email" placeholder="you@example.com" autocomplete="email">
+          </div>
+          <div class="fld fld-pass">
+            <label>Password</label>
+            <input type="password" id="si-pass" placeholder="Enter your password" autocomplete="current-password">
+            <i class="ti ti-eye eye" onclick="togglePass('si-pass',this)"></i>
+          </div>
+          <div class="auth-opts">
+            <label><input type="checkbox" id="si-remember"> Remember me</label>
+            <span class="link" onclick="forgotPass()">Forgot password?</span>
+          </div>
+          <button class="btn-primary" onclick="doSignIn()">Sign In</button>
+          <div class="auth-switch">New to YANARA? <span class="link" onclick="switchTab('signup')">Create an account</span></div>
+        </div>
+
+        <!-- SIGN UP FORM -->
+        <div id="form-signup" style="display:none">
+          <div class="fld">
+            <label>Full Name</label>
+            <input type="text" id="su-name" placeholder="Your full name" autocomplete="name">
+          </div>
+          <div class="fld">
+            <label>Email Address</label>
+            <input type="email" id="su-email" placeholder="you@example.com" autocomplete="email">
+          </div>
+          <div class="fld">
+            <label>Phone Number</label>
+            <input type="tel" id="su-phone" placeholder="+91 XXXXX XXXXX" autocomplete="tel">
+          </div>
+          <div class="fld-row">
+            <div class="fld fld-pass">
+              <label>Password</label>
+              <input type="password" id="su-pass" placeholder="Create password" autocomplete="new-password">
+              <i class="ti ti-eye eye" onclick="togglePass('su-pass',this)"></i>
+            </div>
+            <div class="fld">
+              <label>Confirm</label>
+              <input type="password" id="su-pass2" placeholder="Re-enter" autocomplete="new-password">
+            </div>
+          </div>
+          <button class="btn-primary" onclick="doSignUp()">Create Account</button>
+          <div class="auth-switch">Already have an account? <span class="link" onclick="switchTab('signin')">Sign in</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ════════════════════════════════════════════
+// YANARA AUTH — DEMO VERSION (localStorage)
+// ⚠️ NOT SECURE — replace with Firebase for production
+// ════════════════════════════════════════════
+
+// ── ADMIN CREDENTIAL (demo) ──
+var ADMIN_USER = "admin";
+var ADMIN_PASS = "yanara2024";
+
+// ── THEME (reads site's saved choice) ──
+function applyTheme(theme){
+  var root=document.documentElement;
+  if(theme==="light"){root.setAttribute("data-theme","light");}
+  else{root.removeAttribute("data-theme");}
+  var icon=document.getElementById("theme-icon");
+  if(icon)icon.className=theme==="light"?"ti ti-sun":"ti ti-moon";
+  try{localStorage.setItem("yanara-theme",theme);}catch(e){}
+}
+function toggleTheme(){
+  var cur=document.documentElement.getAttribute("data-theme")==="light"?"light":"dark";
+  applyTheme(cur==="light"?"dark":"light");
+}
+(function initTheme(){
+  var theme="dark";
+  try{
+    var saved=localStorage.getItem("yanara-theme");
+    if(saved){theme=saved;}
+    else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches){theme="light";}
+  }catch(e){}
+  applyTheme(theme);
+})();
+
+// ── ACCOUNT STORAGE HELPERS ──
+function getAccounts(){
+  try{return JSON.parse(localStorage.getItem("yanara-accounts")||"[]");}catch(e){return [];}
+}
+function saveAccounts(list){
+  try{localStorage.setItem("yanara-accounts",JSON.stringify(list));}catch(e){}
+}
+function setCurrentUser(user){
+  try{localStorage.setItem("yanara-current-user",JSON.stringify(user));}catch(e){}
+}
+function getCurrentUser(){
+  try{return JSON.parse(localStorage.getItem("yanara-current-user")||"null");}catch(e){return null;}
+}
+function clearCurrentUser(){
+  try{localStorage.removeItem("yanara-current-user");}catch(e){}
+}
+
+// ── UI HELPERS ──
+function showMsg(text,type){
+  var m=document.getElementById("auth-msg");
+  m.textContent=text;
+  m.className="auth-msg "+(type||"err");
+}
+function clearMsg(){
+  var m=document.getElementById("auth-msg");
+  m.className="auth-msg";m.textContent="";
+}
+function switchTab(tab){
+  clearMsg();
+  var isSignin=tab==="signin";
+  document.getElementById("tab-signin").classList.toggle("on",isSignin);
+  document.getElementById("tab-signup").classList.toggle("on",!isSignin);
+  document.getElementById("form-signin").style.display=isSignin?"block":"none";
+  document.getElementById("form-signup").style.display=isSignin?"none":"block";
+  document.querySelector(".auth-welcome").innerHTML=isSignin?"Hello <strong>Again</strong>":"Join <strong>YANARA</strong>";
+  document.getElementById("auth-sub").textContent=isSignin?"Sign in to continue to YANARA":"Create your account in seconds";
+}
+function togglePass(id,el){
+  var inp=document.getElementById(id);
+  if(inp.type==="password"){inp.type="text";el.className="ti ti-eye-off eye";}
+  else{inp.type="password";el.className="ti ti-eye eye";}
+}
+function forgotPass(){
+  showMsg("Password recovery will be available soon. Please contact support.","ok");
+}
+function goHome(){ window.location.href="index.html"; }
+
+// ── SIGN IN ──
+function doSignIn(){
+  clearMsg();
+  var email=document.getElementById("si-email").value.trim();
+  var pass=document.getElementById("si-pass").value;
+  if(!email||!pass){showMsg("Please enter your email and password.");return;}
+
+  // Admin check (admin can type "admin" or the admin email)
+  if((email===ADMIN_USER||email==="admin@yanara.com")&&pass===ADMIN_PASS){
+    showMsg("Welcome back, Admin! Redirecting to dashboard...","ok");
+    try{sessionStorage.setItem("yanara-admin-auth","true");}catch(e){}
+    setTimeout(function(){window.location.href="yanara_admin.html";},900);
+    return;
+  }
+
+  // Customer check
+  var accounts=getAccounts();
+  var found=accounts.find(function(a){return a.email.toLowerCase()===email.toLowerCase()&&a.pass===pass;});
+  if(found){
+    setCurrentUser({name:found.name,email:found.email});
+    showMsg("Welcome back, "+found.name.split(" ")[0]+"! Redirecting...","ok");
+    setTimeout(function(){window.location.href="index.html";},900);
+  }else{
+    showMsg("Invalid email or password. Please try again.");
+  }
+}
+
+// ── SIGN UP ──
+function doSignUp(){
+  clearMsg();
+  var name=document.getElementById("su-name").value.trim();
+  var email=document.getElementById("su-email").value.trim();
+  var phone=document.getElementById("su-phone").value.trim();
+  var pass=document.getElementById("su-pass").value;
+  var pass2=document.getElementById("su-pass2").value;
+
+  if(!name||!email||!phone||!pass){showMsg("Please fill in all fields.");return;}
+  if(pass.length<6){showMsg("Password must be at least 6 characters.");return;}
+  if(pass!==pass2){showMsg("Passwords do not match.");return;}
+  if(!/^[^@]+@[^@]+\.[^@]+$/.test(email)){showMsg("Please enter a valid email address.");return;}
+
+  var accounts=getAccounts();
+  if(accounts.find(function(a){return a.email.toLowerCase()===email.toLowerCase();})){
+    showMsg("An account with this email already exists. Please sign in.");
+    return;
+  }
+  accounts.push({name:name,email:email,phone:phone,pass:pass});
+  saveAccounts(accounts);
+  setCurrentUser({name:name,email:email});
+  showMsg("Account created! Welcome to YANARA, "+name.split(" ")[0]+"!","ok");
+  setTimeout(function(){window.location.href="index.html";},1000);
+}
+
+// ── LOGOUT ──
+function logout(){
+  clearCurrentUser();
+  showLoggedState(null);
+  showMsg("You have been logged out.","ok");
+}
+
+// ── SHOW LOGGED-IN STATE ──
+function showLoggedState(user){
+  var ls=document.getElementById("logged-state");
+  var forms=document.getElementById("auth-forms");
+  if(user){
+    document.getElementById("logged-avatar").textContent=(user.name||"U").charAt(0).toUpperCase();
+    document.getElementById("logged-name").textContent="Hi, "+user.name.split(" ")[0];
+    document.getElementById("logged-email").textContent=user.email;
+    ls.classList.add("show");
+    forms.style.display="none";
+  }else{
+    ls.classList.remove("show");
+    forms.style.display="block";
+  }
+}
+
+// ── ON LOAD: check if already logged in ──
+(function init(){
+  var user=getCurrentUser();
+  if(user)showLoggedState(user);
+})();
+</script>
+</body>
+</html>
