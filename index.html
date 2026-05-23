@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YANARA Fashion — Premium Ethnic Wear</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+/* ── DARK THEME (Midnight Luxury) — default ── */
+:root{
+  --bg:#0d0d0d;--bg2:#1a1a1a;--bg3:#222;--gold:#c9a96e;--gold2:#a8844a;
+  --white:#e8e8e8;--gray:#888;--gray2:#555;--border:rgba(255,255,255,0.08);
+  --btn-text:#000;--overlay-strong:rgba(0,0,0,0.6);--overlay-soft:rgba(0,0,0,0.5);
+  --hero-grad-from:rgba(0,0,0,0.9);--hero-grad-mid:rgba(0,0,0,0.3);
+  --swatch-border:rgba(255,255,255,0.2);--font:"Jost","Segoe UI",system-ui,sans-serif;--font-display:"Bodoni Moda",Georgia,serif
+}
+/* ── LIGHT THEME (Pure Linen) ── */
+:root[data-theme="light"]{
+  --bg:#FDFAF5;--bg2:#F5F0E6;--bg3:#EDE6D6;--gold:#b8954f;--gold2:#9a7a3c;
+  --white:#2A2218;--gray:#9A8E7E;--gray2:#b5ab9b;--border:rgba(42,34,24,0.12);
+  --btn-text:#FDFAF5;--overlay-strong:rgba(0,0,0,0.45);--overlay-soft:rgba(0,0,0,0.3);
+  --hero-grad-from:rgba(40,34,24,0.75);--hero-grad-mid:rgba(40,34,24,0.2);
+  --swatch-border:rgba(42,34,24,0.2)
+}
+html{transition:none}
+body{background:var(--bg);color:var(--white);font-family:var(--font);overflow-x:hidden;font-size:14px;line-height:1.6;transition:background .3s ease,color .3s ease}
+.page{display:none;min-height:100vh}.page.active{display:block}
+.ann{background:var(--gold);color:#000;text-align:center;padding:9px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+nav{position:sticky;top:0;z-index:100;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 4%;background:var(--bg);border-bottom:1px solid var(--border)}
+.logo{font-size:14px;font-weight:700;letter-spacing:4px;text-transform:uppercase;cursor:pointer;color:var(--white);line-height:1.2}
+.logo span{color:var(--gold);font-size:9px;display:block;letter-spacing:3px;font-weight:400;margin-top:1px}
+.nl{display:flex;gap:24px;list-style:none}
+.nl a{color:var(--gray);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s;cursor:pointer}
+.nl a:hover,.nl a.on{color:var(--white)}
+.nr{display:flex;align-items:center;gap:14px}
+.cbtn{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.2);padding:7px 16px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.cbtn:hover{border-color:var(--gold);color:var(--gold)}
+.cc{background:var(--gold);color:#000;border-radius:50%;width:16px;height:16px;font-size:9px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;margin-left:3px}
+.hero{position:relative;height:calc(100vh - 88px);background:var(--bg2);display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:200px;opacity:0.025}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(to top,var(--hero-grad-from) 0%,var(--hero-grad-mid) 50%,transparent 100%)}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.4}
+.hero-content{position:relative;z-index:2;padding:0 5% 70px;width:100%}
+.hero-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.hero-tag::before{content:"";width:28px;height:1px;background:var(--gold)}
+.hero-title{font-size:clamp(40px,6vw,80px);font-weight:800;line-height:1;letter-spacing:-2px;margin-bottom:10px;text-transform:uppercase}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.65);margin-bottom:32px;letter-spacing:1px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.bp{background:var(--gold);color:#000;border:none;padding:13px 36px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.bp:hover{background:var(--gold2)}
+.bo{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.4);padding:13px 36px;font-size:11px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.bo:hover{border-color:var(--white)}
+.mq{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;overflow:hidden;white-space:nowrap}
+.mtrack{display:inline-flex;animation:mq 24s linear infinite}
+.mi{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gray);padding:0 24px}
+.mdot{color:var(--gold)}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+section{padding:70px 4%}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px}
+.stag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.stitle{font-family:var(--font-display);font-size:clamp(24px,2.8vw,38px);font-weight:400;letter-spacing:-0.5px}
+.stitle strong{font-style:italic;font-weight:400;color:var(--gold)}
+.stitle strong{font-weight:700}
+.slink{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);cursor:pointer;border-bottom:1px solid var(--border);padding-bottom:2px;transition:color .2s}
+.slink:hover{color:var(--gold)}
+.occ-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.occ-card{background:var(--bg2);border:1px solid var(--border);padding:28px 16px;text-align:center;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.occ-card::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s}
+.occ-card:hover::after{transform:scaleX(1)}
+.occ-card:hover{border-color:rgba(201,169,110,0.3);transform:translateY(-3px)}
+.occ-icon{font-size:28px;margin-bottom:12px;color:var(--gold);opacity:0.8}
+.occ-name{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.occ-desc{font-size:10px;color:var(--gray)}
+.col-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.col-card{background:var(--bg2);position:relative;overflow:hidden;cursor:pointer;min-height:300px}
+.col-bg{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.col-card:hover .col-bg{transform:scale(1.05)}
+.col-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,transparent 60%)}
+.col-info{position:absolute;bottom:0;left:0;right:0;padding:24px}
+.col-name{font-size:18px;font-weight:700;margin-bottom:3px}
+.col-count{font-size:10px;color:var(--gray);letter-spacing:1px;text-transform:uppercase}
+.col-btn{position:absolute;top:16px;right:16px;border:1px solid rgba(255,255,255,0.2);padding:6px 14px;font-size:9px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:var(--white);background:transparent;transition:all .2s}
+.col-card:hover .col-btn{background:var(--gold);border-color:var(--gold);color:#000}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border)}
+.hscroll{display:flex;gap:1px;overflow-x:auto;scrollbar-width:none;background:var(--border)}
+.hscroll::-webkit-scrollbar{display:none}
+.pcard{background:var(--bg);cursor:pointer;transition:background .2s;position:relative;min-width:220px;flex-shrink:0}
+.pcard:hover{background:var(--bg2)}
+.pimg{aspect-ratio:3/4;position:relative;overflow:hidden;background:var(--bg2)}
+.pimg img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.pcard:hover .pimg img{transform:scale(1.04)}
+.pimg-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;color:var(--gray);opacity:0.07}
+.pbadge{position:absolute;top:10px;left:10px;background:var(--gold);color:#000;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 7px;z-index:2}
+.pwish{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.5);border:none;color:var(--white);cursor:pointer;font-size:14px;transition:all .2s;padding:6px;z-index:2;border-radius:50%}
+.pwish:hover{background:var(--gold);color:#000}
+.pinfo{padding:14px 12px 18px}
+.pcode{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gray2);margin-bottom:3px}
+.pcat{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gray);margin-bottom:5px}
+.pname{font-size:12px;font-weight:500;margin-bottom:8px;color:var(--white);line-height:1.4}
+.pcur{font-size:14px;font-weight:600;color:var(--gold)}
+.atcb{width:100%;background:transparent;border:1px solid var(--border);color:var(--white);padding:8px;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-top:10px;transition:all .2s}
+.atcb:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.strip-item{background:var(--bg2);padding:32px 20px;text-align:center}
+.strip-icon{font-size:24px;color:var(--gold);margin-bottom:10px}
+.strip-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.strip-desc{font-size:11px;color:var(--gray)}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tc{border:1px solid var(--border);padding:24px}
+.tst{color:var(--gold);font-size:11px;margin-bottom:10px;letter-spacing:3px}
+.tt{font-size:12px;color:var(--gray);line-height:1.8;margin-bottom:16px;font-style:italic}
+.ta{display:flex;align-items:center;gap:8px}
+.av{width:32px;height:32px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--gold);border:1px solid var(--border)}
+.an{font-size:12px;font-weight:600}.alc{font-size:10px;color:var(--gray)}
+footer{border-top:1px solid var(--border);padding:60px 4% 28px}
+.fgrid2{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+.fbrand{font-size:13px;font-weight:700;letter-spacing:4px;margin-bottom:10px}
+.fbrand span{color:var(--gold);font-size:9px;display:block;letter-spacing:3px;font-weight:400;margin-top:2px}
+.fdesc{font-size:11px;color:var(--gray);line-height:1.8;margin-bottom:18px}
+.fsoc{display:flex;gap:7px}
+.sb{width:30px;height:30px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;cursor:pointer;color:var(--gray);transition:all .2s;background:none;font-weight:700}
+.sb:hover{border-color:var(--gold);color:var(--gold)}
+.ft{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.flinks{list-style:none;display:flex;flex-direction:column;gap:8px}
+.flinks a{font-size:11px;color:var(--gray);text-decoration:none;transition:color .2s;cursor:pointer}
+.flinks a:hover{color:var(--gold)}
+.fbot{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--border)}
+.fcopy{font-size:10px;color:var(--gray2)}
+.fpay{display:flex;gap:4px}
+.pb{border:1px solid var(--border);padding:3px 7px;font-size:8px;color:var(--gray2);font-weight:700;letter-spacing:1px}
+.slayout{display:grid;grid-template-columns:190px 1fr;gap:36px;padding:36px 4% 70px}
+.fg{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.fgt{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.fops{display:flex;flex-direction:column;gap:7px}
+.fo{display:flex;align-items:center;gap:7px;cursor:pointer}
+.fo input{accent-color:var(--gold);width:12px;height:12px}
+.fo label{font-size:11px;color:var(--gray);cursor:pointer;transition:color .2s}
+.fo:hover label{color:var(--white)}
+.stop{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.sct{font-size:11px;color:var(--gray)}
+.ssel{background:var(--bg2);border:1px solid var(--border);color:var(--white);padding:6px 11px;font-size:11px;cursor:pointer}
+.ssel option{background:var(--bg2)}
+.catbtn{background:transparent;border:1px solid var(--border);color:var(--gray);padding:7px 16px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-right:6px;margin-bottom:6px}
+.catbtn.on,.catbtn:hover{border-color:var(--gold);color:var(--gold)}
+.dlayout{display:grid;grid-template-columns:1fr 1fr;gap:50px;padding:56px 4% 70px}
+.gallery{display:grid;grid-template-columns:80px 1fr;gap:10px}
+.thumbs{display:flex;flex-direction:column;gap:8px;overflow-y:auto;max-height:600px}
+.thumb{width:80px;height:100px;object-fit:cover;cursor:pointer;border:2px solid transparent;transition:all .2s;opacity:.6;flex-shrink:0}
+.thumb.on,.thumb:hover{border-color:var(--gold);opacity:1}
+.main-wrap{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--bg2);border:1px solid var(--border)}
+.main-wrap img{width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+.zoom-btn{position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,0.6);border:none;color:var(--white);padding:8px 12px;font-size:11px;cursor:pointer;letter-spacing:1px;text-transform:uppercase}
+.dbc{font-size:10px;color:var(--gray);margin-bottom:14px;cursor:pointer}
+.dbc span{color:var(--gold)}
+.dtitle{font-size:clamp(16px,2vw,24px);font-weight:400;margin-bottom:10px;line-height:1.2}
+.drat{display:flex;align-items:center;gap:7px;margin-bottom:14px}
+.dstars{color:var(--gold);font-size:11px}
+.drevs{font-size:10px;color:var(--gray)}
+.dprice{font-size:28px;font-weight:700;color:var(--gold);margin-bottom:20px}
+.ddesc{font-size:12px;color:var(--gray);line-height:1.9;margin-bottom:20px;border-top:1px solid var(--border);padding-top:18px}
+.dst{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:9px;color:var(--white)}
+.sgrid{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.sopt{min-width:44px;height:44px;padding:0 10px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+.sopt:hover,.sopt.on{background:var(--gold);color:#000;border-color:var(--gold)}
+.qrow{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.qctrl{display:flex;align-items:center;border:1px solid var(--border)}
+.qb{background:none;border:none;color:var(--white);width:36px;height:40px;font-size:16px;cursor:pointer;transition:background .2s}
+.qb:hover{background:var(--bg3)}
+.qv{width:40px;text-align:center;font-size:13px;font-weight:600}
+.dacts{display:flex;gap:7px;margin-bottom:24px}
+.bfull{flex:1;background:var(--gold);color:#000;border:none;padding:14px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.bfull:hover{background:var(--gold2)}
+.bwish{background:transparent;border:1px solid var(--border);color:var(--white);padding:14px 16px;font-size:16px;cursor:pointer;transition:all .2s}
+.bwish:hover{border-color:var(--gold);color:var(--gold)}
+.dmeta{display:flex;flex-direction:column;gap:8px;padding-top:18px;border-top:1px solid var(--border)}
+.mr2{display:flex;gap:10px;font-size:11px}
+.ml2{color:var(--gray);min-width:70px}
+.img-counter{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,0.6);color:var(--white);font-size:10px;padding:4px 10px;letter-spacing:1px}
+.clayout{display:grid;grid-template-columns:1fr 280px;gap:32px;padding:56px 4% 70px}
+.ctit{font-size:24px;font-weight:400;margin-bottom:24px}
+.citems{display:flex;flex-direction:column;gap:1px;background:var(--border)}
+.citem{display:grid;grid-template-columns:88px 1fr auto;gap:14px;background:var(--bg);padding:18px;align-items:center}
+.ciimg{width:88px;height:106px;overflow:hidden;background:var(--bg2)}
+.ciimg img{width:100%;height:100%;object-fit:cover}
+.cin{font-size:12px;font-weight:500;margin-bottom:3px}
+.cim{font-size:10px;color:var(--gray);margin-bottom:8px}
+.cip{font-size:14px;font-weight:600;color:var(--gold)}
+.crm{background:none;border:none;color:var(--gray2);cursor:pointer;font-size:14px;padding:3px;transition:color .2s}
+.crm:hover{color:#ff4444}
+.osum{border:1px solid var(--border);padding:22px;height:fit-content;position:sticky;top:66px}
+.osumtit{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.sumrow{display:flex;justify-content:space-between;font-size:12px;margin-bottom:10px}
+.sumrow .lbl{color:var(--gray)}
+.sumtot{display:flex;justify-content:space-between;font-size:15px;font-weight:700;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.pin{display:flex;gap:5px;margin:13px 0}
+.pin input{flex:1;background:var(--bg2);border:1px solid var(--border);color:var(--white);padding:8px 11px;font-size:11px;outline:none}
+.pin input:focus{border-color:var(--gold)}
+.pin button{background:var(--bg2);border:1px solid var(--border);color:var(--white);padding:8px 11px;font-size:10px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.pin button:hover{border-color:var(--gold);color:var(--gold)}
+.cklayout{display:grid;grid-template-columns:1fr 280px;gap:32px;padding:56px 4% 70px}
+.cktit{font-size:22px;font-weight:400;margin-bottom:22px}
+.fmsec{border:1px solid var(--border);padding:22px;margin-bottom:13px}
+.fmst{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;color:var(--gold)}
+.fmg{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.fmg.full{grid-template-columns:1fr}
+.fmgp{display:flex;flex-direction:column;gap:4px}
+.fmgp label{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gray)}
+.fmgp input,.fmgp select{background:var(--bg2);border:1px solid var(--border);color:var(--white);padding:9px 11px;font-size:12px;outline:none;transition:border-color .2s}
+.fmgp input:focus,.fmgp select:focus{border-color:var(--gold)}
+.fmgp select option{background:var(--bg2)}
+.pms{display:flex;flex-direction:column;gap:5px}
+.pm{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--border);cursor:pointer;transition:border-color .2s}
+.pm:hover,.pm.on{border-color:var(--gold)}
+.pm input{accent-color:var(--gold)}
+.pmn{font-size:12px;font-weight:600}
+.pmd{font-size:10px;color:var(--gray)}
+.pmi{font-size:15px;margin-left:auto}
+.designer-hero{padding:80px 4% 60px;display:grid;grid-template-columns:260px 1fr;gap:60px;align-items:center;border-bottom:1px solid var(--border)}
+.d-avatar{width:200px;height:200px;border-radius:50%;background:var(--bg2);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:70px;color:var(--gold);opacity:.2;margin:0 auto 16px}
+.d-name-big{font-size:38px;font-weight:300;letter-spacing:2px;margin-bottom:4px}
+.d-name-big strong{font-weight:800}
+.d-role-big{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.d-bio{font-size:13px;color:var(--gray);line-height:1.9;margin-bottom:22px}
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:grid;grid-template-columns:20px 1fr;gap:18px;padding-bottom:28px;position:relative}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);margin-top:4px;flex-shrink:0;z-index:1}
+.tl-item::before{content:"";position:absolute;left:4px;top:14px;bottom:0;width:1px;background:var(--border)}
+.tl-item:last-child::before{display:none}
+.tl-title{font-size:13px;font-weight:600;margin-bottom:3px}
+.tl-org{font-size:10px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+.tl-desc{font-size:12px;color:var(--gray);line-height:1.7}
+.ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ach-card{border:1px solid var(--border);padding:24px;text-align:center}
+.ach-icon{font-size:24px;color:var(--gold);margin-bottom:10px}
+.ach-title{font-size:13px;font-weight:600;margin-bottom:5px}
+.ach-desc{font-size:11px;color:var(--gray);line-height:1.6}
+.skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.skill-col h3{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.skill-list{display:flex;flex-wrap:wrap;gap:7px}
+.skill-tag{border:1px solid var(--border);padding:6px 14px;font-size:11px;color:var(--gray);letter-spacing:1px}
+.info-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:500;align-items:center;justify-content:center;padding:20px}
+.info-modal.open{display:flex}
+.info-box{background:var(--bg2);border:1px solid var(--border);border-radius:4px;width:100%;max-width:560px;max-height:80vh;overflow-y:auto;padding:36px;position:relative}
+.info-box h2{font-size:18px;font-weight:600;margin-bottom:6px;letter-spacing:1px}
+.info-box .info-sub{font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+.info-box p{font-size:12px;color:var(--gray);line-height:1.9;margin-bottom:14px}
+.info-box h3{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:18px 0 8px;color:var(--white)}
+.info-close{position:absolute;top:14px;right:14px;background:none;border:1px solid var(--border);color:var(--gray);width:28px;height:28px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.info-close:hover{border-color:var(--gold);color:var(--gold)}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--gold);color:#000;padding:10px 18px;font-size:11px;font-weight:700;z-index:9999;transform:translateY(100px);transition:transform .3s;letter-spacing:1px}
+.toast.show{transform:translateY(0)}
+.empty{text-align:center;padding:70px 0;color:var(--gray)}
+.about-hero{padding:80px 4% 60px;border-bottom:1px solid var(--border);text-align:center}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:70px 4%;border-bottom:1px solid var(--border)}
+.color-swatches{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+.cswatch{width:18px;height:18px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .2s;flex-shrink:0}
+.cswatch:hover,.cswatch.on{border-color:#c9a96e;transform:scale(1.2)}
+.color-opts{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+.color-opt{display:flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid rgba(255,255,255,0.1);cursor:pointer;transition:all .2s;font-size:11px;letter-spacing:1px}
+.color-opt:hover,.color-opt.on{border-color:#c9a96e;color:#c9a96e}
+.color-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;border:1px solid var(--swatch-border)}
+
+/* ── THEME TOGGLE BUTTON ── */
+.theme-toggle{background:transparent;border:1px solid var(--border);color:var(--white);width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .2s;flex-shrink:0}
+.theme-toggle:hover{border-color:var(--gold);color:var(--gold)}
+/* ── ACCOUNT BUTTON ── */
+.acct-btn{background:transparent;border:1px solid var(--border);color:var(--white);width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s;flex-shrink:0}
+.acct-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── HAMBURGER (mobile only) ── */
+.hamburger{display:none;background:transparent;border:none;color:var(--white);font-size:22px;cursor:pointer;padding:4px;align-items:center;justify-content:center}
+.hamburger:hover{color:var(--gold)}
+
+/* ── MOBILE SLIDE-IN MENU ── */
+.mm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:998;opacity:0;transition:opacity .3s}
+.mm-overlay.open{display:block;opacity:1}
+.mobile-menu{position:fixed;top:0;right:-300px;width:280px;max-width:82vw;height:100%;background:var(--bg);border-left:1px solid var(--border);z-index:999;transition:right .32s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-8px 0 30px rgba(0,0,0,0.3)}
+.mobile-menu.open{right:0}
+.mm-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--border)}
+.mm-close{background:transparent;border:1px solid var(--border);color:var(--white);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.mm-close:hover{border-color:var(--gold);color:var(--gold)}
+.mm-links{list-style:none;display:flex;flex-direction:column;padding:16px 0;flex:1}
+.mm-links a{display:flex;align-items:center;gap:14px;padding:15px 24px;color:var(--white);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;border-left:3px solid transparent}
+.mm-links a:hover{background:var(--bg2);border-left-color:var(--gold);color:var(--gold)}
+.mm-links a i{font-size:18px;color:var(--gold);width:20px}
+.mm-foot{padding:20px 24px;border-top:1px solid var(--border)}
+.mm-theme{width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--white);padding:12px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s;margin-bottom:16px}
+.mm-theme:hover{border-color:var(--gold);color:var(--gold)}
+.mm-theme i{font-size:16px;color:var(--gold)}
+.mm-contact{display:flex;flex-direction:column;gap:8px}
+.mm-contact a{font-size:11px;color:var(--gray);text-decoration:none;transition:color .2s}
+.mm-contact a:hover{color:var(--gold)}
+
+/* ════════ RESPONSIVE BREAKPOINTS ════════ */
+
+/* ── TABLET (≤960px) ── */
+@media(max-width:960px){
+.occ-grid{grid-template-columns:repeat(3,1fr)}
+.col-grid{grid-template-columns:repeat(2,1fr)}
+.tgrid,.ach-grid{grid-template-columns:1fr 1fr}
+.dlayout,.clayout,.cklayout{grid-template-columns:1fr}
+.designer-hero{grid-template-columns:1fr;gap:32px;text-align:center}
+.d-avatar{margin:0 auto}
+.osum,.csum{position:static}
+}
+
+/* ── MOBILE (≤750px) ── */
+@media(max-width:750px){
+.nl{display:none}
+.hamburger{display:flex}
+.cbtn-txt{display:none}
+.cbtn{padding:7px 11px}
+.hero{height:72vh}
+.hero-content{padding:0 5% 50px}
+.occ-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+.strip{grid-template-columns:1fr 1fr}
+.tgrid,.ach-grid,.skill-grid{grid-template-columns:1fr}
+.dlayout,.clayout,.cklayout,.designer-hero{grid-template-columns:1fr}
+.gallery{grid-template-columns:56px 1fr}
+.slayout{grid-template-columns:1fr}
+.fgrid2{grid-template-columns:1fr 1fr}
+.about-grid{grid-template-columns:1fr}
+section{padding:48px 5%}
+.pgrid{grid-template-columns:repeat(2,1fr)}
+.pcard{min-width:0}
+.dlayout,.clayout,.cklayout{padding:32px 5% 50px;gap:28px}
+}
+
+/* ── SMALL PHONE (≤460px) ── */
+@media(max-width:460px){
+.occ-grid{grid-template-columns:repeat(2,1fr)}
+.col-grid{grid-template-columns:1fr}
+.strip{grid-template-columns:1fr 1fr}
+.fgrid2{grid-template-columns:1fr}
+.pgrid{grid-template-columns:repeat(2,1fr);gap:1px}
+.pinfo{padding:10px 8px 14px}
+.pname{font-size:11px}
+.hero-title{font-size:clamp(32px,11vw,44px)}
+.hero-btns{flex-direction:column;width:100%}
+.hero-btns button{width:100%}
+.theme-toggle{width:30px;height:30px;font-size:13px}
+section{padding:40px 5%}
+.sh{flex-direction:column;align-items:flex-start;gap:8px}
+}
+
+/* ════════ EDITORIAL HOME PAGE ════════ */
+.ed-hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding:60px 6%;overflow:hidden}
+.ed-kicker{font-family:var(--font);font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:14px;opacity:0;animation:edFade .9s .2s forwards}
+.ed-kicker::before{content:"";width:46px;height:1px;background:var(--gold)}
+.ed-bigtype{font-family:var(--font-display);font-weight:500;line-height:0.82;letter-spacing:-2px;position:relative;z-index:2}
+.ed-bigtype .l1{display:block;font-size:clamp(56px,15vw,170px);color:var(--white);opacity:0;animation:edRise 1s .3s forwards}
+.ed-bigtype .l2{display:block;font-size:clamp(56px,15vw,170px);font-style:italic;color:var(--gold);margin-left:0.12em;opacity:0;animation:edRise 1s .5s forwards}
+.ed-bigtype .l3{display:block;font-size:clamp(40px,10vw,120px);color:var(--white);opacity:0.16;margin-top:-0.1em;animation:edRise 1s .7s forwards;opacity:0}
+.ed-hero-sub{font-family:var(--font);font-weight:300;font-size:clamp(13px,1.5vw,16px);color:var(--gray);max-width:420px;margin-top:30px;line-height:1.9;position:relative;z-index:2;opacity:0;animation:edFade 1s .9s forwards}
+.ed-hero-actions{margin-top:38px;display:flex;gap:16px;flex-wrap:wrap;position:relative;z-index:2;opacity:0;animation:edFade 1s 1.1s forwards}
+.ed-btn{font-family:var(--font);background:var(--gold);color:var(--btn-text);border:none;padding:15px 38px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:all .35s;font-weight:500}
+.ed-btn:hover{letter-spacing:4px;background:var(--gold2)}
+.ed-btn-ghost{font-family:var(--font);background:transparent;color:var(--white);border:1px solid var(--border);padding:15px 38px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:all .35s}
+.ed-btn-ghost:hover{border-color:var(--gold);color:var(--gold);letter-spacing:4px}
+.ed-hero-arch{position:absolute;top:50%;right:6%;transform:translateY(-50%);width:min(40vw,460px);height:min(74vh,640px);background:linear-gradient(165deg,var(--bg2),var(--bg));border-radius:50% 50% 12px 12px / 38% 38% 4% 4%;display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:1;border:1px solid var(--border)}
+.ed-hero-arch i{font-size:160px;color:var(--gold);opacity:0.14}
+.ed-hero-archlabel{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:var(--font);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gray)}
+
+@keyframes edRise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes edFade{from{opacity:0}to{opacity:1}}
+.ed-bigtype .l3{animation:edRise 1s .7s forwards}
+
+/* FEATURED PIECE */
+.ed-featured{padding:90px 6%;border-top:1px solid var(--border)}
+.ed-feat-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:center;max-width:1300px;margin:0 auto}
+.ed-feat-left .ed-feat-num{font-family:var(--font-display);font-size:14px;color:var(--gold);letter-spacing:2px;margin-bottom:18px}
+.ed-feat-title{font-family:var(--font-display);font-weight:400;font-size:clamp(34px,5vw,64px);line-height:1.0;color:var(--white);margin-bottom:8px}
+.ed-feat-title em{font-style:italic;color:var(--gold)}
+.ed-feat-rule{width:44px;height:1px;background:var(--gold);margin:22px 0}
+.ed-feat-desc{font-family:var(--font);font-weight:300;font-size:14px;color:var(--gray);line-height:1.95;max-width:330px;margin-bottom:26px}
+.ed-feat-details{display:flex;flex-direction:column;gap:16px;margin-bottom:28px}
+.ed-feat-detail{display:flex;align-items:center;gap:14px;transition:transform .3s}
+.ed-feat-detail:hover{transform:translateX(8px)}
+.ed-feat-detail-ic{width:44px;height:44px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
+.ed-feat-detail:hover .ed-feat-detail-ic{border-color:var(--gold);background:var(--gold);color:var(--btn-text)}
+.ed-feat-detail-ic i{font-size:18px;color:var(--gold);transition:color .3s}
+.ed-feat-detail:hover .ed-feat-detail-ic i{color:var(--btn-text)}
+.ed-feat-detail-t{font-family:var(--font);font-size:12px;color:var(--white);letter-spacing:1px}
+.ed-feat-detail-s{font-family:var(--font);font-size:10px;color:var(--gray)}
+.ed-feat-colors{display:flex;align-items:center;gap:10px}
+.ed-feat-colors .lbl{font-family:var(--font);font-size:10px;letter-spacing:1px;color:var(--gray);text-transform:uppercase;margin-right:4px}
+.ed-feat-colors .dot{width:20px;height:20px;border-radius:50%;cursor:pointer;border:1px solid var(--swatch-border);transition:transform .25s}
+.ed-feat-colors .dot:hover{transform:scale(1.25)}
+.ed-feat-right{position:relative;height:520px}
+.ed-feat-mainimg{position:absolute;top:0;right:0;width:72%;height:100%;background:linear-gradient(165deg,var(--bg2),var(--bg));border-radius:160px 160px 14px 14px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid var(--border);transition:transform .5s}
+.ed-feat-right:hover .ed-feat-mainimg{transform:scale(1.02)}
+.ed-feat-mainimg i{font-size:130px;color:var(--gold);opacity:0.16}
+.ed-feat-thumb{position:absolute;background:var(--bg2);border:4px solid var(--bg);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:transform .5s}
+.ed-feat-thumb i{font-size:30px;color:var(--gold);opacity:0.3}
+.ed-feat-thumb.t1{top:36px;left:0;width:40%;height:150px}
+.ed-feat-thumb.t2{bottom:30px;left:18px;width:36%;height:140px}
+.ed-feat-right:hover .ed-feat-thumb.t1{transform:translateY(-8px)}
+.ed-feat-right:hover .ed-feat-thumb.t2{transform:translateY(8px)}
+.ed-feat-price{font-family:var(--font-display);font-size:30px;color:var(--white);position:absolute;bottom:0;right:0;z-index:3}
+
+/* CATEGORY SHOWCASE */
+.ed-cats{padding:90px 6%;border-top:1px solid var(--border)}
+.ed-cats-head{text-align:center;margin-bottom:50px}
+.ed-cats-head .k{font-family:var(--font);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.ed-cats-head h2{font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4vw,52px);color:var(--white)}
+.ed-cats-head h2 em{font-style:italic;color:var(--gold)}
+.ed-cat-row{display:flex;gap:10px;max-width:1300px;margin:0 auto;height:440px}
+.ed-cat{flex:1;position:relative;background:linear-gradient(165deg,var(--bg2),var(--bg));border-radius:10px;overflow:hidden;cursor:pointer;transition:flex .55s cubic-bezier(.4,0,.2,1);border:1px solid var(--border)}
+.ed-cat:hover{flex:2.4}
+.ed-cat-num{position:absolute;top:20px;left:20px;font-family:var(--font);font-size:10px;letter-spacing:2px;color:var(--gold);z-index:3}
+.ed-cat-bgicon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:70px;color:var(--gold);opacity:0.12;transition:all .55s}
+.ed-cat:hover .ed-cat-bgicon{opacity:0.2;font-size:90px}
+.ed-cat-vert{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(0deg);writing-mode:vertical-rl;font-family:var(--font-display);font-size:26px;letter-spacing:3px;color:var(--white);white-space:nowrap;transition:opacity .4s;z-index:2}
+.ed-cat:hover .ed-cat-vert{opacity:0}
+.ed-cat-open{position:absolute;inset:0;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;transition:opacity .4s .15s;z-index:2}
+.ed-cat:hover .ed-cat-open{opacity:1}
+.ed-cat-open h3{font-family:var(--font-display);font-size:40px;font-weight:400;color:var(--white);line-height:1;margin-bottom:6px}
+.ed-cat-open h3 em{font-style:italic;color:var(--gold)}
+.ed-cat-open .ct{font-family:var(--font);font-size:11px;color:var(--gray);letter-spacing:1px;margin-bottom:16px}
+.ed-cat-open .cb{font-family:var(--font);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px}
+
+@media(max-width:850px){
+  .ed-feat-grid{grid-template-columns:1fr;gap:36px}
+  .ed-feat-right{height:420px}
+  .ed-cat-row{flex-direction:column;height:auto;gap:8px}
+  .ed-cat{height:130px;flex:none!important}
+  .ed-cat-vert{writing-mode:horizontal-tb;font-size:30px}
+  .ed-cat:hover .ed-cat-vert{opacity:1}
+  .ed-cat-open{opacity:1;background:linear-gradient(90deg,rgba(0,0,0,0.4),transparent)}
+  .ed-cat-open h3{font-size:28px}
+  .ed-hero-arch{display:none}
+  .ed-hero{min-height:auto;padding:80px 6%}
+}
+</style>
+</head>
+<body>
+<div id="toast" class="toast"></div>
+
+<!-- INFO MODALS -->
+<div class="info-modal" id="modal-size" onclick="if(event.target===this)closeModal('modal-size')"><div class="info-box"><button class="info-close" onclick="closeModal('modal-size')">×</button><h2>Size Guide</h2><div class="info-sub">Find Your Perfect Fit</div><p>YANARA Fashion uses standard Indian sizes. Please measure yourself accurately before ordering.</p><h3>Chest Measurement</h3><p>S — 36 inches | M — 38 inches | L — 40 inches | XL — 42 inches | XXL — 44 inches</p><h3>How to Measure</h3><p>Measure around the fullest part of your chest. For blazers and bandhgalas, we recommend going one size up for a comfortable fit.</p><h3>Custom Sizing</h3><p>All YANARA pieces can be custom-tailored. Contact us at yanarabyramya@gmail.com with your measurements.</p></div></div>
+<div class="info-modal" id="modal-track" onclick="if(event.target===this)closeModal('modal-track')"><div class="info-box"><button class="info-close" onclick="closeModal('modal-track')">×</button><h2>Track Your Order</h2><div class="info-sub">Order Status</div><p>Once your order is dispatched, you will receive an SMS and email with your tracking details.</p><h3>Typical Timeline</h3><p>Order Confirmed → Processing (1–2 days) → Dispatched → Delivered (5–7 days from dispatch)</p><h3>Need Help?</h3><p>Email yanarabyramya@gmail.com or WhatsApp +91 8015781808 with your order ID.</p></div></div>
+<div class="info-modal" id="modal-returns" onclick="if(event.target===this)closeModal('modal-returns')"><div class="info-box"><button class="info-close" onclick="closeModal('modal-returns')">×</button><h2>Returns & Exchanges</h2><div class="info-sub">7-Day Policy</div><p>We accept returns within 7 days of delivery.</p><h3>Conditions</h3><p>Items must be unused, unwashed, and in original packaging. Custom orders are non-returnable.</p><h3>How to Return</h3><p>1. Email yanarabyramya@gmail.com with your order ID.<br>2. We arrange pickup within 2 business days.<br>3. Refund processed within 5–7 days.</p></div></div>
+<div class="info-modal" id="modal-contact" onclick="if(event.target===this)closeModal('modal-contact')"><div class="info-box"><button class="info-close" onclick="closeModal('modal-contact')">×</button><h2>Contact Us</h2><div class="info-sub">We're Here to Help</div><p><strong>Email:</strong> yanarabyramya@gmail.com<br><strong>WhatsApp:</strong> +91 8015781808<br><strong>Hours:</strong> Mon–Sat, 10am–7pm IST</p><h3>Designer Collaboration</h3><p>For fashion show collaborations, celebrity styling, or brand partnerships, email Ramya directly at yanarabyramya@gmail.com.</p></div></div>
+<div class="info-modal" id="modal-faq" onclick="if(event.target===this)closeModal('modal-faq')"><div class="info-box"><button class="info-close" onclick="closeModal('modal-faq')">×</button><h2>FAQ</h2><div class="info-sub">Frequently Asked Questions</div><h3>What fabrics do you use?</h3><p>Premium fabrics including raw silk, velvet, georgette, and handwoven textiles from master weavers across India.</p><h3>Can I customise a design?</h3><p>Yes! All designs can be customised in colour, fabric, and size.</p><h3>Do you ship outside India?</h3><p>Yes, we ship worldwide. International shipping takes 10–15 days.</p><h3>Are embroideries hand-done?</h3><p>Yes — all Zari, Cutdana, and Sequin work is done by hand by skilled artisans.</p><h3>How do I care for my garment?</h3><p>Dry clean only for blazers and bandhgalas. Hand wash cold for shirts.</p></div></div>
+<div class="info-modal" id="modal-shipping" onclick="if(event.target===this)closeModal('modal-shipping')"><div class="info-box"><button class="info-close" onclick="closeModal('modal-shipping')">×</button><h2>Shipping Policy</h2><div class="info-sub">Delivery Information</div><p>Free shipping on all orders above ₹2,999 within India. Orders below ₹2,999 — flat ₹150 charge.</p><h3>Delivery Time</h3><p>Standard: 5–7 business days | Express: 2–3 business days (₹299 extra)</p><h3>International</h3><p>We ship to 50+ countries in 10–15 business days. Customs duties are the buyer's responsibility.</p></div></div>
+<div class="info-modal" id="modal-privacy" onclick="if(event.target===this)closeModal('modal-privacy')"><div class="info-box"><button class="info-close" onclick="closeModal('modal-privacy')">×</button><h2>Privacy Policy</h2><div class="info-sub">Your Data is Safe</div><p>We collect only the information needed to process your orders — name, address, phone, and email.</p><h3>Payments</h3><p>We do not store card or UPI details. All payments are processed securely by Razorpay.</p><h3>Data Usage</h3><p>Your information is used only to fulfil your order. We do not sell or share your data.</p></div></div>
+<div class="info-modal" id="modal-terms" onclick="if(event.target===this)closeModal('modal-terms')"><div class="info-box"><button class="info-close" onclick="closeModal('modal-terms')">×</button><h2>Terms of Use</h2><div class="info-sub">Please Read Carefully</div><p>By using this website and placing orders, you agree to these terms.</p><h3>Orders</h3><p>All orders are subject to availability. We reserve the right to cancel any order and issue a full refund.</p><h3>Intellectual Property</h3><p>All designs and content are the property of YANARA Fashion. Reproduction without permission is prohibited.</p></div></div>
+
+<div class="ann">Handcrafted by Award-Winning Designer Ramya &nbsp;✦&nbsp; Free Shipping ₹2999+ &nbsp;✦&nbsp; SS25 Collection Live</div>
+<nav>
+  <div class="logo" onclick="go('home')">YANARA<span>Fashion</span></div>
+  <ul class="nl">
+    <li><a onclick="go('home')" id="nh" class="on">Home</a></li>
+    <li><a onclick="go('shop')" id="ns">Shop</a></li>
+    <li><a onclick="go('designer')" id="nd">Designer</a></li>
+    <li><a onclick="go('about')" id="na">About</a></li>
+  </ul>
+  <div class="nr">
+    <button class="acct-btn" onclick="goLogin()" title="Account / Sign in" aria-label="Account"><i class="ti ti-user"></i></button>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode" aria-label="Toggle theme"><i class="ti ti-moon" id="theme-icon"></i></button>
+    <button class="cbtn" onclick="go('cart')"><i class="ti ti-shopping-bag"></i> <span class="cbtn-txt">Cart</span> <span class="cc" id="cc">0</span></button>
+    <button class="hamburger" id="hamburger" onclick="openMobileMenu()" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU (slide-in) -->
+<div class="mm-overlay" id="mm-overlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mm-head">
+    <div class="logo" onclick="go('home');closeMobileMenu()">YANARA<span>Fashion</span></div>
+    <button class="mm-close" onclick="closeMobileMenu()" aria-label="Close menu"><i class="ti ti-x"></i></button>
+  </div>
+  <ul class="mm-links">
+    <li><a onclick="go('home');closeMobileMenu()"><i class="ti ti-home"></i> Home</a></li>
+    <li><a onclick="go('shop');closeMobileMenu()"><i class="ti ti-shirt"></i> Shop</a></li>
+    <li><a onclick="go('designer');closeMobileMenu()"><i class="ti ti-palette"></i> Designer</a></li>
+    <li><a onclick="go('about');closeMobileMenu()"><i class="ti ti-info-circle"></i> About</a></li>
+    <li><a onclick="goLogin()"><i class="ti ti-user"></i> My Account</a></li>
+    <li><a onclick="go('cart');closeMobileMenu()"><i class="ti ti-shopping-bag"></i> Cart</a></li>
+  </ul>
+  <div class="mm-foot">
+    <button class="mm-theme" onclick="toggleTheme()"><i class="ti ti-moon" id="mm-theme-icon"></i> <span id="mm-theme-label">Dark Mode</span></button>
+    <div class="mm-contact">
+      <a href="mailto:yanarabyramya@gmail.com">yanarabyramya@gmail.com</a>
+      <a href="tel:+918015781808">+91 8015781808</a>
+    </div>
+  </div>
+</div>
+
+<!-- HOME (skeleton shell — all content built by home.js) -->
+<div class="page active" id="page-home"></div>
+
+<!-- SHOP -->
+<div class="page" id="page-shop">
+  <div style="padding:50px 4% 28px;border-bottom:1px solid var(--border)">
+    <div class="stag">YANARA Fashion</div>
+    <h1 style="font-size:clamp(24px,3.5vw,42px);font-weight:300;letter-spacing:-1px;margin-top:5px;margin-bottom:16px">All <strong>Collections</strong></h1>
+    <div id="cat-filters"></div>
+  </div>
+  <div class="slayout">
+    <div>
+      <div class="fg"><div class="fgt">Category</div><div class="fops" id="filter-cats"></div></div>
+      <div><div class="fgt">Price Range</div><div style="font-size:11px;color:var(--gray);margin-bottom:8px">₹5,000 — ₹30,000</div><input type="range" min="5000" max="30000" value="30000" style="width:100%;accent-color:var(--gold)" oninput="renderShop()"></div>
+    </div>
+    <div>
+      <div class="stop"><div class="sct" id="sct">Loading...</div><select class="ssel" id="sort-sel" onchange="sortProducts()"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select></div>
+      <div class="pgrid" id="shop-products"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL -->
+<div class="page" id="page-detail">
+  <div class="dlayout">
+    <div class="gallery">
+      <div class="thumbs" id="detail-thumbs"></div>
+      <div class="main-wrap"><img id="detail-main" src="" alt=""><div class="img-counter" id="img-counter">1 / 1</div><button class="zoom-btn" onclick="toggleZoom()"><i class="ti ti-zoom-in"></i> Zoom</button></div>
+    </div>
+    <div>
+      <div class="dbc" onclick="go('shop')">Home / <span id="dcat"></span> &nbsp;← Back to Shop</div>
+      <h1 class="dtitle" id="dname"></h1>
+      <div class="drat"><div class="dstars">★★★★★</div><div class="drevs">(24 reviews)</div></div>
+      <div class="dprice" id="dprice"></div>
+      <div class="ddesc" id="ddesc"></div>
+      <div class="dst">Select Size</div>
+      <div class="sgrid" id="size-grid"></div>
+      <div class="dst">Quantity</div>
+      <div class="qrow"><div class="qctrl"><button class="qb" onclick="chQ(-1)">−</button><div class="qv" id="qv">1</div><button class="qb" onclick="chQ(1)">+</button></div></div>
+      <div class="dacts"><button class="bfull" onclick="addCur()">Add to Cart</button><button class="bwish" onclick="toast('Saved to wishlist ♡')"><i class="ti ti-heart"></i></button></div>
+      <div class="dmeta">
+        <div class="mr2"><span class="ml2">SKU</span><span id="dcode"></span></div>
+        <div class="mr2"><span class="ml2">Designer</span><span style="color:var(--gold)">Ramya — YANARA Fashion</span></div>
+        <div class="mr2"><span class="ml2">Craft</span><span>Handcrafted by skilled artisans</span></div>
+        <div class="mr2"><span class="ml2">Delivery</span><span>5–7 business days</span></div>
+      </div>
+    </div>
+  </div>
+  <section style="padding:0 4% 70px">
+    <div class="sh"><div><div class="stag">You Might Like</div><h2 class="stitle">Similar <strong>Styles</strong></h2></div></div>
+    <div class="pgrid" id="related-products"></div>
+  </section>
+</div>
+
+<!-- CART -->
+<div class="page" id="page-cart">
+  <div class="clayout">
+    <div>
+      <h1 class="ctit">Your Cart <span id="ctitcc" style="color:var(--gray);font-size:16px;font-weight:400"></span></h1>
+      <div class="citems" id="citems"></div>
+      <div id="cempty" style="display:none" class="empty"><div style="font-size:36px;margin-bottom:12px;opacity:.2"><i class="ti ti-shopping-bag"></i></div><div style="font-size:15px;margin-bottom:16px">Your cart is empty</div><button class="bp" onclick="go('shop')">Explore Collection</button></div>
+    </div>
+    <div>
+      <div class="osum">
+        <div class="osumtit">Order Summary</div>
+        <div class="sumrow"><span class="lbl">Subtotal</span><span id="csub">₹0</span></div>
+        <div class="sumrow"><span class="lbl">Shipping</span><span style="color:var(--gold)">Free</span></div>
+        <div class="sumrow"><span class="lbl">Discount</span><span id="cdisc">−₹0</span></div>
+        <div class="pin"><input type="text" placeholder="Promo code" id="promo"><button onclick="applyPromo()">Apply</button></div>
+        <div class="sumtot"><span>Total</span><span id="ctot" style="color:var(--gold)">₹0</span></div>
+        <button class="bp" style="width:100%;margin-top:16px" onclick="go('checkout');renderCheckout()">Proceed to Checkout</button>
+        <button class="bo" style="width:100%;margin-top:7px" onclick="go('shop')">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<div class="page" id="page-checkout">
+  <div class="cklayout">
+    <div>
+      <h1 class="cktit">Checkout</h1>
+      <div class="fmsec"><div class="fmst">Contact Information</div><div class="fmg"><div class="fmgp"><label>First Name</label><input type="text" placeholder="Rahul"></div><div class="fmgp"><label>Last Name</label><input type="text" placeholder="Mehta"></div><div class="fmgp"><label>Email</label><input type="email" placeholder="rahul@email.com"></div><div class="fmgp"><label>Phone</label><input type="tel" placeholder="+91 98765 43210"></div></div></div>
+      <div class="fmsec"><div class="fmst">Shipping Address</div><div class="fmg full"><div class="fmgp"><label>Address</label><input type="text" placeholder="House/Flat No, Street Name"></div></div><div class="fmg" style="margin-top:10px"><div class="fmgp"><label>City</label><input type="text" placeholder="Bengaluru"></div><div class="fmgp"><label>State</label><select><option>Karnataka</option><option>Maharashtra</option><option>Tamil Nadu</option><option>Delhi</option></select></div><div class="fmgp"><label>Pincode</label><input type="text" placeholder="560001"></div><div class="fmgp"><label>Country</label><input type="text" value="India" readonly></div></div></div>
+      <div class="fmsec"><div class="fmst">Payment Method</div><div class="pms">
+        <div class="pm on" onclick="selPay(this)"><input type="radio" name="pay" checked><div><div class="pmn">UPI</div><div class="pmd">GPay, PhonePe, Paytm, BHIM</div></div><span class="pmi">📱</span></div>
+        <div class="pm" onclick="selPay(this)"><input type="radio" name="pay"><div><div class="pmn">Credit / Debit Card</div><div class="pmd">Visa, Mastercard, RuPay</div></div><span class="pmi">💳</span></div>
+        <div class="pm" onclick="selPay(this)"><input type="radio" name="pay"><div><div class="pmn">Net Banking</div><div class="pmd">All major Indian banks</div></div><span class="pmi">🏦</span></div>
+        <div class="pm" onclick="selPay(this)"><input type="radio" name="pay"><div><div class="pmn">Cash on Delivery</div><div class="pmd">Pay when delivered</div></div><span class="pmi">💵</span></div>
+      </div></div>
+      <button class="bp" style="width:100%;margin-top:16px" onclick="placeOrder()">Place Order</button>
+      <button class="bo" style="width:100%;margin-top:8px" onclick="go('cart')">← Back to Cart</button>
+    </div>
+    <div>
+      <div class="osum" style="position:sticky;top:70px">
+        <div class="osumtit">Order Summary</div>
+        <div id="ckitems"></div>
+        <div class="sumrow" style="margin-top:14px"><span class="lbl">Subtotal</span><span id="cksub">₹0</span></div>
+        <div class="sumrow"><span class="lbl">Shipping</span><span style="color:var(--gold)">Free</span></div>
+        <div class="sumtot"><span>Total</span><span id="cktot" style="color:var(--gold)">₹0</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DESIGNER -->
+<div class="page" id="page-designer">
+  <div class="designer-hero">
+    <div style="text-align:center"><div class="d-avatar"><i class="ti ti-user"></i></div><div style="font-size:11px;color:var(--gold);letter-spacing:3px;text-transform:uppercase">Lead Designer</div></div>
+    <div>
+      <div class="d-name-big">Designer <strong>Ramya</strong></div>
+      <div class="d-role-big">Award-Winning Fashion Designer · YANARA Fashion</div>
+      <div class="d-bio">With over a decade of experience in Indian ethnic fashion, Ramya has established herself as one of the most sought-after designers in South India. Her work seamlessly blends traditional craftsmanship with modern aesthetics.</div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <div style="text-align:center"><div style="font-size:28px;font-weight:700;color:var(--gold)">10+</div><div style="font-size:10px;color:var(--gray);letter-spacing:1px;text-transform:uppercase">Years Experience</div></div>
+        <div style="text-align:center"><div style="font-size:28px;font-weight:700;color:var(--gold)">500+</div><div style="font-size:10px;color:var(--gray);letter-spacing:1px;text-transform:uppercase">Designs Created</div></div>
+        <div style="text-align:center"><div style="font-size:28px;font-weight:700;color:var(--gold)">50+</div><div style="font-size:10px;color:var(--gray);letter-spacing:1px;text-transform:uppercase">Celebrity Clients</div></div>
+        <div style="text-align:center"><div style="font-size:28px;font-weight:700;color:var(--gold)">6</div><div style="font-size:10px;color:var(--gray);letter-spacing:1px;text-transform:uppercase">Awards Won</div></div>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div class="sh"><div><div class="stag">Career</div><h2 class="stitle">Professional <strong>Journey</strong></h2></div></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-title">Best South Indian Fashion Designer Award 2022</div><div class="tl-org">South India Fashion Awards</div><div class="tl-desc">Recognised for outstanding contribution to ethnic fashion design in South India.</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-title">Official Costume Designer — Big Boss Tamil Season 6</div><div class="tl-org">Vijay Television / Star Network</div><div class="tl-desc">Designed and styled contestant wardrobes for one of Tamil Nadu's most-watched reality TV shows.</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-title">Iykki Berry's London Concert — Stage Wardrobe</div><div class="tl-org">International Stage, London</div><div class="tl-desc">Exclusively designed the stage wardrobe for singer Iykki Berry's international concert in London, UK.</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-title">Tirupur Fashion Week — Featured Designer</div><div class="tl-org">Tirupur, Tamil Nadu</div><div class="tl-desc">Showcased SS24 collection on the runway — received critical acclaim for innovative draping techniques.</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-title">BCHH Movie — Costume Design</div><div class="tl-org">Tamil Film Industry</div><div class="tl-desc">Designed complete costume wardrobe for the Tamil feature film BCHH.</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-title">Head Designer — TheEthnic.Co</div><div class="tl-org">TheEthnic.Co, Chennai</div><div class="tl-desc">Led the design team, overseeing collections that reached 10,000+ customers across India.</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-title">JDDA Collection Launch</div><div class="tl-org">YANARA Fashion</div><div class="tl-desc">Launched the signature JDDA collection — a fusion of Jodhpuri craft and contemporary silhouettes.</div></div></div>
+    </div>
+  </section>
+  <section style="background:var(--bg2)">
+    <div class="sh"><div><div class="stag">Recognition</div><h2 class="stitle">Awards & <strong>Achievements</strong></h2></div></div>
+    <div class="ach-grid">
+      <div class="ach-card"><div class="ach-icon"><i class="ti ti-trophy"></i></div><div class="ach-title">Best South Indian Designer 2022</div><div class="ach-desc">South India Fashion Awards — top honour in ethnic fashion design</div></div>
+      <div class="ach-card"><div class="ach-icon"><i class="ti ti-tv"></i></div><div class="ach-title">Big Boss Tamil S6</div><div class="ach-desc">Official costume designer for Tamil Nadu's #1 reality TV show</div></div>
+      <div class="ach-card"><div class="ach-icon"><i class="ti ti-plane"></i></div><div class="ach-title">International Stage — London</div><div class="ach-desc">Designed Iykki Berry's wardrobe for her London concert</div></div>
+      <div class="ach-card"><div class="ach-icon"><i class="ti ti-star"></i></div><div class="ach-title">Tirupur Fashion Week</div><div class="ach-desc">Featured designer — SS24 runway showcase</div></div>
+      <div class="ach-card"><div class="ach-icon"><i class="ti ti-movie"></i></div><div class="ach-title">Film Costume Design</div><div class="ach-desc">Complete wardrobe for Tamil feature film BCHH</div></div>
+      <div class="ach-card"><div class="ach-icon"><i class="ti ti-palette"></i></div><div class="ach-title">500+ Unique Designs</div><div class="ach-desc">Over a decade of original creations in ethnic fashion</div></div>
+    </div>
+  </section>
+  <section>
+    <div class="sh"><div><div class="stag">Expertise</div><h2 class="stitle">Skills & <strong>Craft</strong></h2></div></div>
+    <div class="skill-grid">
+      <div class="skill-col"><h3>Design Skills</h3><div class="skill-list"><span class="skill-tag">Zari Embroidery</span><span class="skill-tag">Cutdana Work</span><span class="skill-tag">Sequin Design</span><span class="skill-tag">Hand Painting</span><span class="skill-tag">Velvet Work</span><span class="skill-tag">Block Printing</span><span class="skill-tag">Fabric Draping</span><span class="skill-tag">Pattern Making</span></div></div>
+      <div class="skill-col"><h3>Collections</h3><div class="skill-list"><span class="skill-tag">Blazer Sets</span><span class="skill-tag">Bandhgala Sets</span><span class="skill-tag">Indo Western</span><span class="skill-tag">Jodhpuri</span><span class="skill-tag">Ethnic Shirts</span><span class="skill-tag">Wedding Wear</span><span class="skill-tag">Celebrity Styling</span><span class="skill-tag">Stage Costumes</span></div></div>
+    </div>
+  </section>
+  <section style="background:var(--bg2);text-align:center">
+    <div class="stag" style="text-align:center;margin-bottom:10px">Get in Touch</div>
+    <h2 class="stitle" style="text-align:center;margin-bottom:24px">Work With <strong>Ramya</strong></h2>
+    <p style="font-size:13px;color:var(--gray);margin-bottom:28px">For custom orders, celebrity styling, brand collaborations, or fashion show participation</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <button class="bp" onclick="openModal('modal-contact')">Contact Designer</button>
+      <button class="bo" onclick="go('shop')">View Collection</button>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <div class="stag" style="text-align:center;margin-bottom:10px">Our Story</div>
+    <h1 style="font-size:clamp(28px,4vw,56px);font-weight:300;letter-spacing:-1px;margin-bottom:16px">About <strong>YANARA Fashion</strong></h1>
+    <p style="font-size:14px;color:var(--gray);max-width:600px;margin:0 auto;line-height:1.9">Born from a passion for Indian craft and contemporary design, YANARA Fashion is where tradition meets elegance.</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="stag">Our Mission</div>
+      <h2 class="stitle" style="margin-bottom:18px">Celebrating <strong>Indian Craft</strong></h2>
+      <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-bottom:14px">YANARA Fashion was founded with a single vision — to bring the finest Indian ethnic wear to modern men who value craftsmanship, heritage, and style.</p>
+      <p style="font-size:13px;color:var(--gray);line-height:1.9">Every piece is handcrafted by skilled artisans using age-old techniques — Zari embroidery, Cutdana work, hand painting, and more.</p>
+    </div>
+    <div>
+      <div class="stag">The Designer</div>
+      <h2 class="stitle" style="margin-bottom:18px">Designer <strong>Ramya</strong></h2>
+      <p style="font-size:13px;color:var(--gray);line-height:1.9;margin-bottom:18px">Award-winning fashion designer with over a decade of experience. From Big Boss Tamil to London concert stages — Ramya's work has graced screens, runways, and red carpets across India and abroad.</p>
+      <button class="bp" onclick="go('designer')">View Full Portfolio →</button>
+    </div>
+  </div>
+  <section style="background:var(--bg2)">
+    <div class="sh" style="margin-bottom:32px"><div><div class="stag">Values</div><h2 class="stitle">What We <strong>Stand For</strong></h2></div></div>
+    <div class="strip" style="border:none;background:transparent;gap:24px">
+      <div style="text-align:center;padding:0"><div style="font-size:28px;color:var(--gold);margin-bottom:12px"><i class="ti ti-needle-thread"></i></div><div style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">Craftsmanship</div><div style="font-size:11px;color:var(--gray)">Every stitch is intentional.</div></div>
+      <div style="text-align:center;padding:0"><div style="font-size:28px;color:var(--gold);margin-bottom:12px"><i class="ti ti-leaf"></i></div><div style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">Sustainability</div><div style="font-size:11px;color:var(--gray)">Supporting local artisan communities.</div></div>
+      <div style="text-align:center;padding:0"><div style="font-size:28px;color:var(--gold);margin-bottom:12px"><i class="ti ti-star"></i></div><div style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">Excellence</div><div style="font-size:11px;color:var(--gray)">No compromise on quality.</div></div>
+      <div style="text-align:center;padding:0"><div style="font-size:28px;color:var(--gold);margin-bottom:12px"><i class="ti ti-users"></i></div><div style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">Community</div><div style="font-size:11px;color:var(--gray)">Built on relationships.</div></div>
+    </div>
+  </section>
+  <section style="text-align:center">
+    <div class="stag" style="margin-bottom:10px">Ready to Explore?</div>
+    <h2 class="stitle" style="margin-bottom:24px">Discover the <strong>Collection</strong></h2>
+    <button class="bp" onclick="go('shop')">Shop Now</button>
+  </section>
+</div>
+
+<!-- ── SCRIPTS ── -->
+<script src="shop.js"></script>
+<script src="home.js"></script>
+<script src="cart.js"></script>
+<script src="yanara-colors.js"></script>
+
+<script>
+// ── THEME (DARK / LIGHT) ──
+function applyTheme(theme){
+  const root=document.documentElement;
+  if(theme==="light"){root.setAttribute("data-theme","light");}
+  else{root.removeAttribute("data-theme");}
+  // update icons + labels
+  const icon=document.getElementById("theme-icon");
+  const mmIcon=document.getElementById("mm-theme-icon");
+  const mmLabel=document.getElementById("mm-theme-label");
+  if(theme==="light"){
+    if(icon)icon.className="ti ti-sun";
+    if(mmIcon)mmIcon.className="ti ti-sun";
+    if(mmLabel)mmLabel.textContent="Light Mode";
+  }else{
+    if(icon)icon.className="ti ti-moon";
+    if(mmIcon)mmIcon.className="ti ti-moon";
+    if(mmLabel)mmLabel.textContent="Dark Mode";
+  }
+  try{localStorage.setItem("yanara-theme",theme);}catch(e){}
+}
+function toggleTheme(){
+  const cur=document.documentElement.getAttribute("data-theme")==="light"?"light":"dark";
+  applyTheme(cur==="light"?"dark":"light");
+}
+// On load: saved choice → else phone preference → else dark
+(function initTheme(){
+  let theme="dark";
+  try{
+    const saved=localStorage.getItem("yanara-theme");
+    if(saved){theme=saved;}
+    else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches){theme="light";}
+  }catch(e){}
+  applyTheme(theme);
+})();
+
+// ── MOBILE MENU ──
+function openMobileMenu(){
+  document.getElementById("mobile-menu").classList.add("open");
+  document.getElementById("mm-overlay").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeMobileMenu(){
+  document.getElementById("mobile-menu").classList.remove("open");
+  document.getElementById("mm-overlay").classList.remove("open");
+  document.body.style.overflow="";
+}
+
+// ── ACCOUNT / LOGIN ──
+function goLogin(){
+  closeMobileMenu();
+  window.location.href="login.html";
+}
+
+// ── NAVIGATION ──
+function go(page){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById("page-"+page).classList.add("active");
+  ["nh","ns","nd","na"].forEach(id=>document.getElementById(id)?.classList.remove("on"));
+  const map={home:"nh",shop:"ns",designer:"nd",about:"na"};
+  if(map[page])document.getElementById(map[page])?.classList.add("on");
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(page==="home")renderHome();
+  if(page==="shop"){shopFilter=shopFilter||"All";occFilter="";renderShop();}
+  if(page==="cart")renderCart();
+  if(page==="checkout")renderCheckout();
+}
+
+// ── INIT ──
+renderHome();
+</script>
+</body>
+</html>
