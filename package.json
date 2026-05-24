@@ -1,0 +1,7 @@
+{
+  "name": "yanara-fashion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "YANARA Fashion - e-commerce site with secure ImageKit uploads",
+  "type": "module"
+}
