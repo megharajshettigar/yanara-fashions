@@ -358,50 +358,56 @@ function setupReviewReveal(){
   var path = document.getElementById("ed-star-path");
   if(!section || !path){ if(section) section.classList.add("done"); return; }
 
-  // Map the star's size DIRECTLY to scroll position through the section.
-  // As you scroll the section up the screen, the star grows; scroll back
-  // down and it shrinks. Fully synced to your scroll.
-  var ticking = false;
+  if(!("IntersectionObserver" in window)){ section.classList.add("done"); return; }
 
-  function update(){
-    ticking = false;
-    var rect = section.getBoundingClientRect();
-    var vh = window.innerHeight || document.documentElement.clientHeight;
+  var rafId = null;       // current animation frame (so we can cancel/restart)
+  var isVisible = false;  // is the section currently in view
 
-    // progress: 0 when the section's top reaches the bottom of the viewport,
-    // 1 when the section has scrolled up so its top is ~60% up the screen.
-    // This gives a comfortable scroll distance to "open" the star.
-    var startPoint = vh * 0.85;   // begin opening when top is 85% down screen
-    var endPoint   = vh * 0.25;   // fully open when top is 25% down screen
-    var top = rect.top;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        if(!isVisible){
+          isVisible = true;
+          animateStar();      // re-play every time it re-enters view
+        }
+      } else {
+        isVisible = false;
+        // reset: cancel any running animation and re-cover for next time
+        if(rafId) cancelAnimationFrame(rafId);
+        section.classList.remove("done");
+        path.setAttribute("d", buildStarPath(0.02)); // closed star = covered
+      }
+    });
+  }, { threshold: 0.4 });   // trigger when ~40% visible (so you're looking at it)
+  obs.observe(section);
 
-    var progress = (startPoint - top) / (startPoint - endPoint);
-    progress = Math.max(0, Math.min(1, progress)); // clamp 0..1
+  function animateStar(){
+    var dur = 2000;          // 2 seconds — smooth and a touch faster
+    var start = null;
+    section.classList.remove("done");
 
-    // ease for a smoother feel
-    var e = progress < 0.5 ? 2*progress*progress : 1 - Math.pow(-2*progress + 2, 2) / 2;
-    var scale = 0.02 + e * 2.3;
-    path.setAttribute("d", buildStarPath(scale));
-
-    // when fully open, drop the overlay so reviews are crisp & interactive
-    if(progress >= 0.999){
-      section.classList.add("done");
-    } else {
-      section.classList.remove("done");
+    // smooth easing: ease-in-out cubic (gentle start, gentle finish)
+    function easeInOutCubic(t){
+      return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
     }
-  }
 
-  function onScroll(){
-    if(!ticking){
-      ticking = true;
-      requestAnimationFrame(update);
+    function frame(ts){
+      if(!start) start = ts;
+      var t = Math.min((ts - start) / dur, 1);
+      var e = easeInOutCubic(t);
+      // grow from a tiny star to large enough to fully cover the section
+      var scale = 0.02 + e * 2.3;
+      path.setAttribute("d", buildStarPath(scale));
+      if(t < 1){
+        rafId = requestAnimationFrame(frame);
+      } else {
+        rafId = null;
+        section.classList.add("done"); // clean reviews after reveal
+      }
     }
+    if(rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(frame);
   }
-
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll, { passive: true });
-  // run once to set the initial state
-  update();
 }
 
 // Render product rows (New Arrivals / Best Sellers)
