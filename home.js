@@ -85,7 +85,7 @@ const HOME_HTML = `
     .ed-pcard:hover .ed-pcard-img img{transform:scale(1.07)}
 
     /* SHAPE 1 — NEW ARRIVALS: asymmetric arch (top-left corner rounded) */
-    .ed-shape-arch .ed-pcard-img{border-radius:120px 16px 16px 16px}
+    .ed-shape-arch .ed-pcard-img{border-radius:16px 120px 16px 16px}
     /* SHAPE 2 — BEST SELLERS: pill / capsule (fully rounded top & bottom) */
     .ed-shape-pill .ed-pcard-img{border-radius:130px}
 
