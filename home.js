@@ -87,7 +87,7 @@ const HOME_HTML = `
     /* SHAPE 1 — NEW ARRIVALS: asymmetric arch (top-left corner rounded) */
     .ed-shape-arch .ed-pcard-img{border-radius:16px 120px 16px 16px}
     /* SHAPE 2 — BEST SELLERS: pill / capsule (fully rounded top & bottom) */
-    .ed-shape-arch .ed-pcard-img{border-radius:16px 120px 16px 16px}
+    .ed-shape-pill .ed-pcard-img{border-radius:16px 130px 16px 16px}
 
     /* badge BELOW the image now (never clipped by the shape) */
     .ed-pcard-wish{position:absolute;top:14px;right:14px;z-index:2;width:36px;height:36px;border-radius:50%;
