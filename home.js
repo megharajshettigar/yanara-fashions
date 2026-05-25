@@ -111,8 +111,8 @@ const HOME_HTML = `
       /* product cards: smaller, less stagger on mobile */
       .ed-pcard{width:200px}
       .ed-pcard-img{height:280px}
-      .ed-shape-arch .ed-pcard-img{border-radius:90px 12px 12px 12px}
-      .ed-shape-pill .ed-pcard-img{border-radius:100px}
+      .ed-shape-arch .ed-pcard-img{border-radius:12px 90px 12px 12px}
+      .ed-shape-pill .ed-pcard-img{border-radius:12px 100px 12px 12px}
       .ed-pcard:nth-child(even){margin-top:22px}
       /* Category tiles: stack vertically, fix overlapping fonts */
       .ed-cat-row{display:flex!important;flex-direction:column!important;gap:14px!important}
