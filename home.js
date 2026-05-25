@@ -77,7 +77,7 @@ const HOME_HTML = `
       opacity:0;transform:translateY(36px);transition:opacity .6s ease,transform .6s ease}
     .ed-pcard.in{opacity:1;transform:translateY(0)}
     /* staggered heights: every 2nd card sits lower for a dynamic row */
-    .ed-pcard:nth-child(even){margin-top:38px}
+    .ed-pcard:nth-child(even){margin-top:0px}
     .ed-pcard-img{position:relative;width:100%;height:360px;overflow:hidden;background:var(--bg2)}
     .ed-pcard-img img{width:100%;height:100%;object-fit:cover;object-position:center top;
       transition:transform .7s cubic-bezier(.2,.8,.2,1);display:block}
@@ -113,7 +113,7 @@ const HOME_HTML = `
       .ed-pcard-img{height:280px}
       .ed-shape-arch .ed-pcard-img{border-radius:12px 90px 12px 12px}
       .ed-shape-pill .ed-pcard-img{border-radius:12px 100px 12px 12px}
-      .ed-pcard:nth-child(even){margin-top:22px}
+      .ed-pcard:nth-child(even){margin-top:0px}
       /* Category tiles: stack vertically, fix overlapping fonts */
       .ed-cat-row{display:flex!important;flex-direction:column!important;gap:14px!important}
       .ed-cat{height:180px!important;width:100%!important;flex:none!important}
