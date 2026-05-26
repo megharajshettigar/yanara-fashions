@@ -111,19 +111,18 @@ const HOME_HTML = `
        scrolls up and stacks over it. A scroll listener scales the
        pinned section down slightly for depth. Pure position:sticky
        → works on ALL browsers including Safari/iPhone. */
-    .ed-stack-item{position:sticky;top:0;min-height:100vh;
+   .ed-stack-item{position:sticky;top:0;min-height:100vh;
       display:flex;flex-direction:column;justify-content:center;
       background:var(--bg);overflow:hidden;
       transform-origin:center top;will-change:transform;
       box-shadow:0 -20px 50px rgba(0,0,0,.5)}
     .ed-stack-item.ed-reviews{background:var(--bg2)}
     .ed-stack-item.ed-hero{box-shadow:none}
+    .ed-stack-item > *{flex:0 0 auto;width:100%}
 
     @media (max-width:768px){
-      /* On phones, allow content to start near the top so tall
-         sections aren't cut off. */
-      .ed-stack-item{min-height:100vh;justify-content:flex-start;padding-top:80px}
-      .ed-stack-item.ed-hero{justify-content:center;padding-top:0}
+      .ed-stack-item{display:block;min-height:100vh;padding-top:40px;padding-bottom:40px}
+      .ed-stack-item.ed-hero{padding-top:0}
     }
 
     @media (max-width:768px){
