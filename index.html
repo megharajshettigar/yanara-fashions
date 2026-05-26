@@ -776,10 +776,16 @@ renderHome();
 </script>
 </body>
   <script>
+// ── INIT & PRELOADER ANIMATION ──
 window.addEventListener("DOMContentLoaded", () => {
+  // 1. Load shop data structures immediately
+  renderHome();
+  
+  // 2. Lock page scrollbar actions while running intro cinematic scene
   document.body.style.overflow = "hidden";
   const tl = gsap.timeline();
 
+  // 3. Pop the luxury star icon into perspective view
   tl.to(".loader-shape-wrapper", {
     opacity: 1,
     scale: 1,
@@ -787,12 +793,14 @@ window.addEventListener("DOMContentLoaded", () => {
     ease: "elastic.out(1, 0.75)"
   });
 
+  // 4. Slide text content seamlessly out from hidden vector bounds
   tl.to(".loader-title span", {
     y: "0%",
     duration: 0.9,
     ease: "power4.out"
   }, "-=0.5");
 
+  // 5. Hold visual layout, then execute rotation phase out
   tl.to(".loader-shape-wrapper", {
     rotation: 90,
     scale: 0.5,
@@ -801,18 +809,21 @@ window.addEventListener("DOMContentLoaded", () => {
     ease: "power3.inOut"
   }, "+=0.5");
 
+  // 6. Push typography bounds down out of view
   tl.to(".loader-title span", {
     y: "-105%",
     duration: 0.5,
     ease: "power4.in"
   }, "-=0.5");
 
+  // 7. Transition the entire backdrop background upward out of perspective
   tl.to(".preloader", {
     yPercent: -100,
     duration: 1.1,
     ease: "power4.inOut"
   }, "-=0.1");
 
+  // 8. Safely unlock layout scrolling capabilities for users
   tl.to("body", {
     overflow: "",
     clearProps: "overflow"
