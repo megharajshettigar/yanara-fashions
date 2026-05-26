@@ -123,6 +123,8 @@ const HOME_HTML = `
     }
 
     @media (max-width:768px){
+      .ed-cats-head{padding-top:20px!important;margin-bottom:20px!important}
+      .ed-cats{padding-top:10px!important}
       /* product cards: smaller, less stagger on mobile */
       .ed-pcard{width:200px}
       .ed-pcard-img{height:280px}
@@ -131,7 +133,7 @@ const HOME_HTML = `
       .ed-pcard:nth-child(even){margin-top:0px}
       /* Category tiles: stack vertically, fix overlapping fonts */
       .ed-cat-row{display:flex!important;flex-direction:column!important;gap:14px!important}
-      .ed-cat{height:180px!important;width:100%!important;flex:none!important}
+      .ed-cat{height:150px!important;width:100%!important;flex:none!important}
       .ed-cat-vert{writing-mode:horizontal-tb!important;transform:none!important;position:absolute!important;top:14px!important;left:16px!important;font-size:13px!important;letter-spacing:2px!important}
       .ed-cat-open{position:absolute!important;left:16px!important;bottom:16px!important;right:16px!important;opacity:1!important;max-height:none!important;transform:none!important}
       .ed-cat-num{top:14px!important;right:16px!important;left:auto!important}
