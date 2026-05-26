@@ -112,17 +112,14 @@ const HOME_HTML = `
        pinned section down slightly for depth. Pure position:sticky
        → works on ALL browsers including Safari/iPhone. */
    .ed-stack-item{position:sticky;top:0;min-height:100vh;
-      display:flex;flex-direction:column;justify-content:center;
-      background:var(--bg);overflow:hidden;
+      display:block;background:var(--bg);overflow:hidden;
       transform-origin:center top;will-change:transform;
       box-shadow:0 -20px 50px rgba(0,0,0,.5)}
     .ed-stack-item.ed-reviews{background:var(--bg2)}
     .ed-stack-item.ed-hero{box-shadow:none}
-    .ed-stack-item > *{flex:0 0 auto;width:100%}
 
     @media (max-width:768px){
-      .ed-stack-item{display:block;min-height:100vh;padding-top:40px;padding-bottom:40px}
-      .ed-stack-item.ed-hero{padding-top:0}
+      .ed-stack-item{min-height:100vh}
     }
 
     @media (max-width:768px){
