@@ -436,6 +436,17 @@ section{padding:40px 5%}
   .ed-hero-arch{display:none}
   .ed-hero{min-height:auto;padding:80px 6%}
 }
+/* ═══ DESIGNER PAGE MODE — Chylak-style clean nav ═══ */
+body.designer-mode .ann{display:none}
+body.designer-mode nav{background:transparent;border-bottom:none;position:absolute;left:0;right:0;height:72px;z-index:120}
+body.designer-mode .logo{position:absolute;left:50%;transform:translateX(-50%);color:#111}
+body.designer-mode .nl{display:none}
+body.designer-mode .hamburger{display:flex!important;align-items:center;gap:8px;color:#111;font-size:20px;background:none;border:none;cursor:pointer;position:absolute;left:4%}
+body.designer-mode .hamburger::after{content:"MENU";font-size:11px;letter-spacing:2px;font-weight:600}
+body.designer-mode .nr{display:flex;align-items:center;gap:14px;margin-left:auto}
+body.designer-mode .acct-btn,body.designer-mode .theme-toggle,body.designer-mode .cbtn{color:#111}
+body.designer-mode .cbtn{background:none;border:none}
+body.designer-mode .cbtn-txt{display:none}  
 </style>
 </head>
 <body>
@@ -708,6 +719,7 @@ function go(page){
   window.scrollTo({top:0,behavior:"smooth"});
   if(page==="home")renderHome();
   if(page==="designer"&&typeof buildDesigner==="function")buildDesigner();
+  document.body.classList.toggle("designer-mode", page==="designer");
   if(page==="shop"){shopFilter=shopFilter||"All";occFilter="";renderShop();}
   if(page==="cart")renderCart();
   if(page==="checkout")renderCheckout();
