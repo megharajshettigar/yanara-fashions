@@ -8,7 +8,7 @@
 // TODO: when Ramya's real photo is ready, upload it to ImageKit and
 // paste the URL here (replace the placeholder below). One line to change.
 // Example: var DESIGNER_PHOTO = "https://ik.imagekit.io/megharaj/ramya-1.jpg?tr=w-1200,q-90,f-auto";
-var DESIGNER_PHOTO = "https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/RAMYA%20-%20w_.png"; // empty = shows an elegant placeholder
+var DESIGNER_PHOTO = "https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/RAMYA%20-%20bw_.png"; // empty = shows an elegant placeholder
 
 var DESIGNER_HTML = `
   <style>
