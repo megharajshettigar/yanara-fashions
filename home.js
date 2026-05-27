@@ -367,7 +367,7 @@ const HOME_HTML = `
     <div class="strip-item"><div class="strip-icon"><i class="ti ti-needle-thread"></i></div><div class="strip-title">Handcrafted</div><div class="strip-desc">Skilled artisans, premium fabrics</div></div>
     <div class="strip-item"><div class="strip-icon"><i class="ti ti-truck-delivery"></i></div><div class="strip-title">Free Delivery</div><div class="strip-desc">On orders above ₹2,999</div></div>
     <div class="strip-item"><div class="strip-icon"><i class="ti ti-refresh"></i></div><div class="strip-title">Easy Returns</div><div class="strip-desc">7-day hassle-free returns</div></div>
-    <div class="strip-item"><div class="strip-icon"><i class="ti ti-lock"></i></div><div class="strip-title">Secure Payments</div><div class="strip-desc">Powered by Razorpay</div></div>
+    <div class="strip-item"><div class="strip-icon"><i class="ti ti-lock"></i></div><div class="strip-title">Secure Payments</div><div class="strip-desc"> </div></div>
   </div>
   <footer>
     <div class="fgrid2">
