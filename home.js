@@ -56,6 +56,7 @@ const HOME_HTML = `
     .ed-cat-tab:hover{color:var(--white)}
     .ed-cat-tab.on{color:var(--white);font-weight:600}
     .ed-cat-tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--gold)}
+    .ed-panel-hidden{display:none!important}
     /* empty image placeholder for Women cards (images coming later) */
     .ed-cat-ph{display:flex;align-items:center;justify-content:center;opacity:1;
       background:linear-gradient(135deg,var(--bg3),var(--bg2))}
@@ -272,7 +273,7 @@ const HOME_HTML = `
       </div>
     </div>
     <!-- WOMEN PANEL (empty image placeholders — images coming later) -->
-    <div class="ed-cat-row ed-cat-panel" data-panel="women" style="display:none">
+    <div class="ed-cat-row ed-cat-panel ed-panel-hidden" data-panel="women">
       <div class="ed-cat" onclick="shopCat('Women Wedding')">
         <div class="ed-cat-num">01</div>
         <div class="ed-cat-img ed-cat-ph"><i class="ti ti-photo"></i></div>
@@ -410,7 +411,7 @@ function switchCatTab(tab){
   });
   // show the matching panel, hide the other
   document.querySelectorAll(".ed-cat-panel").forEach(function(p){
-    p.style.display = (p.dataset.panel === tab) ? "" : "none";
+    p.classList.toggle("ed-panel-hidden", p.dataset.panel !== tab);
   });
 }
 
