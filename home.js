@@ -57,7 +57,7 @@ const HOME_HTML = `
     .ed-cat-tab.on{color:var(--white);font-weight:600}
     .ed-cat-tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--gold)}
     /* hidden panel — !important beats the .ed-cat-row{display:flex!important} */
-    .ed-panel-hidden{display:none!important}
+    .ed-cat-row.ed-panel-hidden{display:none!important}
     /* empty image placeholder for Women cards (images coming later) */
     .ed-cat-ph{display:flex;align-items:center;justify-content:center;opacity:1;
       background:linear-gradient(135deg,var(--bg3),var(--bg2))}
