@@ -29,7 +29,7 @@ const HOME_HTML = `
   <style>
     /* ═══ HERO IMAGE — fit cleanly, no harsh crop ═══ */
     .ed-hero-arch{overflow:hidden}
-    .ed-hero-arch img{width:100%;height:100%;object-fit:cover;object-position:30% 20%;border-radius:inherit;display:block}
+    .ed-hero-arch img{width:100%;height:100%;object-fit:cover;object-position:10% 20%;border-radius:inherit;display:block}
 
     /* ═══ FEATURED (Wine Bandhgala) — images fit, colours sync ═══ */
     .ed-feat-mainimg{overflow:hidden}
