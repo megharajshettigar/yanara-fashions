@@ -388,7 +388,7 @@ const HOME_HTML = `
     </div>
     <div class="fbot">
       <div class="fcopy">© 2025 YANARA Fashion by Ramya. All rights reserved.</div>
-      <div class="fpay"><span class="pb">UPI</span><span class="pb">VISA</span><span class="pb">MC</span><span class="pb">RUPAY</span><span class="pb">RAZORPAY</span></div>
+      <div class="fpay"><span class="pb">UPI</span></div>
     </div>
   </footer>
 `;
