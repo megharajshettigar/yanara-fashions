@@ -153,8 +153,16 @@ var DESIGNER_HTML = `
         <div class="dz-hl-yr">Television</div>
         <div class="dz-hl-title">Bigg Boss Tamil — Season 6</div>
         <div class="dz-hl-desc">Designed garments for contestants of one of Tamil Nadu's most-watched reality shows, styling looks seen by millions across the season.</div>
+        <div class="dz-work-grid">
+          <img src="IMG_BB_1?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_BB_2?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_BB_3?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_BB_4?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_BB_5?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_BB_6?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+        </div>
       </div>
-
+      
       <div class="dz-hl dz-rev">
         <div class="dz-hl-yr">2022 · International</div>
         <div class="dz-hl-title">Iykki Berry — London</div>
