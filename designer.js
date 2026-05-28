@@ -69,6 +69,17 @@ var DESIGNER_HTML = `
     .dz-hl-yr{font-size:12px;letter-spacing:2px;color:var(--gold);margin-bottom:10px}
     .dz-hl-title{font-family:var(--font-display);font-size:clamp(22px,2.8vw,30px);color:var(--white);margin-bottom:14px;font-weight:500}
     .dz-hl-desc{font-size:14px;line-height:1.9;color:var(--gray);max-width:640px}
+    /* gallery — 3x3 photo grid */
+    .dz-gallery{max-width:1000px;margin:0 auto;padding:90px 6%}
+    .dz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
+    .dz-gimg{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px;
+      transition:transform .4s,opacity .4s;opacity:.92}
+    .dz-gimg:hover{transform:scale(1.03);opacity:1}
+    @media (max-width:768px){
+      .dz-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+      .dz-gallery{padding:60px 6%}
+    }
+    
 
     /* skills — minimal inline list */
     .dz-skills{max-width:820px;margin:0 auto;padding:20px 6% 90px;text-align:center}
@@ -157,6 +168,22 @@ var DESIGNER_HTML = `
         <div class="dz-hl-yr">Industry</div>
         <div class="dz-hl-title">Fashion Designer · TheEthnic.Co</div>
         <div class="dz-hl-desc">Designed for the menswear ethnic brand TheEthnic.Co, sharpening a craft that now defines YANARA's signature men's silhouettes.</div>
+      </div>
+    </div>
+
+    <!-- GALLERY — 3x3 photo grid -->
+    <div class="dz-gallery dz-rev">
+      <div class="dz-tag" style="text-align:center">Gallery</div>
+      <div class="dz-grid">
+        <img src="PHOTO_URL_1?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="PHOTO_URL_2?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="PHOTO_URL_3?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="PHOTO_URL_4?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="PHOTO_URL_5?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="PHOTO_URL_6?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="PHOTO_URL_7?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="PHOTO_URL_8?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="PHOTO_URL_9?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
       </div>
     </div>
 
