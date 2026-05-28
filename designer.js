@@ -260,7 +260,7 @@ function setupDesignerReveal(){
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
+  }, { threshold: 0.1, rootMargin: "0px 0px -25% 0px" });
   items.forEach(function(el){
     if(!el.classList.contains("in")) obs.observe(el);
   });
