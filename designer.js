@@ -145,12 +145,12 @@ var DESIGNER_HTML = `
         <div class="dz-hl-title" style="margin-top:26px">SHUI — JD Design Awards 2022</div>
         <div class="dz-hl-desc">An eight-garment collection inspired by China's Yellow River, reflecting on the harmful effects of chemical waste — a statement on sustainability told through couture fusion-wear.</div>
         <div class="dz-work-grid">
-          <img src="IMG_AWARDS_1?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_AWARDS_2?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_AWARDS_3?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_AWARDS_4?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_AWARDS_5?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_AWARDS_6?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img138.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img74.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img83.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img82.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img78.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img71.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
         </div>
       </div>
 
@@ -159,12 +159,12 @@ var DESIGNER_HTML = `
         <div class="dz-hl-title">Bigg Boss Tamil — Season 6</div>
         <div class="dz-hl-desc">Designed garments for contestants of one of Tamil Nadu's most-watched reality shows, styling looks seen by millions across the season.</div>
         <div class="dz-work-grid">
-          <img src="IMG_BB_1?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_BB_2?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_BB_3?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_BB_4?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_BB_5?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_BB_6?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img89.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img92.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img90.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img91.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img103.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img97.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
         </div>
       </div>
       
@@ -196,12 +196,12 @@ var DESIGNER_HTML = `
         <div class="dz-hl-title">Fashion Designer · TheEthnic.Co</div>
         <div class="dz-hl-desc">Designed for the menswear ethnic brand TheEthnic.Co, sharpening a craft that now defines YANARA's signature men's silhouettes.</div>
         <div class="dz-work-grid">
-          <img src="IMG_ETHNIC_1?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_ETHNIC_2?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_ETHNIC_3?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_ETHNIC_4?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_ETHNIC_5?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="IMG_ETHNIC_6?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9398.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_E0809.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9399.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9394.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9395.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9393.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
         </div>
       </div>
 
