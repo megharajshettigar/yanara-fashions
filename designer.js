@@ -175,7 +175,7 @@ var DESIGNER_HTML = `
     <div class="dz-gallery dz-rev">
       <div class="dz-tag" style="text-align:center">Gallery</div>
       <div class="dz-grid">
-        <img src="PHOTO_URL_1?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img138.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
         <img src="PHOTO_URL_2?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
         <img src="PHOTO_URL_3?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
         <img src="PHOTO_URL_4?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
