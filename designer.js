@@ -177,8 +177,7 @@ var DESIGNER_HTML = `
         </div>
       </div>
 
-      <div class="dz-hl dz-rev">
-        <div class="dz-hl-yr">Film</div>
+      
 
      <div class="dz-hl dz-rev">
         <div class="dz-hl-yr">Film</div>
