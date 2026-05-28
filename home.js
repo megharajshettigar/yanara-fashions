@@ -275,43 +275,43 @@ const HOME_HTML = `
     </div>
     <!-- WOMEN PANEL (empty image placeholders — images coming later) -->
     <div class="ed-cat-row ed-cat-panel ed-panel-hidden" data-panel="women">
-      <div class="ed-cat" onclick="shopCat('Women Wedding')">
+      <div class="ed-cat" onclick="shopCat('Women Blouse')">
         <div class="ed-cat-num">01</div>
-        <div class="ed-cat-img ed-cat-ph"><i class="ti ti-photo"></i></div>
-        <div class="ed-cat-vert">Wedding</div>
+        <img src="https://ik.imagekit.io/megharaj/Blouse/BL01DG/BL01DG-5.png?tr=w-800,q-90,f-auto" alt="Dark Green Zardosi Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
+        <div class="ed-cat-vert">Dark Green</div>
         <div class="ed-cat-open">
-          <h3>Wedding</h3>
-          <div class="ct">Coming soon</div>
+          <h3>Dark Green <em>Zardosi</em></h3>
+          <div class="ct">Floral embroidered blouse</div>
           <div class="cb">Explore <i class="ti ti-arrow-right"></i></div>
         </div>
       </div>
-      <div class="ed-cat" onclick="shopCat('Women Reception')">
+      <div class="ed-cat" onclick="shopCat('Women Blouse')">
         <div class="ed-cat-num">02</div>
-        <div class="ed-cat-img ed-cat-ph"><i class="ti ti-photo"></i></div>
-        <div class="ed-cat-vert">Reception</div>
+        <img src="https://ik.imagekit.io/megharaj/Blouse/BL02RD/BL02RD-2.png?tr=w-800,q-90,f-auto" alt="Red Zardosi Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
+        <div class="ed-cat-vert">Red Floral</div>
         <div class="ed-cat-open">
-          <h3>Reception</h3>
-          <div class="ct">Coming soon</div>
+          <h3>Red <em>Zardosi</em></h3>
+          <div class="ct">Floral embroidered blouse</div>
           <div class="cb">Explore <i class="ti ti-arrow-right"></i></div>
         </div>
       </div>
-      <div class="ed-cat" onclick="shopCat('Women Mehendi')">
+      <div class="ed-cat" onclick="shopCat('Women Blouse')">
         <div class="ed-cat-num">03</div>
-        <div class="ed-cat-img ed-cat-ph"><i class="ti ti-photo"></i></div>
-        <div class="ed-cat-vert">Mehendi</div>
+        <img src="https://ik.imagekit.io/megharaj/Blouse/BL04WI/BL04WI-7.png?tr=w-800,q-90,f-auto" alt="Wine Beads Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
+        <div class="ed-cat-vert">Wine Beads</div>
         <div class="ed-cat-open">
-          <h3>Mehendi</h3>
-          <div class="ct">Coming soon</div>
+          <h3>Wine <em>Beads</em></h3>
+          <div class="ct">Beads embroidered blouse</div>
           <div class="cb">Explore <i class="ti ti-arrow-right"></i></div>
         </div>
       </div>
-      <div class="ed-cat" onclick="shopCat('Women Haldi')">
+      <div class="ed-cat" onclick="shopCat('Women Blouse')">
         <div class="ed-cat-num">04</div>
-        <div class="ed-cat-img ed-cat-ph"><i class="ti ti-photo"></i></div>
-        <div class="ed-cat-vert">Haldi</div>
+        <img src="https://ik.imagekit.io/megharaj/Blouse/BL05BL/BL05BL-8.png?tr=w-800,q-90,f-auto" alt="Black Copper Zardosi Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
+        <div class="ed-cat-vert">Black Copper</div>
         <div class="ed-cat-open">
-          <h3>Haldi</h3>
-          <div class="ct">Coming soon</div>
+          <h3>Black <em>Copper</em></h3>
+          <div class="ct">Zardosi embroidered blouse</div>
           <div class="cb">Explore <i class="ti ti-arrow-right"></i></div>
         </div>
       </div>
