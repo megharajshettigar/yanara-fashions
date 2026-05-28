@@ -177,10 +177,13 @@ var DESIGNER_HTML = `
         </div>
       </div>
 
-      <div class="dz-hl dz-rev">
+     <div class="dz-hl dz-rev">
         <div class="dz-hl-yr">Film</div>
         <div class="dz-hl-title">BCHH — Senior Stylist</div>
         <div class="dz-hl-desc">Worked as Senior Stylist for the Kannada feature film <em>Bili Chukki Halli Hakki</em>, shaping the on-screen wardrobe and character looks.</div>
+        <div class="dz-work-video">
+          <iframe src="https://www.youtube.com/embed/YOUTUBE_ID_BCHH" title="Bili Chukki Halli Hakki" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
       </div>
 
       
@@ -189,8 +192,15 @@ var DESIGNER_HTML = `
         <div class="dz-hl-yr">Industry</div>
         <div class="dz-hl-title">Fashion Designer · TheEthnic.Co</div>
         <div class="dz-hl-desc">Designed for the menswear ethnic brand TheEthnic.Co, sharpening a craft that now defines YANARA's signature men's silhouettes.</div>
+        <div class="dz-work-grid">
+          <img src="IMG_ETHNIC_1?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_ETHNIC_2?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_ETHNIC_3?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_ETHNIC_4?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_ETHNIC_5?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_ETHNIC_6?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+        </div>
       </div>
-    </div>
 
     
     <!-- SKILLS -->
