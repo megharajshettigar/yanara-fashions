@@ -32,6 +32,17 @@ function imgUrls(code, count){
   return arr;
 }
 
+// Blouse images live in subfolders: Blouse/CODE/CODE-N.png
+function blouseImgs(code, count){
+  var arr = [];
+  for(var i=1; i<=count; i++){
+    arr.push(IK_BASE + "/Blouse/" + code + "/" + code + "-" + i + ".png?" + IK_TR_DETAIL);
+  }
+  return arr;
+}
+
+// Returns a smaller, card-optimized version of an image URL.
+
 // Returns a smaller, card-optimized version of an image URL.
 // Used for grid thumbnails so the listing loads fast.
 function cardImg(url){
@@ -73,10 +84,15 @@ const products=[
   {id:29,code:"IW10WI",name:"Wine Indo Western Classic Set",cat:"Indo Western Sets",price:18500,sizes:["S","M","L","XL"],imgs:imgUrls("IW10WI",3),desc:"Classic wine Indo Western — rich colour, clean silhouette."},
   {id:30,code:"IW11DG",name:"Dark Green Indo Western Set",cat:"Indo Western Sets",price:18500,sizes:["S","M","L","XL"],imgs:imgUrls("IW11DG",6),desc:"Forest green Indo Western with premium fabric and craftsmanship."},
   {id:31,code:"SH01WH",name:"White Leopard Hand Painted Shirt",cat:"Shirts",price:12900,sizes:["S","M","L","XL"],imgs:imgUrls("SH01WH",5),desc:"White shirt with hand painted leopard motif by designer Ramya. A true collector's piece."},
-  {id:32,code:"SH04WH",name:"White Eagle Hand Painted Shirt",cat:"Shirts",price:13900,sizes:["S","M","L","XL"],imgs:imgUrls("SH04WH",4),desc:"White shirt featuring a majestic hand painted eagle. Wearable art for the bold."}
+  {id:32,code:"SH04WH",name:"White Eagle Hand Painted Shirt",cat:"Shirts",price:13900,sizes:["S","M","L","XL"],imgs:imgUrls("SH04WH",4),desc:"White shirt featuring a majestic hand painted eagle. Wearable art for the bold."},
+  {id:33,code:"BL01DG",name:"Dark Green Floral Zardosi Blouse",cat:"Blouse",section:"Women",price:8499,sizes:["Custom"],imgs:blouseImgs("BL01DG",6),desc:"Dark green blouse with intricate floral Zardosi embroidery. Custom-tailored to your measurements."},
+  {id:34,code:"BL02RD",name:"Red Floral Zardosi Blouse",cat:"Blouse",section:"Women",price:7799,sizes:["Custom"],imgs:blouseImgs("BL02RD",6),desc:"Rich red blouse with delicate floral Zardosi work. Custom-tailored to your measurements."},
+  {id:35,code:"BL03G",name:"Green Floral Zardosi Net Blouse",cat:"Blouse",section:"Women",price:9199,sizes:["Custom"],imgs:blouseImgs("BL03G",7),desc:"Green blouse with floral Zardosi embroidery on a net base. Custom-tailored to your measurements."},
+  {id:36,code:"BL04WI",name:"Wine Beads Blouse",cat:"Blouse",section:"Women",price:4499,sizes:["Custom"],imgs:blouseImgs("BL04WI",7),desc:"Wine-toned blouse adorned with elegant beadwork. Custom-tailored to your measurements."},
+  {id:37,code:"BL05BL",name:"Black Copper Zardosi Blouse",cat:"Blouse",section:"Women",price:7499,sizes:["Custom"],imgs:blouseImgs("BL05BL",10),desc:"Black blouse with striking copper Zardosi embroidery. Custom-tailored to your measurements."}
 ];
 
-let cart=[],disc=0,curProd=null,curImgIdx=0,shopFilter="All",occFilter="",qty=1;
+let cart=[],disc=0,curProd=null,curImgIdx=0,shopFilter="All",occFilter="",qty=1,shopSection="Men";
 
 // ── CARD ──
 function card(p,fn){
@@ -99,16 +115,32 @@ function shopCat(cat){ shopFilter=cat; occFilter=""; go("shop"); }
 function shopOcc(occ){ occFilter=occ; shopFilter="All"; go("shop"); toast("Showing all "+occ+" styles 🎉"); }
 
 function renderShop(){
-  const cats=["All","Blazer Sets","Bandhgala Sets","Indo Western Sets","Shirts"];
+  const section = shopSection || "Men";
+  const catsBySection = {
+    Men: ["All","Blazer Sets","Bandhgala Sets","Indo Western Sets","Shirts"],
+    Women: ["All","Blouse"]
+  };
+  const cats = catsBySection[section];
+
+  // Section toggle (Men | Women) + category buttons
   const cf=document.getElementById("cat-filters");
-  if(cf)cf.innerHTML=cats.map(c=>`<button class="catbtn${shopFilter===c?" on":""}" onclick="shopFilter='${c}';occFilter='';renderShop()">${c}</button>`).join("");
+  if(cf)cf.innerHTML =
+    `<div style="display:flex;gap:0;margin-bottom:16px;border-bottom:1px solid var(--border)">` +
+    ["Men","Women"].map(s=>`<button onclick="shopSection='${s}';shopFilter='All';occFilter='';renderShop()" style="background:none;border:none;padding:10px 22px;font-size:13px;letter-spacing:1px;cursor:pointer;color:${section===s?'var(--white)':'var(--gray)'};border-bottom:2px solid ${section===s?'var(--gold)':'transparent'};font-weight:${section===s?'600':'400'}">${s}</button>`).join("") +
+    `</div>` +
+    cats.map(c=>`<button class="catbtn${shopFilter===c?" on":""}" onclick="shopFilter='${c}';occFilter='';renderShop()">${c}</button>`).join("");
+
+  // Sidebar category checkboxes (for current section)
   const fc=document.getElementById("filter-cats");
   if(fc)fc.innerHTML=cats.filter(c=>c!=="All").map(c=>`
     <div class="fo" onclick="shopFilter='${c}';occFilter='';renderShop()">
       <input type="checkbox" ${shopFilter===c?"checked":""}><label>${c}</label>
     </div>`).join("");
-  let filtered=products;
+
+  // Filter by section first, then category
+  let filtered=products.filter(p=>(p.section||"Men")===section);
   if(shopFilter&&shopFilter!=="All") filtered=filtered.filter(p=>p.cat===shopFilter);
+
   const ct=document.getElementById("sct");
   if(ct)ct.textContent=`${filtered.length} product${filtered.length!==1?"s":""}${occFilter?" — "+occFilter+" Collection":""}`;
   const grid=document.getElementById("shop-products");
