@@ -176,10 +176,10 @@ var DESIGNER_HTML = `
       <div class="dz-tag" style="text-align:center">Gallery</div>
       <div class="dz-grid">
         <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img138.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="PHOTO_URL_2?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="PHOTO_URL_3?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="PHOTO_URL_4?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="PHOTO_URL_5?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="PHOTO_URL_2https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img83.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img92.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img108.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img71.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
         <img src="PHOTO_URL_6?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
         <img src="PHOTO_URL_7?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
         <img src="PHOTO_URL_8?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
