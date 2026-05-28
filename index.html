@@ -578,7 +578,10 @@ body.designer-mode .logo span{color:var(--gold2)}
   <div class="slayout">
     <div>
       <div class="fg"><div class="fgt">Category</div><div class="fops" id="filter-cats"></div></div>
-      <div><div class="fgt">Price Range</div><div style="font-size:11px;color:var(--gray);margin-bottom:8px">₹5,000 — ₹30,000</div><input type="range" min="5000" max="30000" value="30000" style="width:100%;accent-color:var(--gold)" oninput="renderShop()"></div>
+      <div><div class="fgt">Price Range</div><div id="price-label" style="font-size:11px;color:var(--gray);margin-bottom:10px">₹0 — ₹50,000</div>
+        <input type="range" id="price-min" min="0" max="50000" value="0" step="500" style="width:100%;accent-color:var(--gold)" oninput="renderShop()">
+        <input type="range" id="price-max" min="0" max="50000" value="50000" step="500" style="width:100%;accent-color:var(--gold);margin-top:6px" oninput="renderShop()">
+      </div>
     </div>
     <div>
       <div class="stop"><div class="sct" id="sct">Loading...</div><select class="ssel" id="sort-sel" onchange="sortProducts()"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select></div>
