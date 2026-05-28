@@ -110,12 +110,7 @@ var DESIGNER_HTML = `
     <!-- CONTENT — scrolls UP and overlaps the pinned hero photo -->
     <div class="dz-content">
 
-    <!-- ABOUT / PROFILE -->
-    <section class="dz-section dz-rev">
-      <div class="dz-tag">About</div>
-      <p class="dz-lead">A creative spirit with versatile skills — a fast learner and a hard worker, driven to give her very best to the world of fashion.</p>
-      <p class="dz-body">Trained at the <strong>JD Institute of Fashion Technology</strong>, Ramya is the founder and designer behind <strong>YANARA Fashion</strong>. Her work blends traditional Indian craft with contemporary tailoring — from hand-painted art and intricate embroidery to sculptural, runway-ready silhouettes.</p>
-    </section>
+    
 
     <!-- PULL QUOTE -->
     <div class="dz-quote dz-rev">
