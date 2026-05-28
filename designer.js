@@ -209,6 +209,7 @@ var DESIGNER_HTML = `
       <div class="dz-cta-row">
         <button class="dz-btn" onclick="openModal('modal-contact')">Get in Touch</button>
         <button class="dz-btn-ghost" onclick="go('shop')">View the Collection</button>
+        <a class="dz-btn-ghost" href="https://www.instagram.com/artist__ramya" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none"><i class="ti ti-brand-instagram"></i> Follow Ramya</a>
       </div>
     </div>
 
