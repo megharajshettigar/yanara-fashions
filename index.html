@@ -787,6 +787,7 @@ function go(page){
   window.scrollTo({top:0,behavior:"smooth"});
   if(page==="home")renderHome();
   if(page==="designer"&&typeof buildDesigner==="function")buildDesigner();
+  document.body.classList.toggle("designer-mode", page==="designer");
   if(page==="shop"){shopFilter=shopFilter||"All";occFilter="";renderShop();}
   if(page==="cart")renderCart();
   if(page==="checkout")renderCheckout();
