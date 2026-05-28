@@ -173,8 +173,7 @@ var DESIGNER_HTML = `
         <div class="dz-hl-title">Iykki Berry — London</div>
         <div class="dz-hl-desc">Created a garment for celebrity rapper and singer Iykki Berry's Diwali concert in London, fusing Tamil Nadu culture into the design — and later styled her Tamil album song <strong>MAMA</strong>, shot in London.</div>
         <div class="dz-work-video">
-          <iframe src="https://www.youtube.com/embed/YOUTUBE_ID_IYKKI" title="Iykki Berry — MAMA" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+         <iframe src="https://www.youtube.com/embed/p6PGIWIg8Pw" title="Iykki Berry — MAMA" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
 
      <div class="dz-hl dz-rev">
@@ -182,7 +181,7 @@ var DESIGNER_HTML = `
         <div class="dz-hl-title">BCHH — Senior Stylist</div>
         <div class="dz-hl-desc">Worked as Senior Stylist for the Kannada feature film <em>Bili Chukki Halli Hakki</em>, shaping the on-screen wardrobe and character looks.</div>
         <div class="dz-work-video">
-          <iframe src="https://www.youtube.com/embed/YOUTUBE_ID_BCHH" title="Bili Chukki Halli Hakki" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/uT6Mm5fxwbE" title="Bili Chukki Halli Hakki" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
 
