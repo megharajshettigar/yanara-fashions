@@ -69,16 +69,7 @@ var DESIGNER_HTML = `
     .dz-hl-yr{font-size:12px;letter-spacing:2px;color:var(--gold);margin-bottom:10px}
     .dz-hl-title{font-family:var(--font-display);font-size:clamp(22px,2.8vw,30px);color:var(--white);margin-bottom:14px;font-weight:500}
     .dz-hl-desc{font-size:14px;line-height:1.9;color:var(--gray);max-width:640px}
-    /* gallery — 3x3 photo grid */
-    .dz-gallery{max-width:1000px;margin:0 auto;padding:90px 6%}
-    .dz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
-    .dz-gimg{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px;
-      transition:transform .4s,opacity .4s;opacity:.92}
-    .dz-gimg:hover{transform:scale(1.03);opacity:1}
-    @media (max-width:768px){
-      .dz-grid{grid-template-columns:repeat(2,1fr);gap:8px}
-      .dz-gallery{padding:60px 6%}
-    }
+   
     
 
     /* skills — minimal inline list */
@@ -171,22 +162,7 @@ var DESIGNER_HTML = `
       </div>
     </div>
 
-    <!-- GALLERY — 3x3 photo grid -->
-    <div class="dz-gallery dz-rev">
-      <div class="dz-tag" style="text-align:center">Gallery</div>
-      <div class="dz-grid">
-        <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img138.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img83.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img92.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img108.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img71.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img91.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9393.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img167.jpg?updatedAt=1779948581862?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img78.jpg?updatedAt=1779948581056?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-      </div>
-    </div>
-
+    
     <!-- SKILLS -->
     <div class="dz-skills dz-rev">
       <div class="dz-tag">Craft & Tools</div>
