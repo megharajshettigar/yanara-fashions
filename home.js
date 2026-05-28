@@ -375,10 +375,7 @@ const HOME_HTML = `
         <div class="fbrand">YANARA<span>Fashion</span></div>
         <div class="fdesc">Premium handcrafted ethnic wear by award-winning designer Ramya. Where tradition meets contemporary elegance.</div>
         <div class="fsoc">
-          <button class="sb" onclick="toast('Follow us on Facebook!')">f</button>
-          <button class="sb" onclick="toast('Follow us on Instagram!')">in</button>
-          <button class="sb" onclick="toast('Follow us on Twitter!')">tw</button>
-          <button class="sb" onclick="toast('Subscribe on YouTube!')">yt</button>
+          <a class="sb" href="https://www.instagram.com/yanara_fashion" target="_blank" rel="noopener" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
         </div>
       </div>
       <div><div class="ft">Categories</div><ul class="flinks"><li><a onclick="shopCat('Blazer Sets')">Blazer Sets</a></li><li><a onclick="shopCat('Bandhgala Sets')">Bandhgala Sets</a></li><li><a onclick="shopCat('Indo Western Sets')">Indo Western</a></li><li><a onclick="shopCat('Shirts')">Hand Painted Shirts</a></li><li><a onclick="go('shop')">View All</a></li></ul></div>
