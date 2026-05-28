@@ -103,11 +103,7 @@ var DESIGNER_HTML = `
       ${DESIGNER_PHOTO
         ? `<img class="dz-hero-img" src="${DESIGNER_PHOTO}" alt="Designer Ramya">`
         : `<div class="dz-hero-ph"><i class="ti ti-camera"></i></div>`}
-      <div class="dz-hero-cap">
-        <div class="dz-hero-kick">YANARA Fashion · Founder & Designer</div>
-        <div class="dz-hero-name">Ramya</div>
-        <div class="dz-hero-role">Fashion Designer · Bangalore</div>
-      </div>
+    
       <div class="dz-scroll-hint"><i class="ti ti-chevron-down"></i></div>
     </div>
 
