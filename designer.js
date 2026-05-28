@@ -181,7 +181,7 @@ var DESIGNER_HTML = `
         <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img108.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
         <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img71.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
         <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img91.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
-        <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9393.JPG.jpeg?updatedAt=1779871618933?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
+        <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9393.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
         <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img167.jpg?updatedAt=1779948581862?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
         <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img78.jpg?updatedAt=1779948581056?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-gimg">
       </div>
