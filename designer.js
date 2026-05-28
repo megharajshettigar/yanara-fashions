@@ -69,6 +69,11 @@ var DESIGNER_HTML = `
     .dz-hl-yr{font-size:12px;letter-spacing:2px;color:var(--gold);margin-bottom:10px}
     .dz-hl-title{font-family:var(--font-display);font-size:clamp(22px,2.8vw,30px);color:var(--white);margin-bottom:14px;font-weight:500}
     .dz-hl-desc{font-size:14px;line-height:1.9;color:var(--gray);max-width:640px}
+
+    /* selected-work video embed (responsive 16:9) */
+    .dz-work-video{position:relative;width:100%;max-width:760px;margin:28px auto 0;
+      aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:var(--bg2)}
+    .dz-work-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
    
    /* selected-work photo grid (3 x 2) */
     .dz-work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
@@ -167,6 +172,9 @@ var DESIGNER_HTML = `
         <div class="dz-hl-yr">2022 · International</div>
         <div class="dz-hl-title">Iykki Berry — London</div>
         <div class="dz-hl-desc">Created a garment for celebrity rapper and singer Iykki Berry's Diwali concert in London, fusing Tamil Nadu culture into the design — and later styled her Tamil album song <strong>MAMA</strong>, shot in London.</div>
+        <div class="dz-work-video">
+          <iframe src="https://www.youtube.com/embed/YOUTUBE_ID_IYKKI" title="Iykki Berry — MAMA" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
       </div>
 
       <div class="dz-hl dz-rev">
