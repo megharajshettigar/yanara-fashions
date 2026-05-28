@@ -70,6 +70,14 @@ var DESIGNER_HTML = `
     .dz-hl-title{font-family:var(--font-display);font-size:clamp(22px,2.8vw,30px);color:var(--white);margin-bottom:14px;font-weight:500}
     .dz-hl-desc{font-size:14px;line-height:1.9;color:var(--gray);max-width:640px}
    
+   /* selected-work photo grid (3 x 2) */
+    .dz-work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
+    .dz-work-img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px;
+      opacity:.92;transition:transform .4s,opacity .4s}
+    .dz-work-img:hover{transform:scale(1.03);opacity:1}
+    @media (max-width:768px){
+      .dz-work-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+    }
     
 
     /* skills — minimal inline list */
@@ -126,9 +134,19 @@ var DESIGNER_HTML = `
       <div class="dz-tag">Selected Work</div>
 
       <div class="dz-hl dz-rev">
-        <div class="dz-hl-yr">2022 · Award</div>
+        <div class="dz-hl-yr">Awards</div>
         <div class="dz-hl-title">Best South Indian Fashion Designer</div>
         <div class="dz-hl-desc">Honoured at Tirupur Fashion Week 2022, where her collection walked the runway to critical acclaim — a recognition of her distinctive design voice in South Indian fashion.</div>
+        <div class="dz-hl-title" style="margin-top:26px">SHUI — JD Design Awards 2022</div>
+        <div class="dz-hl-desc">An eight-garment collection inspired by China's Yellow River, reflecting on the harmful effects of chemical waste — a statement on sustainability told through couture fusion-wear.</div>
+        <div class="dz-work-grid">
+          <img src="IMG_AWARDS_1?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_AWARDS_2?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_AWARDS_3?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_AWARDS_4?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_AWARDS_5?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="IMG_AWARDS_6?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+        </div>
       </div>
 
       <div class="dz-hl dz-rev">
@@ -149,11 +167,7 @@ var DESIGNER_HTML = `
         <div class="dz-hl-desc">Worked as Senior Stylist for the Kannada feature film <em>Bili Chukki Halli Hakki</em>, shaping the on-screen wardrobe and character looks.</div>
       </div>
 
-      <div class="dz-hl dz-rev">
-        <div class="dz-hl-yr">Collection</div>
-        <div class="dz-hl-title">SHUI — JD Design Awards 2022</div>
-        <div class="dz-hl-desc">An eight-garment collection inspired by China's Yellow River, reflecting on the harmful effects of chemical waste — a statement on sustainability told through couture fusion-wear.</div>
-      </div>
+      
 
       <div class="dz-hl dz-rev">
         <div class="dz-hl-yr">Industry</div>
