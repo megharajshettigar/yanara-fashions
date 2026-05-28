@@ -91,12 +91,21 @@ const products=[
   {id:36,code:"BL04WI",name:"Wine Beads Blouse",cat:"Blouse",section:"Women",price:4499,sizes:["Custom"],imgs:blouseImgs("BL04WI",7),desc:"Wine-toned blouse adorned with elegant beadwork. Custom-tailored to your measurements."},
   {id:37,code:"BL05BL",name:"Black Copper Zardosi Blouse",cat:"Blouse",section:"Women",price:7499,sizes:["Custom"],imgs:blouseImgs("BL05BL",10),desc:"Black blouse with striking copper Zardosi embroidery. Custom-tailored to your measurements."}
 ];
+// If a .png image fails, retry as .jpg (handles mixed-extension uploads)
+function imgFallback(el){
+  if(el.src.indexOf(".png")>-1 && !el.dataset.tried){
+    el.dataset.tried="1";
+    el.src = el.src.replace(".png?", ".jpg?").replace(/\.png$/, ".jpg");
+  } else {
+    el.parentElement.innerHTML='<div class=pimg-ph>👔</div>';
+  }
+}
 
 let cart=[],disc=0,curProd=null,curImgIdx=0,shopFilter="All",occFilter="",qty=1,shopSection="Men";
 
 // ── CARD ──
 function card(p,fn){
-  const img=p.imgs&&p.imgs.length?`<img src="${cardImg(p.imgs[0])}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=pimg-ph>👔</div>'">`:`<div class="pimg-ph">👔</div>`;
+  const img=p.imgs&&p.imgs.length?`<img src="${cardImg(p.imgs[0])}" alt="${p.name}" loading="lazy" onerror="imgFallback(this)">`:`<div class="pimg-ph">👔</div>`;
   const badge=p.badge?`<div class="pbadge">${p.badge}</div>`:"";
   return`<div class="pcard" onclick="${fn}(${p.id})">
     <div class="pimg">${badge}${img}<button class="pwish" onclick="event.stopPropagation();toast('Saved to wishlist ♡')"><i class="ti ti-heart"></i></button></div>
