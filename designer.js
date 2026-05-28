@@ -242,10 +242,9 @@ function buildDesigner(){
   if(shell && !shell.dataset.built){
     shell.innerHTML = DESIGNER_HTML;
     shell.dataset.built = "1";
-    setupDesignerReveal();
   }
+  setTimeout(setupDesignerReveal, 100);
 }
-
 // Reveal sections (fade + rise) as they scroll into view
 function setupDesignerReveal(){
   var items = document.querySelectorAll("#page-designer .dz-rev");
@@ -261,8 +260,10 @@ function setupDesignerReveal(){
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.2 });
-  items.forEach(function(el){ obs.observe(el); });
+  }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
+  items.forEach(function(el){
+    if(!el.classList.contains("in")) obs.observe(el);
+  });
 }
 
 // Build on load
