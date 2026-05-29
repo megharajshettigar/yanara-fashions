@@ -295,3 +295,4 @@ function placeOrder(){
   cart=[];disc=0;updCC();
   setTimeout(()=>go("home"),2000);
 }
+}  
