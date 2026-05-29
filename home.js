@@ -169,8 +169,7 @@ const HOME_HTML = `
     <div class="ed-kicker">Premium Ethnic Wear · Est. 2025</div>
     <div class="ed-bigtype">
       <span class="l1">YANARA</span>
-      <span class="l2">Fashion</span>
-      <span class="l3">by Ramya</span>
+      <span class="l2">Fashion by Ramya</span>
     </div>
     <p class="ed-hero-sub">Handcrafted blazers, bandhgalas & indo-western sets — where heritage craft meets contemporary tailoring, made for the modern celebration.</p>
     <div class="ed-hero-actions">
