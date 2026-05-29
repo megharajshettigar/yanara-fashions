@@ -208,6 +208,7 @@ function openP(id){
   const related=products.filter(x=>x.cat===p.cat&&x.id!==p.id).slice(0,4);
   document.getElementById("related-products").innerHTML=related.map(r=>card(r,"openP")).join("");
   go("detail");
+  loadReviews(p.id);
 }
 
 function switchImg(idx){
@@ -295,4 +296,60 @@ function placeOrder(){
   toast("Order placed! Thank you 🙏");
   cart=[];disc=0;updCC();
   setTimeout(()=>go("home"),2000);
+}
+
+// ── REVIEWS ──
+var revStar=0;
+var reviews={};
+
+function setRevStar(n){
+  revStar=n;
+  document.querySelectorAll("#rev-star-input span").forEach((s,i)=>s.classList.toggle("on",i<n));
+}
+
+function submitReview(){
+  if(!curProd){return;}
+  const name=document.getElementById("rev-name").value.trim();
+  const comment=document.getElementById("rev-comment").value.trim();
+  const file=document.getElementById("rev-photo").files[0];
+  if(!name||!comment||!revStar){toast("Please fill name, stars and comment");return;}
+  const date=new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
+  const rev={name,comment,star:revStar,date,photo:""};
+  if(file){
+    const reader=new FileReader();
+    reader.onload=function(e){rev.photo=e.target.result;saveReview(rev);};
+    reader.readAsDataURL(file);
+  }else{saveReview(rev);}
+}
+
+function saveReview(rev){
+  const key="reviews_"+curProd.id;
+  const existing=JSON.parse(localStorage.getItem(key)||"[]");
+  existing.unshift(rev);
+  localStorage.setItem(key,JSON.stringify(existing));
+  document.getElementById("rev-name").value="";
+  document.getElementById("rev-comment").value="";
+  document.getElementById("rev-photo").value="";
+  revStar=0;
+  setRevStar(0);
+  toast("Review submitted! Thank you 🙏");
+  loadReviews(curProd.id);
+}
+
+function loadReviews(pid){
+  const key="reviews_"+pid;
+  const list=JSON.parse(localStorage.getItem(key)||"[]");
+  const el=document.getElementById("review-list");
+  if(!el)return;
+  if(!list.length){el.innerHTML="<div style='font-size:12px;color:var(--gray);padding:20px 0'>No reviews yet. Be the first!</div>";return;}
+  el.innerHTML=list.map(r=>`
+    <div class="rev-card">
+      ${r.photo?`<img class="rev-card-photo" src="${r.photo}" alt="review photo">`:`<div class="rev-card-photo" style="background:var(--bg2);display:flex;align-items:center;justify-content:center"><i class="ti ti-user" style="color:var(--gray);font-size:22px"></i></div>`}
+      <div class="rev-card-body">
+        <div class="rev-card-name">${r.name}</div>
+        <div class="rev-card-stars">${"★".repeat(r.star)}${"☆".repeat(5-r.star)}</div>
+        <div class="rev-card-comment">${r.comment}</div>
+        <div class="rev-card-date">${r.date}</div>
+      </div>
+    </div>`).join("");
 }
