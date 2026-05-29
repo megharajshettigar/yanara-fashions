@@ -1342,8 +1342,8 @@ function renderProducts() {
 function openProductModal(id) {
   editingId = id || null;
   document.getElementById('modal-title').textContent = id ? 'Edit Product' : 'Add New Product';
-  document.getElementById('image-url-list').innerHTML = '';
-
+  ikUploadedUrls = [];
+  document.getElementById('ik-preview-list').innerHTML = '';
   if (id) {
     const p = products.find(x => x.id === id);
     document.getElementById('p-name').value = p.name;
@@ -1356,8 +1356,9 @@ function openProductModal(id) {
     document.querySelectorAll('.size-chip').forEach(chip => {
       chip.classList.toggle('selected', (p.sizes||[]).includes(chip.textContent));
     });
-    // images
-    (p.images || []).forEach(url => addImageRow(url));
+    // images — load existing URLs into preview
+    ikUploadedUrls = (p.images || []).slice();
+    renderIKPreviews();
   } else {
     document.getElementById('p-name').value = '';
     document.getElementById('p-code').value = '';
@@ -1366,7 +1367,6 @@ function openProductModal(id) {
     document.getElementById('p-desc').value = '';
     document.getElementById('p-cat').value = 'Blazer Sets';
     document.querySelectorAll('.size-chip').forEach(c => c.classList.remove('selected'));
-    addImageRow();
   }
 
   document.getElementById('product-modal').style.display = 'flex';
