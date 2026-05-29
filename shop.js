@@ -37,15 +37,12 @@ function blouseImgs(code, count, cover){
   // 3rd arg = which image number to show FIRST (cover/thumbnail).
   var arr = [];
   cover = cover || 1;
-  arr.push(IK_BASE + "/Blouse/" + code + "/" + code + "-" + cover + ".png?" + IK_TR_DETAIL);
+ arr.push(IK_BASE + "/Blouse/" + code + "/" + code + "-" + cover + ".png?tr=w-1400,q-90,f-jpg");
   for(var i=1; i<=count; i++){
     if(i!==cover){
-      arr.push(IK_BASE + "/Blouse/" + code + "/" + code + "-" + i + ".png?" + IK_TR_DETAIL);
+      arr.push(IK_BASE + "/Blouse/" + code + "/" + code + "-" + i + ".png?tr=w-1400,q-90,f-jpg");
     }
   }
-  return arr;
-}
-
 // Returns a smaller, card-optimized version of an image URL.
 
 // Returns a smaller, card-optimized version of an image URL.
