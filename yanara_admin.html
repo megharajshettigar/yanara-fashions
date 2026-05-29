@@ -1106,44 +1106,52 @@ const IK_URL_ENDPOINT = "https://ik.imagekit.io/megharaj";
 const IK_UPLOAD_URL = "https://upload.imagekit.io/api/v1/files/upload";
 let ikUploadedUrls = [];
 
+async function getIKAuth(){
+  const token = crypto.randomUUID ? crypto.randomUUID() : Date.now().toString();
+  const expire = Math.floor(Date.now()/1000) + 2400;
+  const str = token + expire;
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey("raw", enc.encode("private_5kGU8fUuLA3etFpv6Q/uElgqkRg="), {name:"HMAC",hash:"SHA-1"}, false, ["sign"]);
+  const sig = await crypto.subtle.sign("HMAC", key, enc.encode(str));
+  const signature = Array.from(new Uint8Array(sig)).map(b=>b.toString(16).padStart(2,"0")).join("");
+  return {token, expire, signature};
+}
+
 async function uploadToIK(files){
   const status = document.getElementById("ik-upload-status");
+  const preview = document.getElementById("ik-preview-list");
   for(let i=0; i<files.length; i++){
     const file = files[i];
     status.textContent = `Uploading ${i+1} of ${files.length}...`;
-
-    // Show placeholder while uploading
-    const preview = document.getElementById("ik-preview-list");
     const placeholder = document.createElement("div");
     placeholder.className = "ik-uploading";
     placeholder.textContent = "uploading...";
     preview.appendChild(placeholder);
-
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("fileName", file.name);
-    formData.append("publicKey", IK_PUBLIC_KEY);
-
     try{
-      const res = await fetch(IK_UPLOAD_URL, {method:"POST", body: formData});
+      const auth = await getIKAuth();
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("fileName", file.name);
+      formData.append("publicKey", IK_PUBLIC_KEY);
+      formData.append("token", auth.token);
+      formData.append("expire", auth.expire);
+      formData.append("signature", auth.signature);
+      const res = await fetch(IK_UPLOAD_URL, {method:"POST", body:formData});
       const data = await res.json();
       if(data.url){
         ikUploadedUrls.push(data.url);
-        placeholder.outerHTML = `
-          <div class="ik-thumb-wrap">
-            <img src="${data.url}" alt="uploaded">
-            <button class="ik-thumb-remove" onclick="removeIKImg(${ikUploadedUrls.length-1})">×</button>
-          </div>`;
-      } else {
+        renderIKPreviews();
+        preview.querySelectorAll(".ik-uploading")[0]?.remove();
+      }else{
         placeholder.textContent = "failed";
-        status.textContent = "Upload failed: " + (data.message || "unknown error");
+        status.textContent = "Upload failed: "+(data.message||"unknown error");
       }
-    } catch(err){
+    }catch(err){
       placeholder.textContent = "error";
-      status.textContent = "Error: " + err.message;
+      status.textContent = "Error: "+err.message;
     }
   }
-  status.textContent = ikUploadedUrls.length + " image(s) ready";
+  status.textContent = ikUploadedUrls.length+" image(s) ready";
 }
 
 function removeIKImg(idx){
