@@ -605,6 +605,10 @@
   }
 
   .add-img-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .ik-thumb-wrap{position:relative;width:80px;height:80px}
+.ik-thumb-wrap img{width:80px;height:80px;object-fit:cover;border:1px solid var(--border)}
+.ik-thumb-remove{position:absolute;top:-6px;right:-6px;background:var(--red);color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+.ik-uploading{width:80px;height:80px;border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--text-dim)}
 
   /* ── ORDERS ── */
   .order-status {
@@ -1070,11 +1074,13 @@
     </div>
 
     <div class="form-group">
-      <label>Product Images (URLs)</label>
-      <p style="font-size:11px;color:var(--text-dim);margin-bottom:10px;">Add image links from Google Drive, Dropbox, or any image hosting site. First image = main display image.</p>
-      <div class="image-url-list" id="image-url-list"></div>
-      <button class="add-img-btn" onclick="addImageRow()" style="margin-top:8px">+ Add Image URL</button>
-    </div>
+        <label>Product Images</label>
+        <p style="font-size:11px;color:var(--text-dim);margin-bottom:10px;">Upload images directly. First image = main display image.</p>
+        <div id="ik-preview-list" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px"></div>
+        <input type="file" id="ik-file-input" accept="image/*" multiple style="display:none" onchange="uploadToIK(this.files)">
+        <button class="add-img-btn" onclick="document.getElementById('ik-file-input').click()">+ Upload Image</button>
+        <div id="ik-upload-status" style="font-size:11px;color:var(--text-dim);margin-top:8px"></div>
+      </div>
 
     <div class="form-group">
       <label>Description (optional)</label>
@@ -1094,6 +1100,65 @@
 <script>
 // ── STATE ──
 let CREDS = { user: 'admin', pass: 'yanara2024' };
+// ── IMAGEKIT UPLOAD ──
+const IK_PUBLIC_KEY = "public_ovqUUetEwVuz+KqXCWDMvwXgi+k=";
+const IK_URL_ENDPOINT = "https://ik.imagekit.io/megharaj";
+const IK_UPLOAD_URL = "https://upload.imagekit.io/api/v1/files/upload";
+let ikUploadedUrls = [];
+
+async function uploadToIK(files){
+  const status = document.getElementById("ik-upload-status");
+  for(let i=0; i<files.length; i++){
+    const file = files[i];
+    status.textContent = `Uploading ${i+1} of ${files.length}...`;
+
+    // Show placeholder while uploading
+    const preview = document.getElementById("ik-preview-list");
+    const placeholder = document.createElement("div");
+    placeholder.className = "ik-uploading";
+    placeholder.textContent = "uploading...";
+    preview.appendChild(placeholder);
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("fileName", file.name);
+    formData.append("publicKey", IK_PUBLIC_KEY);
+
+    try{
+      const res = await fetch(IK_UPLOAD_URL, {method:"POST", body: formData});
+      const data = await res.json();
+      if(data.url){
+        ikUploadedUrls.push(data.url);
+        placeholder.outerHTML = `
+          <div class="ik-thumb-wrap">
+            <img src="${data.url}" alt="uploaded">
+            <button class="ik-thumb-remove" onclick="removeIKImg(${ikUploadedUrls.length-1})">×</button>
+          </div>`;
+      } else {
+        placeholder.textContent = "failed";
+        status.textContent = "Upload failed: " + (data.message || "unknown error");
+      }
+    } catch(err){
+      placeholder.textContent = "error";
+      status.textContent = "Error: " + err.message;
+    }
+  }
+  status.textContent = ikUploadedUrls.length + " image(s) ready";
+}
+
+function removeIKImg(idx){
+  ikUploadedUrls.splice(idx, 1);
+  renderIKPreviews();
+}
+
+function renderIKPreviews(){
+  const preview = document.getElementById("ik-preview-list");
+  preview.innerHTML = ikUploadedUrls.map((url,i) => `
+    <div class="ik-thumb-wrap">
+      <img src="${url}" alt="img ${i+1}">
+      <button class="ik-thumb-remove" onclick="removeIKImg(${i})">×</button>
+    </div>`).join("");
+} 
 let products = [];
 let orders = [];
 let editingId = null;
@@ -1309,6 +1374,11 @@ function openProductModal(id) {
 
 function closeProductModal() {
   document.getElementById('product-modal').style.display = 'none';
+  ikUploadedUrls = [];
+  const preview = document.getElementById("ik-preview-list");
+  if(preview) preview.innerHTML = "";
+  const status = document.getElementById("ik-upload-status");
+  if(status) status.textContent = "";
 }
 
 function editProduct(id) { openProductModal(id); }
@@ -1360,8 +1430,7 @@ function saveProduct() {
   }
 
   const sizes = [...document.querySelectorAll('.size-chip.selected')].map(c => c.textContent);
-  const images = [...document.querySelectorAll('#image-url-list input')]
-    .map(i => i.value.trim()).filter(Boolean);
+  const images = ikUploadedUrls.slice();
 
   const data = {
     id: editingId || 'p_' + Date.now(),
