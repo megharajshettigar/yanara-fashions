@@ -296,4 +296,3 @@ function placeOrder(){
   setTimeout(()=>go("home"),2000);
 }
 }  
-}
