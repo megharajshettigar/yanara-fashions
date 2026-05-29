@@ -90,7 +90,7 @@ const products=[
   {id:32,code:"SH04WH",name:"White Eagle Hand Painted Shirt",cat:"Shirts",price:13900,sizes:["S","M","L","XL"],imgs:imgUrls("SH04WH",4),desc:"White shirt featuring a majestic hand painted eagle. Wearable art for the bold."},
   {id:33,code:"BL01DG",name:"Dark Green Floral Zardosi Blouse",cat:"Blouse",section:"Women",price:8499,sizes:["Custom"],imgs:blouseImgs("BL01DG",6,5),desc:"Dark green blouse with intricate floral Zardosi embroidery. Custom-tailored to your measurements."},
   {id:34,code:"BL02RD",name:"Red Floral Zardosi Blouse",cat:"Blouse",section:"Women",price:7799,sizes:["Custom"],imgs:blouseImgs("BL02RD",6,2),desc:"Rich red blouse with delicate floral Zardosi work. Custom-tailored to your measurements."},
-  {id:35,code:"BL03G",name:"Green Floral Zardosi Net Blouse",cat:"Blouse",section:"Women",price:9199,sizes:["Custom"],imgs:blouseImgs("BL03G",7,1),desc:"Green blouse with floral Zardosi embroidery on a net base. Custom-tailored to your measurements."},
+  {id:35,code:"BL03G",name:"Green Floral Zardosi Net Blouse",cat:"Blouse",section:"Women",price:9199,sizes:["Custom"],imgs:blouseImgs("BL03G",7,7),desc:"Green blouse with floral Zardosi embroidery on a net base. Custom-tailored to your measurements."},
   {id:36,code:"BL04WI",name:"Wine Beads Blouse",cat:"Blouse",section:"Women",price:4499,sizes:["Custom"],imgs:blouseImgs("BL04WI",7,7),desc:"Wine-toned blouse adorned with elegant beadwork. Custom-tailored to your measurements."},
   {id:37,code:"BL05BL",name:"Black Copper Zardosi Blouse",cat:"Blouse",section:"Women",price:7499,sizes:["Custom"],imgs:blouseImgs("BL05BL",10,8),desc:"Black blouse with striking copper Zardosi embroidery. Custom-tailored to your measurements."}
 ];
