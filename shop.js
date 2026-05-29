@@ -37,10 +37,10 @@ function blouseImgs(code, count, cover){
   // 3rd arg = which image number to show FIRST (cover/thumbnail).
   var arr = [];
   cover = cover || 1;
- arr.push(IK_BASE + "/Blouse/" + code + "/" + code + "-" + cover + ".png?tr=w-1400,q-90,f-jpg");
+ arr.push(IK_BASE + "/Blouse/" + code + "/" + code + "-" + cover + ".jpg?" + IK_TR_DETAIL);
   for(var i=1; i<=count; i++){
     if(i!==cover){
-      arr.push(IK_BASE + "/Blouse/" + code + "/" + code + "-" + i + ".png?tr=w-1400,q-90,f-jpg");
+      arr.push(IK_BASE + "/Blouse/" + code + "/" + code + "-" + i + ".jpg?" + IK_TR_DETAIL);
     }
   }
   return arr;
