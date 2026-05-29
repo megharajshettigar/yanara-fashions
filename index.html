@@ -508,7 +508,20 @@ body.designer-mode .theme-toggle,
 body.designer-mode .cbtn{display:none!important}
 body.designer-mode .hamburger{display:flex!important;color:#111}
 body.designer-mode .logo{color:#111}
-body.designer-mode .logo span{color:var(--gold2)}    
+body.designer-mode .logo span{color:var(--gold2)} 
+.rev-form{background:var(--bg2);border:1px solid var(--border);padding:28px;max-width:560px}
+.rev-input{display:block;width:100%;background:var(--bg);border:1px solid var(--border);color:var(--white);font-family:var(--font);font-size:12px;padding:10px 14px;margin-bottom:12px;outline:none;box-sizing:border-box}
+.rev-input::placeholder{color:var(--gray)}
+.rev-stars span{font-size:28px;color:var(--border);cursor:pointer;transition:color .2s}
+.rev-stars span.on{color:var(--gold)}
+.rev-stars{margin-bottom:16px}
+.rev-card{border-bottom:1px solid var(--border);padding:20px 0;display:flex;gap:16px;align-items:flex-start}
+.rev-card-photo{width:56px;height:56px;object-fit:cover;border:1px solid var(--border)}
+.rev-card-body{flex:1}
+.rev-card-name{font-family:var(--font);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--white);margin-bottom:4px}
+.rev-card-stars{color:var(--gold);font-size:13px;margin-bottom:6px}
+.rev-card-comment{font-size:12px;color:var(--gray);line-height:1.8}
+.rev-card-date{font-size:10px;color:var(--border);margin-top:6px;letter-spacing:1px}    
 </style>
 </head>
 <body>
@@ -616,9 +629,24 @@ body.designer-mode .logo span{color:var(--gold2)}
       </div>
     </div>
   </div>
-  <section style="padding:0 4% 70px">
+ <section style="padding:0 4% 70px">
     <div class="sh"><div><div class="stag">You Might Like</div><h2 class="stitle">Similar <strong>Styles</strong></h2></div></div>
     <div class="pgrid" id="related-products"></div>
+  </section>
+
+  <section style="padding:0 4% 70px">
+    <div class="sh"><div><div class="stag">Customer Reviews</div><h2 class="stitle">What They <strong>Say</strong></h2></div></div>
+    <div id="review-list" style="margin-bottom:40px"></div>
+    <div class="rev-form">
+      <h3 style="font-family:var(--font);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--white);margin-bottom:20px">Write a Review</h3>
+      <div class="rev-stars" id="rev-star-input">
+        <span onclick="setRevStar(1)">★</span><span onclick="setRevStar(2)">★</span><span onclick="setRevStar(3)">★</span><span onclick="setRevStar(4)">★</span><span onclick="setRevStar(5)">★</span>
+      </div>
+      <input id="rev-name" placeholder="Your Name" class="rev-input"/>
+      <textarea id="rev-comment" placeholder="Your review..." class="rev-input" rows="3"></textarea>
+      <input id="rev-photo" type="file" accept="image/*" class="rev-input"/>
+      <button class="bfull" style="max-width:200px;margin-top:10px" onclick="submitReview()">Submit Review</button>
+    </div>
   </section>
 </div>
 
