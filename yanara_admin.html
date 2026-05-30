@@ -1653,12 +1653,11 @@ function exportProductJSON() {
 // ── TOAST ──
 function showToast(msg, type = 'success') {
   const t = document.createElement('div');
-  t.className = `toast ${type}`;
-  t.innerHTML = `
-    ${type === 'success'
-      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>'
-      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>'}
-    ${msg}`;
+  t.className = 'toast ' + type;
+  const icon = type === 'success'
+    ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"><\/polyline><\/svg>'
+    : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.5"><circle cx="12" cy="12" r="10"><\/circle><line x1="12" y1="8" x2="12" y2="12"><\/line><line x1="12" y1="16" x2="12.01" y2="16"><\/line><\/svg>';
+  t.innerHTML = icon + ' ' + msg;
   document.getElementById('toast-container').appendChild(t);
   setTimeout(() => t.remove(), 3500);
 }
