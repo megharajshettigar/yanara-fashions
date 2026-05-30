@@ -1655,10 +1655,7 @@ function showToast(msg, type) {
   type = type || 'success';
   const t = document.createElement('div');
   t.className = 'toast ' + type;
-  const icon = type === 'success'
-    ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"><\/polyline><\/svg>'
-    : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.5"><circle cx="12" cy="12" r="10"><\/circle><\/svg>';
-  t.innerHTML = icon + ' ' + msg;
+  t.textContent = msg;
   document.getElementById('toast-container').appendChild(t);
   setTimeout(function(){ t.remove(); }, 3500);
 }
