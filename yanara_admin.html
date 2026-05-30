@@ -1153,13 +1153,18 @@ async function uploadToIK(files){
     preview.appendChild(placeholder);
     try{
       const auth = await getIKAuth();
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("fileName", file.name);
-      formData.append("publicKey", IK_PUBLIC_KEY);
-      formData.append("token", auth.token);
-      formData.append("expire", auth.expire);
-      formData.append("signature", auth.signature);
+      const section = document.getElementById("p-section") ? document.getElementById("p-section").value : "Men";
+    const category = document.getElementById("p-cat").value || "General";
+    const folderPath = section + "/" + category;
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("fileName", file.name);
+    formData.append("publicKey", IK_PUBLIC_KEY);
+    formData.append("token", auth.token);
+    formData.append("expire", auth.expire);
+    formData.append("signature", auth.signature);
+    formData.append("folder", folderPath);
       const res = await fetch(IK_UPLOAD_URL, {method:"POST", body:formData});
       const data = await res.json();
       if(data.url){
