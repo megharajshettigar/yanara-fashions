@@ -840,6 +840,7 @@
 
   window.firebaseReady = true;
   window.dispatchEvent(new Event("firebaseReady"));
+  window.addEventListener("load", loadProductsFromFirebase);
 </script>  
 </head>
 <body>
@@ -1370,6 +1371,28 @@ async function importExistingProducts(){
   }
   showToast(count+' products imported to Firebase! ✓','success');
   loadProductsFromFirebase();
+}  
+async function loadProductsFromFirebase(){
+  if(!window.db){
+    // Firebase not ready yet, try again shortly
+    setTimeout(loadProductsFromFirebase, 500);
+    return;
+  }
+  try{
+    const snap = await window.fsGetDocs(window.fsCollection(window.db,"products"));
+    products = [];
+    snap.forEach(d => {
+      const p = d.data();
+      // map 'category' field to match admin's expected field
+      if(p.category && !p.cat) p.cat = p.category;
+      if(!p.images) p.images = [];
+      products.push(p);
+    });
+    renderProducts();
+    renderDashboard();
+  }catch(e){
+    console.error("Firebase load error:",e);
+  }
 }  
 function saveProductsLocal() {
   localStorage.setItem('yanara_products', JSON.stringify(products));
