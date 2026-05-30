@@ -182,7 +182,7 @@ function renderShop(){
     </div>`).join("");
 
   // Filter by section first, then category
-  let filtered=products.filter(p=>(p.section||"Men")===section);
+  let filtered=getAllProducts().filter(p=>(p.section||"Men")===section);
   if(shopFilter&&shopFilter!=="All") filtered=filtered.filter(p=>p.cat===shopFilter);
 
   // Price range filter (synced with the dual slider)
@@ -205,8 +205,10 @@ function renderShop(){
 
 function sortProducts(){
   const val=document.getElementById("sort-sel").value;
-  if(val==="low")products.sort((a,b)=>a.price-b.price);
-  else if(val==="high")products.sort((a,b)=>b.price-a.price);
+  const all=getAllProducts();
+  if(val==="low")all.sort((a,b)=>a.price-b.price);
+  else if(val==="high")all.sort((a,b)=>b.price-a.price);
+  firebaseProducts=all.filter(p=>p.firebaseId);
   renderShop();
 }
 
