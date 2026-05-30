@@ -108,6 +108,35 @@ function imgFallback(el){
 }
 
 let cart=[],disc=0,curProd=null,curImgIdx=0,shopFilter="All",occFilter="",qty=1,shopSection="Men";
+// ── FIREBASE PRODUCTS ──
+var firebaseProducts = [];
+
+async function loadFirebaseProducts(){
+  if(!window.db) return;
+  try{
+    const snap = await window.fsGetDocs(window.fsCollection(window.db, "products"));
+    firebaseProducts = [];
+    snap.forEach(d => {
+      const p = d.data();
+      p.firebaseId = d.id;
+      // rebuild imgs array from ImageKit if stored as URL array
+      if(!p.imgs) p.imgs = [];
+      firebaseProducts.push(p);
+    });
+    if(firebaseProducts.length > 0){
+      renderShop();
+    }
+  }catch(e){
+    console.error("Firebase load error:", e);
+  }
+}
+
+function getAllProducts(){
+  // Merge hardcoded + firebase products, firebase takes priority
+  const fbIds = firebaseProducts.map(p => p.code);
+  const hardcoded = products.filter(p => !fbIds.includes(p.code));
+  return [...hardcoded, ...firebaseProducts];
+}
 
 // ── CARD ──
 function card(p,fn){
