@@ -827,6 +827,40 @@ function go(page){
 // ── INIT ──
 renderHome();
 </script>
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, addDoc, doc, setDoc, deleteDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDZBP8TuqZOAOdW8jB4q65gL3rwWxnLonc",
+    authDomain: "yanarafashion-54acf.firebaseapp.com",
+    projectId: "yanarafashion-54acf",
+    storageBucket: "yanarafashion-54acf.firebasestorage.app",
+    messagingSenderId: "1017878347517",
+    appId: "1:1017878347517:web:31e4b2ccfcac5c4b634894"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Make db and Firebase functions available globally
+  window.db = db;
+  window.fsCollection = collection;
+  window.fsGetDocs = getDocs;
+  window.fsAddDoc = addDoc;
+  window.fsDoc = doc;
+  window.fsSetDoc = setDoc;
+  window.fsDeleteDoc = deleteDoc;
+  window.fsOnSnapshot = onSnapshot;
+  window.fsQuery = query;
+  window.fsOrderBy = orderBy;
+
+  // Load products from Firestore when ready
+  window.addEventListener("load", () => {
+    if(typeof loadFirebaseProducts === "function") loadFirebaseProducts();
+  });
+</script>  
 </body>
   <script>
 // ── INIT & PRELOADER ANIMATION ──
