@@ -1484,12 +1484,19 @@ function saveProduct() {
     products.push(data);
     showToast('Product added!', 'success');
   }
-
   saveProductsLocal();
+  // Save to Firestore
+  if(window.db){
+    const ref = window.fsDoc(window.db, "products", data.id);
+    window.fsSetDoc(ref, data).then(()=>{
+      showToast('Saved to Firebase ✓', 'success');
+    }).catch(e=>{
+      showToast('Firebase error: '+e.message, 'error');
+    });
+  }
   closeProductModal();
   renderProducts();
   renderDashboard();
-}
 
 // ── ORDERS ──
 function renderOrders() {
