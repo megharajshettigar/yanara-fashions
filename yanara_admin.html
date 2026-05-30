@@ -836,7 +836,7 @@
   window.fsDeleteDoc = (ref) => ref.delete();
   window.firebaseReady = true;
   window.dispatchEvent(new Event("firebaseReady"));
-  window.addEventListener("load", loadProductsFromFirebase);
+  window.firebaseReady = true;
 </script>
 </head>
 <body>
@@ -1367,7 +1367,8 @@ async function importExistingProducts(){
   }
   showToast(count+' products imported to Firebase! ✓','success');
   loadProductsFromFirebase();
-}  
+}
+window.addEventListener("load", () => setTimeout(loadProductsFromFirebase, 300));  
 async function loadProductsFromFirebase(){
   if(!window.db){
     // Firebase not ready yet, try again shortly
