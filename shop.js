@@ -120,7 +120,8 @@ async function loadFirebaseProducts(){
       const p = d.data();
       p.firebaseId = d.id;
       // rebuild imgs array from ImageKit if stored as URL array
-      if(!p.imgs) p.imgs = [];
+      if(!p.imgs) p.imgs = p.images || [];
+      if(!p.cat) p.cat = p.category || "Uncategorised";
       firebaseProducts.push(p);
     });
     if(firebaseProducts.length > 0){
@@ -161,8 +162,8 @@ function shopOcc(occ){ occFilter=occ; shopFilter="All"; go("shop"); toast("Showi
 function renderShop(){
   const section = shopSection || "Men";
   // Get extra categories from Firebase products
-  const fbMenCats = [...new Set(firebaseProducts.filter(p=>(p.section||"Men")==="Men").map(p=>p.cat))];
-  const fbWomenCats = [...new Set(firebaseProducts.filter(p=>p.section==="Women").map(p=>p.cat))];
+  const fbMenCats = [...new Set(firebaseProducts.filter(p=>(p.section||"Men")==="Men").map(p=>p.cat||p.category).filter(Boolean))];
+  const fbWomenCats = [...new Set(firebaseProducts.filter(p=>p.section==="Women").map(p=>p.cat||p.category).filter(Boolean))];
   const baseMen = ["All","Blazer Sets","Bandhgala Sets","Indo Western Sets","Shirts"];
   const baseWomen = ["All","Blouse"];
   const catsBySection = {
