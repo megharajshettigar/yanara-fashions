@@ -880,6 +880,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         Orders
       </div>
+      <div class="nav-item" onclick="showPage('categories',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+        Categories
+      </div>
     </div>
 
     <div class="nav-section">
@@ -1078,7 +1082,7 @@
     <div class="form-row">
       <div class="form-group">
         <label>Section *</label>
-        <select id="p-section">
+        <select id="p-section" onchange="renderCategoryDropdown()">
           <option value="Men">Men</option>
           <option value="Women">Women</option>
         </select>
@@ -1392,7 +1396,10 @@ async function importExistingProducts(){
   showToast(count+' products imported to Firebase! ✓','success');
   loadProductsFromFirebase();
 }
-window.addEventListener("load", () => setTimeout(loadProductsFromFirebase, 300)); 
+window.addEventListener("load", () => {
+  setTimeout(loadProductsFromFirebase, 300);
+  setTimeout(loadCategoriesFromFirebase, 400);
+}); 
 // ── CATEGORIES ──
 var allCategories = [];
 
