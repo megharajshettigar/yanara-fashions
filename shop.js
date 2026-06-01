@@ -121,7 +121,8 @@ async function loadFirebaseProducts(){
       p.firebaseId = d.id;
       // rebuild imgs array from ImageKit if stored as URL array
       if(!p.imgs) p.imgs = p.images || [];
-      if(!p.cat) p.cat = p.category || "Uncategorised";
+      const catMap = {"Blazer Sets":"Blazers","Bandhgala Sets":"Jodhpuri Bandhgala","Indo Western Sets":"Indo Western"};
+      if(!p.cat) p.cat = catMap[p.category] || p.category || "Uncategorised";
       firebaseProducts.push(p);
     });
     if(firebaseProducts.length > 0){
