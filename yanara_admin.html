@@ -1380,18 +1380,7 @@ window.addEventListener("load", () => {
 }); 
 // ── CATEGORIES ──
 var allCategories = [];
-function initCatDropdown(){
-  const sel = document.getElementById("p-cat");
-  if(!sel) return;
-  sel.onchange = function(){
-    const newCatBox = document.getElementById("new-cat-inline");
-    if(document.getElementById("p-cat").value === "__add_new__"){
-      newCatBox.style.display = "flex";
-    } else {
-      newCatBox.style.display = "none";
-    }
-  };
-}
+
   async function loadCategoriesFromFirebase(){
   if(!window.db) return;
   try{
@@ -1410,6 +1399,7 @@ function renderCategoryDropdown(){
   const filtered = allCategories.filter(c => c.section === section);
   if(!sel) return;
   sel.innerHTML = filtered.map(c => `<option value="${c.name}">${c.name}</option>`).join("") + `<option value="__add_new__">+ Add New Category</option>`;
+}
   initCatDropdown();
 }
 
