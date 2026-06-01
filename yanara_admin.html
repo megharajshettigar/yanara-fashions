@@ -1374,7 +1374,62 @@ async function importExistingProducts(){
   showToast(count+' products imported to Firebase! ✓','success');
   loadProductsFromFirebase();
 }
-window.addEventListener("load", () => setTimeout(loadProductsFromFirebase, 300));  
+window.addEventListener("load", () => setTimeout(loadProductsFromFirebase, 300)); 
+// ── CATEGORIES ──
+var allCategories = [];
+
+async function loadCategoriesFromFirebase(){
+  if(!window.db) return;
+  try{
+    const snap = await window.db.collection("categories").get();
+    allCategories = [];
+    snap.forEach(d => allCategories.push(d.data()));
+    renderCategoryDropdown();
+  }catch(e){
+    console.error("Category load error:",e);
+  }
+}
+
+function renderCategoryDropdown(){
+  const sel = document.getElementById("p-cat");
+  const section = document.getElementById("p-section") ? document.getElementById("p-section").value : "Men";
+  const filtered = allCategories.filter(c => c.section === section);
+  if(!sel) return;
+  sel.innerHTML = filtered.map(c => `<option value="${c.name}">${c.name}</option>`).join("");
+}
+
+async function addCategory(){
+  const name = document.getElementById("new-cat-name").value.trim();
+  const section = document.getElementById("new-cat-section").value;
+  if(!name){showToast("Enter category name","error");return;}
+  if(!window.db){showToast("Firebase not ready","error");return;}
+  const id = section + "_" + name.replace(/\s+/g,"_").toLowerCase();
+  await window.db.collection("categories").doc(id).set({name, section, id});
+  allCategories.push({name, section, id});
+  document.getElementById("new-cat-name").value = "";
+  showToast("Category added!","success");
+  renderCategoryList();
+  renderCategoryDropdown();
+}
+
+async function deleteCategory(id){
+  if(!confirm("Delete this category?")) return;
+  await window.db.collection("categories").doc(id).delete();
+  allCategories = allCategories.filter(c => c.id !== id);
+  showToast("Category deleted","success");
+  renderCategoryList();
+  renderCategoryDropdown();
+}
+
+function renderCategoryList(){
+  const el = document.getElementById("category-list");
+  if(!el) return;
+  el.innerHTML = allCategories.map(c => `
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)">
+      <span style="font-size:12px;color:var(--text)">${c.section} → ${c.name}</span>
+      <button class="btn-danger" style="padding:4px 10px;font-size:11px" onclick="deleteCategory('${c.id}')">Delete</button>
+    </div>`).join("");
+}  
 async function loadProductsFromFirebase(){
   if(!window.db){
     // Firebase not ready yet, try again shortly
