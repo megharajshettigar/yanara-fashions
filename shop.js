@@ -178,7 +178,6 @@ function card(p,fn){
       <div class="pcat">${p.cat}</div>
       <div class="pname">${p.name}</div>
       <div class="pcur">₹${p.price.toLocaleString()}</div>
-      ${swatches}
       <button class="atcb" onclick="event.stopPropagation();addCart('${p.id}')">Add to Cart</button>
     </div>
   </div>`;
