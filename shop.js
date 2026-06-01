@@ -140,9 +140,37 @@ function getAllProducts(){
 }
 
 // ── CARD ──
+// ── COLOR GROUPS ──
+const colorGroups = {
+  "BG05BL":["BG05BL","BG06MR"],
+  "BG06MR":["BG05BL","BG06MR"],
+  "BG09NB":["BG09NB","BG10BL"],
+  "BG10BL":["BG09NB","BG10BL"],
+  "BG14DB":["BG14DB","BG15PK","BG16GY","BG17WI"],
+  "BG15PK":["BG14DB","BG15PK","BG16GY","BG17WI"],
+  "BG16GY":["BG14DB","BG15PK","BG16GY","BG17WI"],
+  "BG17WI":["BG14DB","BG15PK","BG16GY","BG17WI"],
+  "IW01BL":["IW01BL","IW02GR","IW03DB"],
+  "IW02GR":["IW01BL","IW02GR","IW03DB"],
+  "IW03DB":["IW01BL","IW02GR","IW03DB"],
+  "IW06BL":["IW06BL","IW07DB"],
+  "IW07DB":["IW06BL","IW07DB"]
+};
+
+const colorDots = {
+  "BG05BL":"#1a1a1a","BG06MR":"#6b1a1a",
+  "BG09NB":"#1a2a4a","BG10BL":"#0d0d0d",
+  "BG14DB":"#1a2a5a","BG15PK":"#c47a8a","BG16GY":"#6b6b6b","BG17WI":"#4a1a2a",
+  "IW01BL":"#1a1a1a","IW02GR":"#1a4a2a","IW03DB":"#1a2a4a",
+  "IW06BL":"#1a1a1a","IW07DB":"#1a2a4a"
+};
+
+// ── CARD ──
 function card(p,fn){
   const img=p.imgs&&p.imgs.length?`<img src="${cardImg(p.imgs[0])}" alt="${p.name}" loading="lazy" onerror="imgFallback(this)">`:`<div class="pimg-ph">👔</div>`;
   const badge=p.badge?`<div class="pbadge">${p.badge}</div>`:"";
+  const group=colorGroups[p.code]||[];
+  const swatches=group.length>1?`<div class="pswatches">${group.map(code=>`<div class="pswatch${code===p.code?' on':''}" style="background:${colorDots[code]||'#333'}" onclick="event.stopPropagation();${fn}('${code}')" title="${code}"></div>`).join("")}</div>`:"";
   return`<div class="pcard" onclick="${fn}('${p.id}')">
     <div class="pimg">${badge}${img}<button class="pwish" onclick="event.stopPropagation();toast('Saved to wishlist ♡')"><i class="ti ti-heart"></i></button></div>
     <div class="pinfo">
@@ -150,7 +178,8 @@ function card(p,fn){
       <div class="pcat">${p.cat}</div>
       <div class="pname">${p.name}</div>
       <div class="pcur">₹${p.price.toLocaleString()}</div>
-      <button class="atcb" onclick="event.stopPropagation();addCart(${p.id})">Add to Cart</button>
+      ${swatches}
+      <button class="atcb" onclick="event.stopPropagation();addCart('${p.id}')">Add to Cart</button>
     </div>
   </div>`;
 }
