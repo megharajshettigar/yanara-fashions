@@ -957,6 +957,24 @@
         </div>
       </div>
 
+      <!-- CATEGORIES -->
+      <div class="page" id="page-categories" style="display:none">
+        <div class="section-header">
+          <div class="section-title">Categories</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:24px;max-width:500px;margin-bottom:30px">
+          <h3 style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text);margin-bottom:16px">Add New Category</h3>
+          <div style="display:flex;gap:10px;margin-bottom:12px">
+            <select id="new-cat-section" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 12px;font-size:12px">
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+            </select>
+            <input id="new-cat-name" placeholder="e.g. Kurta Sets" style="flex:1;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 12px;font-size:12px">
+            <button class="btn-primary" onclick="addCategory()">Add</button>
+          </div>
+          <div id="category-list"></div>
+        </div>
+      </div>
       <!-- ORDERS -->
       <div class="page" id="page-orders">
         <div class="section-header">
