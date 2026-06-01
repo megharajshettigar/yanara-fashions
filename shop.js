@@ -28,7 +28,7 @@ function imgUrls(code, count, cat){
   var arr = [];
   var folder = cat || "Blazers";
   for(var i=1; i<=count; i++){
-    arr.push(IK_BASE + "/Men/" + folder + "/" + code + "/" + code + "-" + i + ".jpg?" + IK_TR_DETAIL);
+    arr.push(IK_BASE + "/Men/" + encodeURIComponent(folder) + "/" + code + "/" + code + "-" + i + ".jpg?" + IK_TR_DETAIL);
   }
   return arr;
 }
