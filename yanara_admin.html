@@ -1410,7 +1410,9 @@ function renderCategoryDropdown(){
 
 async function addCategoryInline(){
   const name = document.getElementById("new-cat-inline-name").value.trim();
-  const section = document.getElementById("p-section") ? document.getElementById("p-section").value : "Men";
+  const sectionEl = document.getElementById("p-section");
+  const section = sectionEl ? sectionEl.value : "Men";
+  console.log("Adding category:", name, "Section:", section);
   if(!name){showToast("Enter category name","error");return;}
   if(!window.db){showToast("Firebase not ready","error");return;}
   const id = section + "_" + name.replace(/\s+/g,"_").toLowerCase();
