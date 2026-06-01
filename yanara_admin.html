@@ -1067,7 +1067,7 @@
       </div>
       <div class="form-group">
         <label>Category *</label>
-        <select id="p-cat">
+        <select id="p-cat" onchange="if(this.value==='__add_new__'){document.getElementById('new-cat-inline').style.display='flex';}else{document.getElementById('new-cat-inline').style.display='none';}">
         </select>
         <div id="new-cat-inline" style="display:none;flex-direction:row;gap:8px;margin-top:8px">
           <input id="new-cat-inline-name" placeholder="New category name" style="flex:1;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 12px;font-size:12px">
