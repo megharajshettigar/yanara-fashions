@@ -24,23 +24,23 @@ const IK_TR_CARD   = "tr=w-900,q-90,f-auto";
 
 // Builds an array of HIGH-QUALITY image URLs for a product code.
 // e.g. imgUrls("BZ01BL", 5) -> [".../BZ01BL-1.jpg?tr=w-1400,q-90,f-auto", ...]
-function imgUrls(code, count){
+function imgUrls(code, count, cat){
   var arr = [];
+  var folder = cat || "Blazers";
   for(var i=1; i<=count; i++){
-    arr.push(IK_BASE + "/" + code + "-" + i + ".jpg?" + IK_TR_DETAIL);
+    arr.push(IK_BASE + "/Men/" + folder + "/" + code + "/" + code + "-" + i + ".jpg?" + IK_TR_DETAIL);
   }
   return arr;
 }
 
 // Blouse images live in subfolders: Blouse/CODE/CODE-N.png
 function blouseImgs(code, count, cover){
-  // 3rd arg = which image number to show FIRST (cover/thumbnail).
   var arr = [];
   cover = cover || 1;
- arr.push(IK_BASE + "/Blouse/" + code + "/" + code + "-" + cover + ".jpg?" + IK_TR_DETAIL);
+  arr.push(IK_BASE + "/Women/Blouse/" + code + "/" + code + "-" + cover + ".jpg?" + IK_TR_DETAIL);
   for(var i=1; i<=count; i++){
     if(i!==cover){
-      arr.push(IK_BASE + "/Blouse/" + code + "/" + code + "-" + i + ".jpg?" + IK_TR_DETAIL);
+      arr.push(IK_BASE + "/Women/Blouse/" + code + "/" + code + "-" + i + ".jpg?" + IK_TR_DETAIL);
     }
   }
   return arr;
