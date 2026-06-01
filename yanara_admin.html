@@ -1533,6 +1533,7 @@ function saveProduct() {
     showToast('Please fill in Name, Code and Price', 'error');
     return;
   }
+}
 
   const sizes = [...document.querySelectorAll('.size-chip.selected')].map(c => c.textContent);
   const images = ikUploadedUrls.slice();
