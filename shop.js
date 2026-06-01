@@ -143,7 +143,7 @@ function getAllProducts(){
 function card(p,fn){
   const img=p.imgs&&p.imgs.length?`<img src="${cardImg(p.imgs[0])}" alt="${p.name}" loading="lazy" onerror="imgFallback(this)">`:`<div class="pimg-ph">👔</div>`;
   const badge=p.badge?`<div class="pbadge">${p.badge}</div>`:"";
-  return`<div class="pcard" onclick="${fn}(${p.id})">
+  return`<div class="pcard" onclick="${fn}('${p.id}')">
     <div class="pimg">${badge}${img}<button class="pwish" onclick="event.stopPropagation();toast('Saved to wishlist ♡')"><i class="ti ti-heart"></i></button></div>
     <div class="pinfo">
       <div class="pcode">${p.code}</div>
@@ -220,7 +220,7 @@ function sortProducts(){
 
 // ── PRODUCT DETAIL ──
 function openP(id){
-  const p=products.find(x=>x.id===id);if(!p)return;
+  const p=getAllProducts().find(x=>String(x.id)===String(id));if(!p)return;
   curProd=p;qty=1;curImgIdx=0;
   document.getElementById("dname").textContent=p.name;
   document.getElementById("dcat").textContent=p.cat;
