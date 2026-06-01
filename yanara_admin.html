@@ -1091,6 +1091,10 @@
         <label>Category *</label>
         <select id="p-cat">
         </select>
+        <div id="new-cat-inline" style="display:none;gap:8px;margin-top:8px">
+          <input id="new-cat-inline-name" placeholder="New category name" style="flex:1;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 12px;font-size:12px">
+          <button class="btn-primary" style="padding:8px 14px" onclick="addCategoryInline()">Add</button>
+        </div>
       </div>
       <div class="form-group">
         <label>Price (₹) *</label>
@@ -1415,9 +1419,31 @@ function renderCategoryDropdown(){
   const section = document.getElementById("p-section") ? document.getElementById("p-section").value : "Men";
   const filtered = allCategories.filter(c => c.section === section);
   if(!sel) return;
-  sel.innerHTML = filtered.map(c => `<option value="${c.name}">${c.name}</option>`).join("");
+  sel.innerHTML = filtered.map(c => `<option value="${c.name}">${c.name}</option>`).join("") + `<option value="__add_new__">+ Add New Category</option>`;
+  sel.onchange = function(){
+    const newCatBox = document.getElementById("new-cat-inline");
+    if(sel.value === "__add_new__"){
+      newCatBox.style.display = "flex";
+    } else {
+      newCatBox.style.display = "none";
+    }
+  };
 }
 
+async function addCategoryInline(){
+  const name = document.getElementById("new-cat-inline-name").value.trim();
+  const section = document.getElementById("p-section") ? document.getElementById("p-section").value : "Men";
+  if(!name){showToast("Enter category name","error");return;}
+  if(!window.db){showToast("Firebase not ready","error");return;}
+  const id = section + "_" + name.replace(/\s+/g,"_").toLowerCase();
+  await window.db.collection("categories").doc(id).set({name, section, id});
+  allCategories.push({name, section, id});
+  document.getElementById("new-cat-inline-name").value = "";
+  document.getElementById("new-cat-inline").style.display = "none";
+  showToast("Category added!","success");
+  renderCategoryDropdown();
+  document.getElementById("p-cat").value = name;
+}  
 async function addCategory(){
   const name = document.getElementById("new-cat-name").value.trim();
   const section = document.getElementById("new-cat-section").value;
