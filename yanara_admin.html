@@ -1385,14 +1385,14 @@ function initCatDropdown(){
   if(!sel) return;
   sel.onchange = function(){
     const newCatBox = document.getElementById("new-cat-inline");
-    if(sel.value === "__add_new__"){
+    if(document.getElementById("p-cat").value === "__add_new__"){
       newCatBox.style.display = "flex";
     } else {
       newCatBox.style.display = "none";
     }
   };
 }
-async function loadCategoriesFromFirebase(){
+  async function loadCategoriesFromFirebase(){
   if(!window.db) return;
   try{
     const snap = await window.db.collection("categories").get();
