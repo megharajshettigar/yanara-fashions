@@ -1101,11 +1101,18 @@
     </div>
 
     <div class="form-group">
-        <label>Product Images</label>
-        <p style="font-size:11px;color:var(--text-dim);margin-bottom:10px;">Upload images directly. First image = main display image.</p>
+        <label>Thumbnail Image</label>
+        <p style="font-size:11px;color:var(--text-dim);margin-bottom:10px;">1 image — shown on shop product card.</p>
+        <div id="ik-thumb-preview" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px"></div>
+        <input type="file" id="ik-thumb-input" accept="image/*" style="display:none" onchange="uploadThumb(this.files)">
+        <button class="add-img-btn" onclick="document.getElementById('ik-thumb-input').click()">+ Upload Thumbnail</button>
+        <div id="ik-thumb-status" style="font-size:11px;color:var(--text-dim);margin-top:8px;margin-bottom:16px"></div>
+
+        <label style="margin-top:8px;display:block">Gallery Images</label>
+        <p style="font-size:11px;color:var(--text-dim);margin-bottom:10px;">Multiple images — shown inside product detail page.</p>
         <div id="ik-preview-list" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px"></div>
         <input type="file" id="ik-file-input" accept="image/*" multiple style="display:none" onchange="uploadToIK(this.files)">
-        <button class="add-img-btn" onclick="document.getElementById('ik-file-input').click()">+ Upload Image</button>
+        <button class="add-img-btn" onclick="document.getElementById('ik-file-input').click()">+ Upload Gallery Images</button>
         <div id="ik-upload-status" style="font-size:11px;color:var(--text-dim);margin-top:8px"></div>
       </div>
 
