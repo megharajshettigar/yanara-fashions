@@ -1395,6 +1395,10 @@ function renderCategoryDropdown(){
   const filtered = allCategories.filter(c => c.section === section);
   if(!sel) return;
   sel.innerHTML = filtered.map(c => `<option value="${c.name}">${c.name}</option>`).join("") + `<option value="__add_new__">+ Add New Category</option>`;
+  const inlineDiv = document.getElementById("new-cat-inline");
+  if(inlineDiv){
+    inlineDiv.style.display = sel.value === "__add_new__" ? "flex" : "none";
+  }
 }
 
 async function addCategoryInline(){
