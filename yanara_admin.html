@@ -1511,9 +1511,9 @@ async function loadProductsFromFirebase(){
   try{
     const snap = await window.fsGetDocs(window.fsCollection(window.db,"products"));
     products = [];
-    snap.forEach(d => {
+   snap.forEach(d => {
       const p = d.data();
-      // map 'category' field to match admin's expected field
+      p.id = d.id; // ← use Firebase document ID as product id
       if(p.category && !p.cat) p.cat = p.category;
       if(!p.images) p.images = [];
       products.push(p);
