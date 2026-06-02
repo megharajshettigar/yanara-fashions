@@ -1628,6 +1628,14 @@ function deleteProduct(id) {
   if (!confirm('Delete this product? This cannot be undone.')) return;
   products = products.filter(p => p.id !== id);
   saveProductsLocal();
+  if(window.db){
+    const ref = window.fsDoc(window.db, "products", id);
+    window.fsDeleteDoc(ref).then(()=>{
+      showToast('Product deleted from Firebase ✓', 'success');
+    }).catch(e=>{
+      showToast('Firebase delete error: '+e.message, 'error');
+    });
+  }
   renderProducts();
   renderDashboard();
   showToast('Product deleted', 'success');
