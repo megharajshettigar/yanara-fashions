@@ -932,9 +932,6 @@
           <div class="section-title">All Products (<span id="product-count">0</span>)</div>
           <button class="btn-primary" onclick="openProductModal()">+ Add Product</button>
           <button class="btn-secondary" onclick="importExistingProducts()" style="margin-left:10px">↑ Import Existing Products</button>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            Add Product
-          </button>
         </div>
         <div class="search-bar">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -1068,7 +1065,6 @@
       <div class="form-group">
         <label>Category *</label>
         <select id="p-cat" onchange="document.getElementById('new-cat-inline').style.display=this.value==='__add_new__'?'flex':'none'">
-        </select>
         </select>
         <div id="new-cat-inline" style="display:none;flex-direction:row;gap:8px;margin-top:8px">
           <input id="new-cat-inline-name" placeholder="New category name" style="flex:1;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 12px;font-size:12px">
@@ -1400,8 +1396,6 @@ function renderCategoryDropdown(){
   if(!sel) return;
   sel.innerHTML = filtered.map(c => `<option value="${c.name}">${c.name}</option>`).join("") + `<option value="__add_new__">+ Add New Category</option>`;
 }
-  initCatDropdown();
-}
 
 async function addCategoryInline(){
   const name = document.getElementById("new-cat-inline-name").value.trim();
@@ -1618,7 +1612,6 @@ function saveProduct() {
     showToast('Please fill in Name, Code and Price', 'error');
     return;
   }
-}
 
   const sizes = [...document.querySelectorAll('.size-chip.selected')].map(c => c.textContent);
   const images = ikUploadedUrls.slice();
