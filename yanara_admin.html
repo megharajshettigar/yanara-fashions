@@ -1147,6 +1147,14 @@ async function getIKAuth(){
 async function uploadToIK(files){
   const status = document.getElementById("ik-upload-status");
   const preview = document.getElementById("ik-preview-list");
+  const code = document.getElementById("p-code").value.trim();
+  const section = document.getElementById("p-section").value;
+  const category = document.getElementById("p-cat").value;
+  if(!code || !section || !category){
+    status.textContent = "Please fill Section, Category and Code before uploading.";
+    return;
+  }
+  const folder = "/" + section + "/" + encodeURIComponent(category) + "/" + code + "/";
   for(let i=0; i<files.length; i++){
     const file = files[i];
     status.textContent = `Uploading ${i+1} of ${files.length}...`;
@@ -1158,7 +1166,8 @@ async function uploadToIK(files){
       const auth = await getIKAuth();
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("fileName", file.name);
+      formData.append("fileName", code + "-" + i + ".jpg");
+      formData.append("folder", folder);
       formData.append("publicKey", IK_PUBLIC_KEY);
       formData.append("token", auth.token);
       formData.append("expire", auth.expire);
