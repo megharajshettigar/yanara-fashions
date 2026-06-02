@@ -1189,7 +1189,46 @@ async function uploadToIK(files){
   }
   status.textContent = ikUploadedUrls.length+" image(s) ready";
 }
+async function uploadThumb(files){
+  if(!files || !files.length) return;
+  const code = document.getElementById("p-code").value.trim();
+  const section = document.getElementById("p-section").value;
+  const category = document.getElementById("p-cat").value;
+  if(!code || !section || !category){
+    document.getElementById("ik-thumb-status").textContent = "Please fill Section, Category and Code before uploading.";
+    return;
+  }
+  const folder = "/" + section + "/" + encodeURIComponent(category) + "/" + code + "/";
+  const file = files[0];
+  const status = document.getElementById("ik-thumb-status");
+  const preview = document.getElementById("ik-thumb-preview");
+  status.textContent = "Uploading thumbnail...";
+  try{
+    const auth = await getIKAuth();
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("fileName", code + "-thumb.jpg");
+    formData.append("folder", folder);
+    formData.append("publicKey", IK_PUBLIC_KEY);
+    formData.append("token", auth.token);
+    formData.append("expire", auth.expire);
+    formData.append("signature", auth.signature);
+    const res = await fetch(IK_UPLOAD_URL, {method:"POST", body:formData});
+    const data = await res.json();
+    if(data.url){
+      ikThumbnailUrl = data.url;
+      preview.innerHTML = `<div class="ik-thumb-wrap"><img src="${data.url}" alt="thumbnail"><button class="ik-thumb-remove" onclick="ikThumbnailUrl='';document.getElementById('ik-thumb-preview').innerHTML='';document.getElementById('ik-thumb-status').textContent=''">×</button></div>`;
+      status.textContent = "Thumbnail ready ✓";
+    }else{
+      status.textContent = "Upload failed: "+(data.message||"unknown error");
+    }
+  }catch(err){
+    status.textContent = "Error: "+err.message;
+  }
+}
 
+function removeIKImg(idx){
+  
 function removeIKImg(idx){
   ikUploadedUrls.splice(idx, 1);
   renderIKPreviews();
