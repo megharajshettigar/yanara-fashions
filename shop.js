@@ -274,6 +274,7 @@ function openP(id){
   }
   const group=colorGroups[p.code]||[];
   const detailSwatches=group.length>1?`<div class="pswatches" style="margin:16px 0">${group.map(code=>{const gp=getAllProducts().find(x=>x.code===code);return gp?`<div class="pswatch${code===p.code?' on':''}" style="background:${colorDots[code]||'#333'}" onclick="openP('${gp.id}')" title="${code}"></div>`:''}).join("")}</div>`:p.colorHex?`<div class="pswatches" style="margin:16px 0"><div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div></div>`:"";
+  const swatchEl=document.getElementById("detail-swatches");
   if(swatchEl)swatchEl.innerHTML=detailSwatches;
   const related=getAllProducts().filter(x=>x.cat===p.cat&&x.id!==p.id).slice(0,4);
   document.getElementById("related-products").innerHTML=related.map(r=>card(r,"openP")).join("");
