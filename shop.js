@@ -141,6 +141,11 @@ function getAllProducts(){
   return [...hardcoded, ...firebaseProducts];
 }
 
+function getStyleVariants(p){
+  if(!p.styleName) return [];
+  return getAllProducts().filter(x=>x.styleName===p.styleName && x.id!==p.id && x.colorHex);
+}
+
 // ── CARD ──
 // ── COLOR GROUPS ──
 const colorGroups = {
@@ -172,7 +177,8 @@ function card(p,fn){
   const img=p.imgs&&p.imgs.length?`<img src="${cardImg(p.imgs[0])}" alt="${p.name}" loading="lazy" onerror="imgFallback(this)">`:`<div class="pimg-ph">👔</div>`;
   const badge=p.badge?`<div class="pbadge">${p.badge}</div>`:"";
   const group=colorGroups[p.code]||[];
-  const swatches=group.length>1?`<div class="pswatches">${group.map(code=>`<div class="pswatch${code===p.code?' on':''}" style="background:${colorDots[code]||'#333'}" onclick="event.stopPropagation();${fn}('${code}')" title="${code}"></div>`).join("")}</div>`:p.colorHex?`<div class="pswatches"><div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div></div>`:"";
+  const variants=getStyleVariants(p);
+  const swatches=group.length>1?`<div class="pswatches">${group.map(code=>`<div class="pswatch${code===p.code?' on':''}" style="background:${colorDots[code]||'#333'}" onclick="event.stopPropagation();${fn}('${code}')" title="${code}"></div>`).join("")}</div>`:variants.length>0?`<div class="pswatches">${p.colorHex?`<div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div>`:""} ${variants.map(v=>`<div class="pswatch" style="background:${v.colorHex}" onclick="event.stopPropagation();${fn}('${v.id}')" title="${v.color||''}"></div>`).join("")}</div>`:p.colorHex?`<div class="pswatches"><div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div></div>`:"";
   return`<div class="pcard" onclick="${fn}('${p.id}')">
     <div class="pimg">${badge}${img}<button class="pwish" onclick="event.stopPropagation();toast('Saved to wishlist ♡')"><i class="ti ti-heart"></i></button></div>
     <div class="pinfo">
@@ -273,7 +279,8 @@ function openP(id){
     thumbsEl.innerHTML="";counter.textContent="";
   }
   const group=colorGroups[p.code]||[];
-  const detailSwatches=group.length>1?`<div class="pswatches" style="margin:16px 0">${group.map(code=>{const gp=getAllProducts().find(x=>x.code===code);return gp?`<div class="pswatch${code===p.code?' on':''}" style="background:${colorDots[code]||'#333'}" onclick="openP('${gp.id}')" title="${code}"></div>`:''}).join("")}</div>`:p.colorHex?`<div class="pswatches" style="margin:16px 0"><div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div></div>`:"";
+  const variants=getStyleVariants(p);
+  const detailSwatches=group.length>1?`<div class="pswatches" style="margin:16px 0">${group.map(code=>{const gp=getAllProducts().find(x=>x.code===code);return gp?`<div class="pswatch${code===p.code?' on':''}" style="background:${colorDots[code]||'#333'}" onclick="openP('${gp.id}')" title="${code}"></div>`:''}).join("")}</div>`:variants.length>0?`<div class="pswatches" style="margin:16px 0">${p.colorHex?`<div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div>`:""} ${variants.map(v=>`<div class="pswatch" style="background:${v.colorHex}" onclick="openP('${v.id}')" title="${v.color||''}"></div>`).join("")}</div>`:p.colorHex?`<div class="pswatches" style="margin:16px 0"><div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div></div>`:"";
   const swatchEl=document.getElementById("detail-swatches");
   if(swatchEl)swatchEl.innerHTML=detailSwatches;
   const related=getAllProducts().filter(x=>x.cat===p.cat&&x.id!==p.id).slice(0,4);
