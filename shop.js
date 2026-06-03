@@ -172,8 +172,7 @@ function card(p,fn){
   const img=p.imgs&&p.imgs.length?`<img src="${cardImg(p.imgs[0])}" alt="${p.name}" loading="lazy" onerror="imgFallback(this)">`:`<div class="pimg-ph">👔</div>`;
   const badge=p.badge?`<div class="pbadge">${p.badge}</div>`:"";
   const group=colorGroups[p.code]||[];
-  const swatches=group.length>1?`<div class="pswatches">${group.map(code=>`<div class="pswatch${code===p.code?' on':''}" style="background:${colorDots[code]||'#333'}" onclick="event.stopPropagation();${fn}('${code}')" title="${code}"></div>`).join("")}</div>`:"";
-  return`<div class="pcard" onclick="${fn}('${p.id}')">
+  const swatches=group.length>1?`<div class="pswatches">${group.map(code=>`<div class="pswatch${code===p.code?' on':''}" style="background:${colorDots[code]||'#333'}" onclick="event.stopPropagation();${fn}('${code}')" title="${code}"></div>`).join("")}</div>`:p.colorHex?`<div class="pswatches"><div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div></div>`:"";
     <div class="pimg">${badge}${img}<button class="pwish" onclick="event.stopPropagation();toast('Saved to wishlist ♡')"><i class="ti ti-heart"></i></button></div>
     <div class="pinfo">
       <div class="pcode">${p.code}</div>
@@ -273,8 +272,7 @@ function openP(id){
     thumbsEl.innerHTML="";counter.textContent="";
   }
   const group=colorGroups[p.code]||[];
-  const detailSwatches=group.length>1?`<div class="pswatches" style="margin:16px 0">${group.map(code=>{const gp=getAllProducts().find(x=>x.code===code);return gp?`<div class="pswatch${code===p.code?' on':''}" style="background:${colorDots[code]||'#333'}" onclick="openP('${gp.id}')" title="${code}"></div>`:''}).join("")}</div>`:"";
-  const swatchEl=document.getElementById("detail-swatches");
+  const detailSwatches=group.length>1?`<div class="pswatches" style="margin:16px 0">${group.map(code=>{const gp=getAllProducts().find(x=>x.code===code);return gp?`<div class="pswatch${code===p.code?' on':''}" style="background:${colorDots[code]||'#333'}" onclick="openP('${gp.id}')" title="${code}"></div>`:''}).join("")}</div>`:p.colorHex?`<div class="pswatches" style="margin:16px 0"><div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div></div>`:"";
   if(swatchEl)swatchEl.innerHTML=detailSwatches;
   const related=getAllProducts().filter(x=>x.cat===p.cat&&x.id!==p.id).slice(0,4);
   document.getElementById("related-products").innerHTML=related.map(r=>card(r,"openP")).join("");
