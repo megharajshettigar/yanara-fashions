@@ -1083,6 +1083,14 @@
     </div>
 
     <div class="form-group">
+      <label>Color Swatch</label>
+      <div style="display:flex;align-items:center;gap:12px">
+        <input type="color" id="p-color-hex" value="#1a1a1a" style="width:48px;height:48px;border:none;background:none;cursor:pointer;padding:0">
+        <span style="font-size:12px;color:var(--text-dim)">Pick the product colour</span>
+      </div>
+    </div>
+
+    <div class="form-group">
       <label>Available Sizes</label>
       <div class="sizes-grid" id="sizes-grid">
         <div class="size-chip" onclick="toggleSize(this,'XS')">XS</div>
@@ -1593,6 +1601,7 @@ function openProductModal(id) {
     document.getElementById('p-cat').value = p.category;
     document.getElementById('p-price').value = p.price;
     document.getElementById('p-color').value = p.color || '';
+    document.getElementById('p-color-hex').value = p.colorHex || '#1a1a1a';
     document.getElementById('p-desc').value = p.desc || '';
     // sizes
     document.querySelectorAll('.size-chip').forEach(chip => {
@@ -1606,6 +1615,7 @@ function openProductModal(id) {
     document.getElementById('p-code').value = '';
     document.getElementById('p-price').value = '';
     document.getElementById('p-color').value = '';
+    document.getElementById('p-color-hex').value = '#1a1a1a';
     document.getElementById('p-desc').value = '';
     document.getElementById('p-cat').value = 'Blazer Sets';
     document.querySelectorAll('.size-chip').forEach(c => c.classList.remove('selected'));
@@ -1688,6 +1698,7 @@ function saveProduct() {
     category: cat,
     section: document.getElementById('p-section').value,
     color: document.getElementById('p-color').value.trim(),
+    colorHex: document.getElementById('p-color-hex').value,
     desc: document.getElementById('p-desc').value.trim(),
     sizes, images,
     thumbnail: ikThumbnailUrl || (images[0] || ""),
