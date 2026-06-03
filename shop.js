@@ -231,12 +231,11 @@ function renderShop(){
   var minEl=document.getElementById("price-min");
   var maxEl=document.getElementById("price-max");
   if(minEl&&maxEl){
-    var lo=parseInt(minEl.value,10), hi=parseInt(maxEl.value,10);
-    // guard: if user crosses sliders, swap
+    var lo=parseInt(minEl.value,10)||0;
+    var hi=parseInt(maxEl.value,10)||999999;
+    if(lo<0)lo=0; if(hi<0)hi=0;
     if(lo>hi){var t=lo;lo=hi;hi=t;}
     filtered=filtered.filter(p=>p.price>=lo&&p.price<=hi);
-    var lbl=document.getElementById("price-label");
-    if(lbl)lbl.textContent="₹"+lo.toLocaleString()+" — ₹"+hi.toLocaleString();
   }
 
   const ct=document.getElementById("sct");
