@@ -1139,6 +1139,7 @@ const IK_PUBLIC_KEY = "public_ovqUUetEwVuz+KqXCWDMvwXgi+k=";
 const IK_URL_ENDPOINT = "https://ik.imagekit.io/megharaj";
 const IK_UPLOAD_URL = "https://upload.imagekit.io/api/v1/files/upload";
 let ikUploadedUrls = [];
+let ikThumbnailUrl = "";
 
 async function getIKAuth(){
   const token = crypto.randomUUID ? crypto.randomUUID() : Date.now().toString();
@@ -1685,9 +1686,12 @@ function saveProduct() {
     id: editingId || 'p_' + Date.now(),
     name, code, price: Number(price),
     category: cat,
+    section: document.getElementById('p-section').value,
     color: document.getElementById('p-color').value.trim(),
     desc: document.getElementById('p-desc').value.trim(),
-    sizes, images
+    sizes, images,
+    thumbnail: ikThumbnailUrl || (images[0] || ""),
+    gallery: images
   };
 
   if (editingId) {
