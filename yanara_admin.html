@@ -1078,6 +1078,11 @@
     </div>
 
     <div class="form-group">
+      <label>Style Name</label>
+      <input type="text" id="p-style-name" placeholder="e.g. Classic Bandhgala, Draped Collar Blazer">
+    </div>
+
+    <div class="form-group">
       <label>Color Name</label>
       <input type="text" id="p-color" placeholder="e.g. Midnight Black, Royal Blue">
     </div>
@@ -1600,6 +1605,7 @@ function openProductModal(id) {
     document.getElementById('p-code').value = p.code;
     document.getElementById('p-cat').value = p.category;
     document.getElementById('p-price').value = p.price;
+    document.getElementById('p-style-name').value = p.styleName || '';
     document.getElementById('p-color').value = p.color || '';
     document.getElementById('p-color-hex').value = p.colorHex || '#1a1a1a';
     document.getElementById('p-desc').value = p.desc || '';
@@ -1614,6 +1620,7 @@ function openProductModal(id) {
     document.getElementById('p-name').value = '';
     document.getElementById('p-code').value = '';
     document.getElementById('p-price').value = '';
+    document.getElementById('p-style-name').value = '';
     document.getElementById('p-color').value = '';
     document.getElementById('p-color-hex').value = '#1a1a1a';
     document.getElementById('p-desc').value = '';
@@ -1697,6 +1704,7 @@ function saveProduct() {
     name, code, price: Number(price),
     category: cat,
     section: document.getElementById('p-section').value,
+    styleName: document.getElementById('p-style-name').value.trim(),
     color: document.getElementById('p-color').value.trim(),
     colorHex: document.getElementById('p-color-hex').value,
     desc: document.getElementById('p-desc').value.trim(),
