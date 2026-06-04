@@ -180,7 +180,7 @@ function card(p,fn){
   const variants=getStyleVariants(p);
   const swatches=group.length>1?`<div class="pswatches">${group.map(code=>`<div class="pswatch${code===p.code?' on':''}" style="background:${colorDots[code]||'#333'}" onclick="event.stopPropagation();${fn}('${code}')" title="${code}"></div>`).join("")}</div>`:variants.length>0?`<div class="pswatches">${p.colorHex?`<div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div>`:""} ${variants.map(v=>`<div class="pswatch" style="background:${v.colorHex}" onclick="event.stopPropagation();${fn}('${v.id}')" title="${v.color||''}"></div>`).join("")}</div>`:p.colorHex?`<div class="pswatches"><div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div></div>`:"";
   return`<div class="pcard" onclick="${fn}('${p.id}')">
-    <div class="pimg">${badge}${img}<button class="pwish" onclick="event.stopPropagation();toggleWishlist(${p.id})"><i class="ti ti-heart"></i></button></div>
+    <div class="pimg">${badge}${img}<button class="pwish" onclick="event.stopPropagation();toggleWishlist('${p.id}')"><i class="ti ti-heart"></i></button></div>
     <div class="pinfo">
       <div class="pcode">${p.code}</div>
       <div class="pcat">${p.cat}</div>
