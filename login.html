@@ -386,7 +386,7 @@ function showLoggedState(user){
 // ── ON LOAD: check if already logged in ──
 (function init(){
   var user=getCurrentUser();
-  if(user)showLoggedState(user);
+  if(user) window.location.href="account.html";
 })();
 </script>
 </body>
