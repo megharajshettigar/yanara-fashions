@@ -846,7 +846,11 @@ function go(page){
 
 // ── INIT ──
 renderHome();
-</script>
+(function checkURLParam(){
+  const params = new URLSearchParams(window.location.search);
+  const page = params.get("page");
+  if(page) setTimeout(()=>go(page), 500);
+})();</script>
 <!-- Firebase SDK -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
