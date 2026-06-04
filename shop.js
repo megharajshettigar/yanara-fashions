@@ -180,7 +180,7 @@ function card(p,fn){
   const variants=getStyleVariants(p);
   const swatches=group.length>1?`<div class="pswatches">${group.map(code=>`<div class="pswatch${code===p.code?' on':''}" style="background:${colorDots[code]||'#333'}" onclick="event.stopPropagation();${fn}('${code}')" title="${code}"></div>`).join("")}</div>`:variants.length>0?`<div class="pswatches">${p.colorHex?`<div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div>`:""} ${variants.map(v=>`<div class="pswatch" style="background:${v.colorHex}" onclick="event.stopPropagation();${fn}('${v.id}')" title="${v.color||''}"></div>`).join("")}</div>`:p.colorHex?`<div class="pswatches"><div class="pswatch on" style="background:${p.colorHex}" title="${p.color||''}"></div></div>`:"";
   return`<div class="pcard" onclick="${fn}('${p.id}')">
-    <div class="pimg">${badge}${img}<button class="pwish" onclick="event.stopPropagation();toast('Saved to wishlist ♡')"><i class="ti ti-heart"></i></button></div>
+    <div class="pimg">${badge}${img}<button class="pwish" onclick="event.stopPropagation();toggleWishlist(p)"><i class="ti ti-heart"></i></button></div>
     <div class="pinfo">
       <div class="pcode">${p.code}</div>
       <div class="pcat">${p.cat}</div>
@@ -429,4 +429,28 @@ function loadReviews(pid){
         <div class="rev-card-date">${r.date}</div>
       </div>
     </div>`).join("");
+}
+
+async function toggleWishlist(p){
+  let user;
+  try{user=JSON.parse(localStorage.getItem("yanara-current-user")||"null");}catch(e){user=null;}
+  if(!user){toast("Please login to save to wishlist");return;}
+  if(!window.db){toast("Service unavailable");return;}
+  try{
+    const col=window.fsCollection(window.db,"wishlists/"+user.email+"/items");
+    const docRef=window.fsDoc(window.db,"wishlists/"+user.email+"/items/"+p.id);
+    const snap=await window.fsGetDocs(col);
+    const exists=snap.docs.some(d=>d.id===String(p.id));
+    if(exists){
+      await window.fsDeleteDoc(docRef);
+      toast("Removed from wishlist");
+    }else{
+      await window.fsSetDoc(docRef,{
+        id:p.id,name:p.name,price:p.price,
+        img:p.imgs&&p.imgs[0]?p.imgs[0]:"",
+        code:p.code,addedAt:Date.now()
+      });
+      toast("Saved to wishlist ♡");
+    }
+  }catch(e){toast("Error: "+e.message);}
 }
