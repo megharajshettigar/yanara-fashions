@@ -440,9 +440,9 @@ async function toggleWishlist(pid){
   if(!window.db){toast("Service unavailable");return;}
   try{
     const col=window.fsCollection(window.db,"wishlists/"+user.email+"/items");
-    const docRef=window.fsDoc(window.db,"wishlists/"+user.email+"/items/"+p.id);
+    const docRef=window.fsDoc(window.db,"wishlists/"+user.email+"/items/"+String(pid));
     const snap=await window.fsGetDocs(col);
-    const exists=snap.docs.some(d=>d.id===String(p.id));
+    const exists=snap.docs.some(d=>d.id===String(pid));
     if(exists){
       await window.fsDeleteDoc(docRef);
       toast("Removed from wishlist");
