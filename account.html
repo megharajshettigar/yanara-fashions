@@ -296,7 +296,7 @@ async function loadWishlist(){
     const items = [];
     snap.forEach(d => items.push({...d.data(), docId: d.id}));
     el.innerHTML = `<div class="wishlist-grid">${items.map(p=>`
-      <div class="wish-card" onclick="window.location.href='index.html'">
+      <div class="wish-card" onclick="window.location.href='index.html?page=shop&product=${p.id}'">
         ${p.img ? `<img class="wish-img" src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">` : `<div class="wish-img-ph">👔</div>`}
         <div class="wish-info">
           <div class="wish-name">${p.name||"Product"}</div>
