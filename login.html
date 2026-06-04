@@ -328,7 +328,7 @@ function doSignIn(){
   if(found){
     setCurrentUser({name:found.name,email:found.email});
     showMsg("Welcome back, "+found.name.split(" ")[0]+"! Redirecting...","ok");
-    setTimeout(function(){window.location.href="index.html";},900);
+    setTimeout(function(){window.location.href="account.html";},900);
   }else{
     showMsg("Invalid email or password. Please try again.");
   }
@@ -357,7 +357,7 @@ function doSignUp(){
   saveAccounts(accounts);
   setCurrentUser({name:name,email:email});
   showMsg("Account created! Welcome to YANARA, "+name.split(" ")[0]+"!","ok");
-  setTimeout(function(){window.location.href="index.html";},1000);
+  setTimeout(function(){window.location.href="account.html";},1000);
 }
 
 // ── LOGOUT ──
