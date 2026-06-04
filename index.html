@@ -634,7 +634,7 @@ body.designer-mode .logo span{color:var(--gold2)}
       <div class="sgrid" id="size-grid"></div>
       <div class="dst">Quantity</div>
       <div class="qrow"><div class="qctrl"><button class="qb" onclick="chQ(-1)">−</button><div class="qv" id="qv">1</div><button class="qb" onclick="chQ(1)">+</button></div></div>
-      <div class="dacts"><button class="bfull" onclick="addCur()">Add to Cart</button><button class="bwish" onclick="toast('Saved to wishlist ♡')"><i class="ti ti-heart"></i></button></div>
+      <div class="dacts"><button class="bfull" onclick="addCur()">Add to Cart</button><button class="bwish" onclick="curProd&&toggleWishlist(curProd.id)"><i class="ti ti-heart"></i></button></div>
       <div class="dmeta">
         <div class="mr2"><span class="ml2">SKU</span><span id="dcode"></span></div>
         <div class="mr2"><span class="ml2">Designer</span><span style="color:var(--gold)">Ramya — YANARA Fashion</span></div>
