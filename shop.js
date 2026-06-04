@@ -186,7 +186,7 @@ function card(p,fn){
       <div class="pcat">${p.cat}</div>
       <div class="pname">${p.name}</div>
       <div class="pcur">₹${p.price.toLocaleString()}</div>
-      <button class="atcb" onclick="event.stopPropagation();addCart('${p.id}')">Add to Cart</button>
+      <button class="atcb" onclick="event.stopPropagation();toggleWishlist(${p.id})">Add to Cart</button>
     </div>
   </div>`;
 }
@@ -431,7 +431,9 @@ function loadReviews(pid){
     </div>`).join("");
 }
 
-async function toggleWishlist(p){
+async function toggleWishlist(pid){
+  const p=getAllProducts().find(x=>x.id===pid||x.id===String(pid));
+  if(!p)return;
   let user;
   try{user=JSON.parse(localStorage.getItem("yanara-current-user")||"null");}catch(e){user=null;}
   if(!user){toast("Please login to save to wishlist");return;}
