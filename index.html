@@ -819,7 +819,13 @@ function closeMobileMenu(){
 // ── ACCOUNT / LOGIN ──
 function goLogin(){
   closeMobileMenu();
-  window.location.href="login.html";
+  try{
+    const user = JSON.parse(localStorage.getItem("yanara-current-user")||"null");
+    if(user) window.location.href="account.html";
+    else window.location.href="login.html";
+  }catch(e){
+    window.location.href="login.html";
+  }
 }
 
 // ── NAVIGATION ──
