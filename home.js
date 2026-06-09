@@ -327,6 +327,9 @@ const HOME_HTML = `
     <div class="ed-scroll-hint" onclick="this.closest('.ed-stack-item').nextElementSibling.scrollIntoView({behavior:'smooth'})">
       <span>Scroll</span><i class="ti ti-chevron-down"></i>
     </div>
+    <div class="ed-scroll-hint" onclick="this.closest('.ed-stack-item').nextElementSibling.scrollIntoView({behavior:'smooth'})">
+      <span>Scroll</span><i class="ti ti-chevron-down"></i>
+    </div>
     </div>
   </section>
   <section class="ed-stack-item" style="padding:0 0 80px;background:var(--bg2);position:relative">
