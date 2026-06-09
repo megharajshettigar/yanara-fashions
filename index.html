@@ -838,7 +838,7 @@ function goLogin(){
 }
 
 // ── NAVIGATION ──
-function go(page){
+function go(page, pushState=true){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   document.getElementById("page-"+page).classList.add("active");
   ["nh","ns","nd","na"].forEach(id=>document.getElementById(id)?.classList.remove("on"));
@@ -851,7 +851,14 @@ function go(page){
   if(page==="shop"){shopFilter=shopFilter||"All";occFilter="";renderShop();}
   if(page==="cart")renderCart();
   if(page==="checkout")renderCheckout();
+  if(pushState) history.pushState({page}, "", "?page="+page);
 }
+
+// ── HANDLE BROWSER BACK/FORWARD ──
+window.addEventListener("popstate", function(e){
+  const page = e.state?.page || "home";
+  go(page, false);
+});
 
 // ── INIT ──
 renderHome();
