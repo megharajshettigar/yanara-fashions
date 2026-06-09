@@ -108,7 +108,7 @@ function imgFallback(el){
 }
 
 let cart=[],disc=0,curProd=null,curImgIdx=0,shopFilter="All",occFilter="",qty=1,shopSection="Men";
-let shopPage=0,shopPageSize=12,shopFiltered=[],shopAllLoaded=false;
+let shopPage=0,shopPageSize=8,shopFiltered=[],shopAllLoaded=false;
 try{cart=JSON.parse(localStorage.getItem("yanara-cart")||"[]");}catch(e){cart=[];}
 setTimeout(()=>updCC(),500);
 // ── FIREBASE PRODUCTS ──
@@ -130,8 +130,9 @@ async function loadFirebaseProducts(){
       firebaseProducts.push(p);
     });
     if(firebaseProducts.length > 0){
-      renderShop();
-    }
+    shopPage=0;shopFiltered=[];shopAllLoaded=false;
+    renderShop();
+  }
   }catch(e){
     console.error("Firebase load error:", e);
   }
