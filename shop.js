@@ -108,6 +108,7 @@ function imgFallback(el){
 }
 
 let cart=[],disc=0,curProd=null,curImgIdx=0,shopFilter="All",occFilter="",qty=1,shopSection="Men";
+let shopPage=0,shopPageSize=12,shopFiltered=[],shopAllLoaded=false;
 try{cart=JSON.parse(localStorage.getItem("yanara-cart")||"[]");}catch(e){cart=[];}
 setTimeout(()=>updCC(),500);
 // ── FIREBASE PRODUCTS ──
@@ -242,9 +243,39 @@ function renderShop(){
 
   const ct=document.getElementById("sct");
   if(ct)ct.textContent=`${filtered.length} product${filtered.length!==1?"s":""}${occFilter?" — "+occFilter+" Collection":""}`;
+  shopPage=0;shopFiltered=filtered;shopAllLoaded=false;
   const grid=document.getElementById("shop-products");
-  if(grid)grid.innerHTML=filtered.length?filtered.map(p=>card(p,"openP")).join(""):"<div style='padding:60px;color:var(--gray);text-align:center;grid-column:1/-1'>No products found.</div>";
+  if(!grid)return;
+  if(!filtered.length){grid.innerHTML="<div style='padding:60px;color:var(--gray);text-align:center;grid-column:1/-1'>No products found.</div>";return;}
+  grid.innerHTML=filtered.slice(0,shopPageSize).map(p=>card(p,"openP")).join("");
+  shopPage=1;
+  shopAllLoaded=filtered.length<=shopPageSize;
+  const sentinel=document.getElementById("shop-sentinel");
+  if(sentinel)sentinel.style.display=shopAllLoaded?"none":"flex";
 }
+
+function loadMoreShop(){
+  if(shopAllLoaded)return;
+  const start=shopPage*shopPageSize;
+  const next=shopFiltered.slice(start,start+shopPageSize);
+  if(!next.length){shopAllLoaded=true;return;}
+  const grid=document.getElementById("shop-products");
+  if(grid)grid.innerHTML+=next.map(p=>card(p,"openP")).join("");
+  shopPage++;
+  shopAllLoaded=shopPage*shopPageSize>=shopFiltered.length;
+  const sentinel=document.getElementById("shop-sentinel");
+  if(sentinel)sentinel.style.display=shopAllLoaded?"none":"flex";
+}
+
+(function initShopScroll(){
+  const observer=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting&&!shopAllLoaded)loadMoreShop();
+  },{threshold:0.1});
+  document.addEventListener("DOMContentLoaded",()=>{
+    const sentinel=document.getElementById("shop-sentinel");
+    if(sentinel)observer.observe(sentinel);
+  });
+})();
 
 function sortProducts(){
   const val=document.getElementById("sort-sel").value;
