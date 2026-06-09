@@ -1385,15 +1385,17 @@ function showPage(name, el) {
     products: ['Products', 'Manage your catalogue'],
     orders: ['Orders', 'Track and update orders'],
     categories: ['Categories', 'Manage product categories'],
-    settings: ['Settings', 'Store configuration']
+    settings: ['Settings', 'Store configuration'],
+    reviews: ['Reviews', 'Manage customer reviews']
   };
   document.getElementById('page-title').textContent = titles[name][0];
   document.getElementById('page-subtitle').textContent = titles[name][1];
 
   if (name === 'dashboard') renderDashboard();
   if (name === 'products') renderProducts();
-  if(page==="orders") renderOrders();
-  if(page==="reviews") renderReviews();}
+  if (name === 'orders') renderOrders();
+  if (name === 'reviews') renderReviews();
+}
 
 // ── DASHBOARD ──
 function renderDashboard() {
