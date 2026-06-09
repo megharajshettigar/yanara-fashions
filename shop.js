@@ -380,21 +380,42 @@ function placeOrder(){
 
 // ── REVIEWS ──
 var revStar=0;
-var reviews={};
 
 function setRevStar(n){
   revStar=n;
   document.querySelectorAll("#rev-star-input span").forEach((s,i)=>s.classList.toggle("on",i<n));
 }
 
+function checkRevAuth(){
+  const user=getCurrentUser();
+  const prompt=document.getElementById("rev-login-prompt");
+  const inner=document.getElementById("rev-form-inner");
+  if(!prompt||!inner)return;
+  if(user){
+    prompt.style.display="none";
+    inner.style.display="block";
+    const nameEl=document.getElementById("rev-name");
+    if(nameEl&&!nameEl.value)nameEl.value=user.name||"";
+  }else{
+    prompt.style.display="block";
+    inner.style.display="none";
+  }
+}
+
+function getCurrentUser(){
+  try{return JSON.parse(localStorage.getItem("yanara-current-user")||"null");}catch(e){return null;}
+}
+
 function submitReview(){
+  const user=getCurrentUser();
+  if(!user){toast("Please login to write a review");return;}
   if(!curProd){return;}
   const name=document.getElementById("rev-name").value.trim();
   const comment=document.getElementById("rev-comment").value.trim();
   const file=document.getElementById("rev-photo").files[0];
   if(!name||!comment||!revStar){toast("Please fill name, stars and comment");return;}
   const date=new Date().toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
-  const rev={name,comment,star:revStar,date,photo:""};
+  const rev={name,comment,star:revStar,date,photo:"",userId:user.email||"",userName:user.name||user.email||""};
   if(file){
     const reader=new FileReader();
     reader.onload=function(e){rev.photo=e.target.result;saveReview(rev);};
@@ -402,36 +423,55 @@ function submitReview(){
   }else{saveReview(rev);}
 }
 
-function saveReview(rev){
-  const key="reviews_"+curProd.id;
-  const existing=JSON.parse(localStorage.getItem(key)||"[]");
-  existing.unshift(rev);
-  localStorage.setItem(key,JSON.stringify(existing));
-  document.getElementById("rev-name").value="";
-  document.getElementById("rev-comment").value="";
-  document.getElementById("rev-photo").value="";
-  revStar=0;
-  setRevStar(0);
-  toast("Review submitted! Thank you 🙏");
-  loadReviews(curProd.id);
+async function saveReview(rev){
+  if(!window.db){toast("Service unavailable");return;}
+  try{
+    await window.fsAddDoc(window.fsCollection(window.db,"reviews_"+curProd.id),rev);
+    document.getElementById("rev-name").value="";
+    document.getElementById("rev-comment").value="";
+    document.getElementById("rev-photo").value="";
+    revStar=0;setRevStar(0);
+    toast("Review submitted! Thank you 🙏");
+    loadReviews(curProd.id);
+  }catch(e){toast("Error: "+e.message);}
 }
 
-function loadReviews(pid){
-  const key="reviews_"+pid;
-  const list=JSON.parse(localStorage.getItem(key)||"[]");
+async function deleteReview(pid,docId){
+  if(!confirm("Delete this review?"))return;
+  try{
+    await window.fsDeleteDoc(window.fsDoc(window.db,"reviews_"+pid,docId));
+    loadReviews(pid);
+    toast("Review deleted");
+  }catch(e){toast("Error deleting review");}
+}
+
+async function loadReviews(pid){
   const el=document.getElementById("review-list");
   if(!el)return;
-  if(!list.length){el.innerHTML="<div style='font-size:12px;color:var(--gray);padding:20px 0'>No reviews yet. Be the first!</div>";return;}
-  el.innerHTML=list.map(r=>`
-    <div class="rev-card">
-      ${r.photo?`<img class="rev-card-photo" src="${r.photo}" alt="review photo">`:`<div class="rev-card-photo" style="background:var(--bg2);display:flex;align-items:center;justify-content:center"><i class="ti ti-user" style="color:var(--gray);font-size:22px"></i></div>`}
-      <div class="rev-card-body">
-        <div class="rev-card-name">${r.name}</div>
-        <div class="rev-card-stars">${"★".repeat(r.star)}${"☆".repeat(5-r.star)}</div>
-        <div class="rev-card-comment">${r.comment}</div>
-        <div class="rev-card-date">${r.date}</div>
-      </div>
-    </div>`).join("");
+  checkRevAuth();
+  if(!window.db){el.innerHTML="<div style='font-size:12px;color:var(--gray);padding:20px 0'>Reviews unavailable.</div>";return;}
+  try{
+    el.innerHTML="<div style='font-size:12px;color:var(--gray);padding:20px 0'>Loading...</div>";
+    const snap=await window.fsGetDocs(window.fsCollection(window.db,"reviews_"+pid));
+    const user=getCurrentUser();
+    const list=[];
+    snap.forEach(d=>list.push({...d.data(),docId:d.id}));
+    list.sort((a,b)=>new Date(b.date)-new Date(a.date));
+    if(!list.length){el.innerHTML="<div style='font-size:12px;color:var(--gray);padding:20px 0'>No reviews yet. Be the first!</div>";return;}
+    el.innerHTML=list.map(r=>`
+      <div class="rev-card">
+        ${r.photo?`<img class="rev-card-photo" src="${r.photo}" alt="review photo">`:`<div class="rev-card-photo" style="background:var(--bg2);display:flex;align-items:center;justify-content:center"><i class="ti ti-user" style="color:var(--gray);font-size:22px"></i></div>`}
+        <div class="rev-card-body">
+          <div class="rev-card-name">${r.name}</div>
+          <div class="rev-card-stars">${"★".repeat(r.star)}${"☆".repeat(5-r.star)}</div>
+          <div class="rev-card-comment">${r.comment}</div>
+          <div class="rev-card-date">${r.date}</div>
+          ${user&&user.email===r.userId?`<button onclick="deleteReview('${pid}','${r.docId}')" style="background:none;border:none;color:var(--gray);font-size:11px;cursor:pointer;margin-top:6px;padding:0">Delete my review</button>`:""}
+        </div>
+      </div>`).join("");
+  }catch(e){
+    el.innerHTML="<div style='font-size:12px;color:var(--gray);padding:20px 0'>Error loading reviews.</div>";
+  }
 }
 
 async function toggleWishlist(pid){
