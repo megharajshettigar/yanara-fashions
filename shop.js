@@ -310,7 +310,7 @@ function addCur(){if(curProd)addCart(curProd.id,qty);}
 
 // ── CART ──
 function addCart(id,q=1){
-  const p=products.find(x=>x.id===id);if(!p)return;
+  const p=getAllProducts().find(x=>String(x.id)===String(id));if(!p)return;
   const ex=cart.find(x=>x.id===id);
   if(ex)ex.qty+=q;else cart.push({...p,qty:q});
   updCC();toast(`${p.name.split(" ").slice(0,3).join(" ")}... added to cart!`);
