@@ -162,10 +162,14 @@ const HOME_HTML = `
     @media (max-width:460px){
       .ed-rev-card{padding:22px 20px}
     }
+    .ed-scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;z-index:10;animation:bounceDown 2s infinite}
+    .ed-scroll-hint span{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
+    .ed-scroll-hint i{font-size:22px;color:var(--gold)}
+    @keyframes bounceDown{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
   </style>
   <!-- EDITORIAL HERO -->
   <div class="ed-stack">
-  <div class="ed-stack-item ed-hero">
+  <div class="ed-stack-item ed-hero" style="position:relative">
     <div class="ed-kicker">Premium Ethnic Wear · Est. 2025</div>
     <div class="ed-bigtype">
       <span class="l1">YANARA</span>
@@ -180,10 +184,13 @@ const HOME_HTML = `
       <img src="${IMG_HERO}" alt="YANARA SS25 Collection" loading="eager">
       <div class="ed-hero-archlabel">SS25 Collection</div>
     </div>
+    <div class="ed-scroll-hint" onclick="this.closest('.ed-stack-item').nextElementSibling.scrollIntoView({behavior:'smooth'})">
+      <span>Scroll</span><i class="ti ti-chevron-down"></i>
+    </div>
   </div>
 
   <!-- FEATURED PIECE -->
-  <section class="ed-stack-item ed-featured">
+  <section class="ed-stack-item ed-featured" style="position:relative">
     <div class="ed-feat-grid">
       <div class="ed-feat-left">
         <div class="ed-feat-num">Signature · 01</div>
@@ -215,11 +222,14 @@ const HOME_HTML = `
         <div class="ed-feat-thumb t2"><img id="feat-t2" src="" alt="detail"></div>
         <div class="ed-feat-price">${FEAT_PRICE}</div>
       </div>
+    <div class="ed-scroll-hint" onclick="this.closest('.ed-stack-item').nextElementSibling.scrollIntoView({behavior:'smooth'})">
+      <span>Scroll</span><i class="ti ti-chevron-down"></i>
+    </div>
     </div>
   </section>
 
   <!-- CATEGORY SHOWCASE -->
-  <section class="ed-stack-item ed-cats">
+  <section class="ed-stack-item ed-cats" style="position:relative">
     <div class="ed-cats-head">
       <div class="k">Explore</div>
       <h2>Shop by <em>Category</em></h2>
@@ -314,15 +324,24 @@ const HOME_HTML = `
           <div class="cb">Explore <i class="ti ti-arrow-right"></i></div>
         </div>
       </div>
+    <div class="ed-scroll-hint" onclick="this.closest('.ed-stack-item').nextElementSibling.scrollIntoView({behavior:'smooth'})">
+      <span>Scroll</span><i class="ti ti-chevron-down"></i>
+    </div>
     </div>
   </section>
-  <section class="ed-stack-item" style="padding:0 0 80px;background:var(--bg2)">
+  <section class="ed-stack-item" style="padding:0 0 80px;background:var(--bg2);position:relative">
     <div style="padding:50px 4% 40px;display:flex;align-items:flex-end;justify-content:space-between"><div><div class="stag">Just In</div><h2 class="stitle"><strong>New</strong> Arrivals</h2></div><a class="slink" onclick="go('shop')">View All →</a></div>
     <div style="padding:0 4%"><div class="ed-prod-row" id="new-arrivals"></div></div>
+    <div class="ed-scroll-hint" onclick="this.closest('.ed-stack-item').nextElementSibling.scrollIntoView({behavior:'smooth'})">
+      <span>Scroll</span><i class="ti ti-chevron-down"></i>
+    </div>
   </section>
-  <section class="ed-stack-item" style="padding:0 0 80px">
+  <section class="ed-stack-item" style="padding:0 0 80px;position:relative">
     <div style="padding:50px 4% 40px;display:flex;align-items:flex-end;justify-content:space-between"><div><div class="stag">Most Loved</div><h2 class="stitle">Best <strong>Sellers</strong></h2></div><a class="slink" onclick="go('shop')">View All →</a></div>
     <div style="padding:0 4%"><div class="ed-prod-row" id="bestsellers"></div></div>
+    <div class="ed-scroll-hint" onclick="this.closest('.ed-stack-item').nextElementSibling.scrollIntoView({behavior:'smooth'})">
+      <span>Scroll</span><i class="ti ti-chevron-down"></i>
+    </div>
   </section>
   <section class="ed-stack-item ed-reviews" id="ed-reviews">
     <div class="ed-rev-inner">
