@@ -271,10 +271,16 @@ function loadMoreShop(){
   const observer=new IntersectionObserver(entries=>{
     if(entries[0].isIntersecting&&!shopAllLoaded)loadMoreShop();
   },{threshold:0.1});
-  document.addEventListener("DOMContentLoaded",()=>{
+  function attachObserver(){
     const sentinel=document.getElementById("shop-sentinel");
-    if(sentinel)observer.observe(sentinel);
-  });
+    if(sentinel){observer.observe(sentinel);}
+    else{setTimeout(attachObserver,300);}
+  }
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",attachObserver);
+  }else{
+    attachObserver();
+  }
 })();
 
 function sortProducts(){
