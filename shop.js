@@ -108,6 +108,7 @@ function imgFallback(el){
 }
 
 let cart=[],disc=0,curProd=null,curImgIdx=0,shopFilter="All",occFilter="",qty=1,shopSection="Men";
+try{cart=JSON.parse(localStorage.getItem("yanara-cart")||"[]");}catch(e){cart=[];}
 // ── FIREBASE PRODUCTS ──
 var firebaseProducts = [];
 
@@ -186,7 +187,7 @@ function card(p,fn){
       <div class="pcat">${p.cat}</div>
       <div class="pname">${p.name}</div>
       <div class="pcur">₹${p.price.toLocaleString()}</div>
-      <button class=\"atcb\" onclick=\"event.stopPropagation();addCart(${p.id})\">Add to Cart</button>
+      <button class=\"atcb\" onclick=\"event.stopPropagation();addCart('${p.id}')\">Add to Cart</button>
     </div>
   </div>`;
 }
@@ -320,6 +321,7 @@ function updCC(){
   const t=cart.reduce((a,b)=>a+b.qty,0);
   document.getElementById("cc").textContent=t;
   const el=document.getElementById("ctitcc");if(el)el.textContent=t?`(${t} items)`:"";
+  try{localStorage.setItem("yanara-cart",JSON.stringify(cart));}catch(e){}
 }
 
 function removeCart(id){cart=cart.filter(x=>x.id!==id);updCC();renderCart();}
