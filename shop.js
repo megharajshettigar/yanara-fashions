@@ -109,6 +109,7 @@ function imgFallback(el){
 
 let cart=[],disc=0,curProd=null,curImgIdx=0,shopFilter="All",occFilter="",qty=1,shopSection="Men";
 try{cart=JSON.parse(localStorage.getItem("yanara-cart")||"[]");}catch(e){cart=[];}
+setTimeout(()=>updCC(),500);
 // ── FIREBASE PRODUCTS ──
 var firebaseProducts = [];
 
@@ -339,7 +340,7 @@ function renderCart(){
         <div class="cim">${item.code} · Size: M · Qty: ${item.qty}</div>
         <div class="cip">₹${(item.price*item.qty).toLocaleString()}</div>
       </div>
-      <button class="crm" onclick="removeCart(${item.id})"><i class="ti ti-trash"></i></button>
+      <button class="crm" onclick="removeCart('${item.id}')"><i class="ti ti-trash"></i></button>
     </div>`).join("");
   const sub=cart.reduce((a,b)=>a+(b.price*b.qty),0);
   document.getElementById("csub").textContent="₹"+sub.toLocaleString();
