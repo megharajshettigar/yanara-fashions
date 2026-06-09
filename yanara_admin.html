@@ -930,6 +930,10 @@
 
     <div class="nav-section">
       <div class="nav-label">Store</div>
+      <div class="nav-item" onclick="showPage('reviews',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Reviews
+      </div>
       <div class="nav-item" onclick="showPage('settings',this)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
         Settings
@@ -1019,6 +1023,16 @@
             </thead>
             <tbody id="orders-tbody"></tbody>
           </table>
+        </div>
+      </div>
+
+      <!-- REVIEWS -->
+      <div class="page" id="page-reviews">
+        <div class="section-header">
+          <div class="section-title">Reviews (<span id="reviews-count">0</span>)</div>
+        </div>
+        <div class="table-wrap" id="reviews-table">
+          <div style="padding:40px;text-align:center;color:var(--text-dim)">Loading reviews...</div>
         </div>
       </div>
 
@@ -1378,8 +1392,8 @@ function showPage(name, el) {
 
   if (name === 'dashboard') renderDashboard();
   if (name === 'products') renderProducts();
-  if (name === 'orders') renderOrders();
-}
+  if(page==="orders") renderOrders();
+  if(page==="reviews") renderReviews();}
 
 // ── DASHBOARD ──
 function renderDashboard() {
@@ -1786,7 +1800,68 @@ function saveProduct() {
 }
 
 // ── ORDERS ──
-function renderOrders() {
+async function renderReviews(){
+  const el = document.getElementById("reviews-table");
+  if(!el) return;
+  try{
+    // Get all collections starting with "reviews_"
+    const allReviews = [];
+    const productsSnap = await window.db.collection("products").get();
+    const productIds = [];
+    productsSnap.forEach(d => productIds.push(d.id));
+    // Also check hardcoded product codes
+    const hardcodedIds = products.map(p => p.id);
+    const allIds = [...new Set([...productIds, ...hardcodedIds])];
+
+    for(const pid of allIds){
+      const snap = await window.db.collection("reviews_"+pid).get();
+      snap.forEach(d => allReviews.push({...d.data(), docId:d.id, productId:pid}));
+    }
+
+    document.getElementById("reviews-count").textContent = allReviews.length;
+
+    if(!allReviews.length){
+      el.innerHTML = "<div style='padding:40px;text-align:center;color:var(--text-dim)'>No reviews yet.</div>";
+      return;
+    }
+
+    el.innerHTML = `<table>
+      <thead><tr>
+        <th>Product</th>
+        <th>User</th>
+        <th>Rating</th>
+        <th>Review</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr></thead>
+      <tbody>${allReviews.map(r=>`
+        <tr>
+          <td style="font-size:11px;color:var(--text-dim)">${r.productId}</td>
+          <td>${r.name||"—"}<br><span style="font-size:10px;color:var(--text-dim)">${r.userId||""}</span></td>
+          <td style="color:var(--gold)">${"★".repeat(r.star||0)}${"☆".repeat(5-(r.star||0))}</td>
+          <td style="max-width:200px;font-size:12px">${r.comment||"—"}</td>
+          <td style="font-size:11px;color:var(--text-dim)">${r.date||"—"}</td>
+          <td><button class="btn-danger" onclick="adminDeleteReview('${r.productId}','${r.docId}')">Delete</button></td>
+        </tr>`).join("")}
+      </tbody>
+    </table>`;
+  }catch(e){
+    el.innerHTML = `<div style='padding:40px;text-align:center;color:var(--text-dim)'>Error loading reviews: ${e.message}</div>`;
+  }
+}
+
+async function adminDeleteReview(pid, docId){
+  if(!confirm("Delete this review?")) return;
+  try{
+    await window.db.collection("reviews_"+pid).doc(docId).delete();
+    showToast("Review deleted", "success");
+    renderReviews();
+  }catch(e){
+    showToast("Error: "+e.message, "error");
+  }
+}
+
+function renderOrders(){
   document.getElementById('orders-count').textContent = orders.length;
   const tbody = document.getElementById('orders-tbody');
 
