@@ -851,21 +851,18 @@ renderHome();
   const page = params.get("page");
   const product = params.get("product");
   if(page){
-    setTimeout(()=>{
-      go(page);
-      if(product){
-        // Wait for Firebase products to load then open product
-        let attempts = 0;
-        const tryOpen = setInterval(()=>{
-          attempts++;
-          if(typeof openP === "function" && typeof getAllProducts === "function" && getAllProducts().length > 0){
-            clearInterval(tryOpen);
-            openP(product);
-          }
-          if(attempts > 20) clearInterval(tryOpen);
-        }, 200);
-      }
-    }, 100);
+    go(page);
+    if(product){
+      let attempts = 0;
+      const tryOpen = setInterval(()=>{
+        attempts++;
+        if(typeof openP === "function" && typeof getAllProducts === "function" && getAllProducts().length > 0){
+          clearInterval(tryOpen);
+          openP(product);
+        }
+        if(attempts > 20) clearInterval(tryOpen);
+      }, 200);
+    }
   }
 })();
 </script>
