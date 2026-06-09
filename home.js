@@ -126,7 +126,7 @@ const HOME_HTML = `
        scrolls up and stacks over it. A scroll listener scales the
        pinned section down slightly for depth. Pure position:sticky
        → works on ALL browsers including Safari/iPhone. */
-   .ed-stack-item{position:sticky;top:0;min-height:100svh;
+   .ed-stack-item{position:sticky;top:0;min-height:100dvh;
       display:block;background:var(--bg);overflow:hidden;
       transform-origin:center top;will-change:transform;
       box-shadow:0 -20px 50px rgba(0,0,0,.5)}
@@ -134,7 +134,7 @@ const HOME_HTML = `
     .ed-stack-item.ed-hero{box-shadow:none}
 
     @media (max-width:768px){
-      .ed-stack-item{min-height:100svh}
+      .ed-stack-item{min-height:100dvh}
     }
 
     @media (max-width:768px){
