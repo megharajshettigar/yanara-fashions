@@ -651,15 +651,21 @@ body.designer-mode .logo span{color:var(--gold2)}
   <section style="padding:0 4% 70px">
     <div class="sh"><div><div class="stag">Customer Reviews</div><h2 class="stitle">What They <strong>Say</strong></h2></div></div>
     <div id="review-list" style="margin-bottom:40px"></div>
-    <div class="rev-form">
-      <h3 style="font-family:var(--font);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--white);margin-bottom:20px">Write a Review</h3>
-      <div class="rev-stars" id="rev-star-input">
-        <span onclick="setRevStar(1)">★</span><span onclick="setRevStar(2)">★</span><span onclick="setRevStar(3)">★</span><span onclick="setRevStar(4)">★</span><span onclick="setRevStar(5)">★</span>
+    <div class="rev-form" id="rev-form-wrap">
+      <div id="rev-login-prompt" style="display:none;text-align:center;padding:20px 0">
+        <p style="font-size:13px;color:var(--gray);margin-bottom:16px">Please login to write a review</p>
+        <button class="bfull" style="max-width:200px" onclick="window.location.href='login.html'">Login / Sign Up</button>
       </div>
-      <input id="rev-name" placeholder="Your Name" class="rev-input"/>
-      <textarea id="rev-comment" placeholder="Your review..." class="rev-input" rows="3"></textarea>
-      <input id="rev-photo" type="file" accept="image/*" class="rev-input"/>
-      <button class="bfull" style="max-width:200px;margin-top:10px" onclick="submitReview()">Submit Review</button>
+      <div id="rev-form-inner">
+        <h3 style="font-family:var(--font);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--white);margin-bottom:20px">Write a Review</h3>
+        <div class="rev-stars" id="rev-star-input">
+          <span onclick="setRevStar(1)">★</span><span onclick="setRevStar(2)">★</span><span onclick="setRevStar(3)">★</span><span onclick="setRevStar(4)">★</span><span onclick="setRevStar(5)">★</span>
+        </div>
+        <input id="rev-name" placeholder="Your Name" class="rev-input"/>
+        <textarea id="rev-comment" placeholder="Your review..." class="rev-input" rows="3"></textarea>
+        <input id="rev-photo" type="file" accept="image/*" class="rev-input"/>
+        <button class="bfull" style="max-width:200px;margin-top:10px" onclick="submitReview()">Submit Review</button>
+      </div>
     </div>
   </section>
 </div>
