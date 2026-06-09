@@ -856,7 +856,9 @@ renderHome();
       let attempts = 0;
       const tryOpen = setInterval(()=>{
         attempts++;
-        if(typeof openP === "function" && typeof getAllProducts === "function" && getAllProducts().length > 0){
+        const allP = typeof getAllProducts === "function" ? getAllProducts() : [];
+        const found = allP.find(x=>String(x.id)===String(product));
+        if(found){
           clearInterval(tryOpen);
           openP(product);
         }
