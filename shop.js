@@ -409,11 +409,95 @@ function renderCheckout(){
 
 function selPay(el){document.querySelectorAll(".pm").forEach(m=>m.classList.remove("on"));el.classList.add("on");el.querySelector("input").checked=true;}
 
-function placeOrder(){
+async function placeOrder(){
   if(!cart.length){toast("Your cart is empty!");return;}
-  toast("Order placed! Thank you 🙏");
-  cart=[];disc=0;updCC();
-  setTimeout(()=>go("home"),2000);
+
+  const fname=document.getElementById("ck-fname").value.trim();
+  const lname=document.getElementById("ck-lname").value.trim();
+  const email=document.getElementById("ck-email").value.trim();
+  const phone=document.getElementById("ck-phone").value.trim();
+  const address=document.getElementById("ck-address").value.trim();
+  const city=document.getElementById("ck-city").value.trim();
+  const state=document.getElementById("ck-state").value;
+  const pincode=document.getElementById("ck-pincode").value.trim();
+
+  if(!fname||!lname||!email||!phone||!address||!city||!pincode){
+    toast("Please fill all required fields");return;
+  }
+
+  const sub=cart.reduce((a,b)=>a+(b.price*b.qty),0);
+  const total=sub-disc;
+  const isCOD=document.querySelector('.pm.on .pmn')?.textContent.includes("Cash on Delivery");
+  const customer={fname,lname,email,phone,address,city,state,pincode,country:"India"};
+
+  if(isCOD){
+    await saveOrderToFirebase(customer,total,"COD","Order Placed (COD)",null);
+    return;
+  }
+
+  try{
+    const createRes=await fetch("/api/razorpay-create-order",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({amount:total})
+    });
+    const order=await createRes.json();
+    if(!createRes.ok){toast("Payment setup failed: "+(order.error||"Unknown error"));return;}
+
+    const rzp=new Razorpay({
+      key:order.keyId,
+      amount:order.amount,
+      currency:order.currency,
+      order_id:order.orderId,
+      name:"YANARA Fashion",
+      description:"Order Payment",
+      prefill:{name:fname+" "+lname,email:email,contact:phone},
+      theme:{color:"#c9a96e"},
+      handler:async function(response){
+        try{
+          const verifyRes=await fetch("/api/razorpay-verify",{
+            method:"POST",headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({
+              razorpay_order_id:response.razorpay_order_id,
+              razorpay_payment_id:response.razorpay_payment_id,
+              razorpay_signature:response.razorpay_signature
+            })
+          });
+          const verify=await verifyRes.json();
+          if(verify.verified){
+            await saveOrderToFirebase(customer,total,"Razorpay","Payment Successful",response.razorpay_payment_id);
+          }else{
+            toast("Payment verification failed. Contact support.");
+          }
+        }catch(e){toast("Error verifying payment: "+e.message);}
+      },
+      modal:{
+        ondismiss:function(){toast("Payment cancelled");}
+      }
+    });
+    rzp.open();
+  }catch(e){
+    toast("Error: "+e.message);
+  }
+}
+
+async function saveOrderToFirebase(customer,total,method,status,paymentId){
+  if(!window.db){toast("Service unavailable");return;}
+  try{
+    const order={
+      customer,items:cart.map(i=>({id:i.id,code:i.code,name:i.name,price:i.price,qty:i.qty})),
+      total,paymentMethod:method,status,paymentId:paymentId||"",
+      createdAt:Date.now()
+    };
+    let user;
+    try{user=JSON.parse(localStorage.getItem("yanara-current-user")||"null");}catch(e){user=null;}
+    if(user)order.userEmail=user.email||"";
+    await window.fsAddDoc(window.fsCollection(window.db,"orders"),order);
+    toast("Order placed! Thank you 🙏");
+    cart=[];disc=0;updCC();
+    setTimeout(()=>go("home"),2000);
+  }catch(e){
+    toast("Error saving order: "+e.message);
+  }
 }
 
 // ── REVIEWS ──
