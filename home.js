@@ -72,7 +72,7 @@ const HOME_HTML = `
     .ed-star-cover{fill:var(--bg2)}
     .ed-reviews.done .ed-star-svg{display:none} /* remove overlay once revealed */
     .ed-rev-rating{margin-top:18px;display:flex;flex-direction:column;align-items:center;gap:4px}
-    .ed-rev-score{font-family:var(--font-display,serif);font-size:54px;line-height:1;color:var(--gold);font-weight:600}
+    .ed-rev-score{font-family:var(--font-display,serif);font-size:clamp(36px,6vh,54px);line-height:1;color:var(--gold);font-weight:600}
     .ed-rev-stars-inline{color:var(--gold);letter-spacing:4px;font-size:20px}
     .ed-rev-count{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-top:4px}
     .ed-rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;max-width:1100px;margin:42px auto 0}
@@ -93,7 +93,7 @@ const HOME_HTML = `
     .ed-pcard.in{opacity:1;transform:translateY(0)}
     /* staggered heights: every 2nd card sits lower for a dynamic row */
     .ed-pcard:nth-child(even){margin-top:0px}
-    .ed-pcard-img{position:relative;width:100%;height:360px;overflow:hidden;background:var(--bg2)}
+    .ed-pcard-img{position:relative;width:100%;height:clamp(220px,32vh,360px);overflow:hidden;background:var(--bg2)}
     .ed-pcard-img img{width:100%;height:100%;object-fit:cover;object-position:center top;
       transition:transform .7s cubic-bezier(.2,.8,.2,1);display:block}
     .ed-pcard:hover{transform:translateY(-8px)}
@@ -126,8 +126,8 @@ const HOME_HTML = `
        scrolls up and stacks over it. A scroll listener scales the
        pinned section down slightly for depth. Pure position:sticky
        → works on ALL browsers including Safari/iPhone. */
-   .ed-stack-item{position:sticky;top:0;min-height:100dvh;
-      display:block;background:var(--bg);overflow:hidden;
+   .ed-stack-item{position:sticky;top:0;min-height:100dvh;height:auto;
+      display:block;background:var(--bg);overflow:visible;
       transform-origin:center top;will-change:transform;
       box-shadow:0 -20px 50px rgba(0,0,0,.5)}
     .ed-stack-item.ed-reviews{background:var(--bg2)}
@@ -142,7 +142,7 @@ const HOME_HTML = `
       .ed-cats{padding-top:10px!important}
       /* product cards: smaller, less stagger on mobile */
       .ed-pcard{width:200px}
-      .ed-pcard-img{height:280px}
+      .ed-pcard-img{height:clamp(180px,26vh,280px)}
       .ed-shape-arch .ed-pcard-img{border-radius:12px 90px 12px 12px}
       .ed-shape-pill .ed-pcard-img{border-radius:12px 100px 12px 12px}
       .ed-pcard:nth-child(even){margin-top:0px}
@@ -156,7 +156,7 @@ const HOME_HTML = `
       .ed-feat-grid{grid-template-columns:1fr!important;gap:30px!important}
       .ed-feat-right{min-height:420px!important}
       /* Reviews */
-      .ed-rev-score{font-size:44px}
+
       .ed-rev-grid{grid-template-columns:1fr!important}
     }
     @media (max-width:460px){
