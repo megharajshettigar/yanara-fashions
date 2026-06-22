@@ -29,9 +29,9 @@ const HOME_HTML = `
   <style>
     /* ═══ HERO IMAGE — fit cleanly, no harsh crop ═══ */
     .ed-hero-arch{overflow:hidden}
-    .ed-hero-arch img{width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:inherit;display:block}
+    .ed-hero-arch img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:inherit;display:block}
 @media(max-width:850px){
-  .ed-hero-arch img{object-position:center}
+  .ed-hero-arch img{object-position:center top}
 }
 
     /* ═══ FEATURED (Wine Bandhgala) — images fit, colours sync ═══ */
