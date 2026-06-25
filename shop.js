@@ -196,7 +196,7 @@ function card(p,fn){
 }
 
 // ── SHOP ──
-function shopCat(cat){ shopFilter=cat; occFilter=""; go("shop"); }
+function shopCat(cat,section){ shopFilter=cat; occFilter=""; if(section) shopSection=section; go("shop"); }
 function shopOcc(occ){ occFilter=occ; shopFilter="All"; go("shop"); toast("Showing all "+occ+" styles 🎉"); }
 
 function renderShop(){
