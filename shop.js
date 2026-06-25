@@ -132,6 +132,7 @@ async function loadFirebaseProducts(){
     if(firebaseProducts.length > 0){
     shopPage=0;shopFiltered=[];shopAllLoaded=false;
     renderShop();
+    if(typeof renderHome==="function")renderHome();
   }
   }catch(e){
     console.error("Firebase load error:", e);
