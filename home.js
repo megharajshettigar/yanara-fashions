@@ -279,7 +279,7 @@ const HOME_HTML = `
     </div>
     <!-- WOMEN PANEL (empty image placeholders — images coming later) -->
     <div class="ed-cat-row ed-cat-panel ed-panel-hidden" data-panel="women">
-      <div class="ed-cat" onclick="shopCat('Blouse')">
+      <div class="ed-cat" onclick="shopCat('Blouse','Women')">
         <div class="ed-cat-num">01</div>
         <img src="https://ik.imagekit.io/megharaj/Blouse/BL01DG/BL01DG-5.png?tr=w-800,q-90,f-auto" alt="Dark Green Zardosi Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
         <div class="ed-cat-vert">Dark Green</div>
@@ -289,7 +289,7 @@ const HOME_HTML = `
           <div class="cb">Explore <i class="ti ti-arrow-right"></i></div>
         </div>
       </div>
-      <div class="ed-cat" onclick="shopCat('Blouse')">
+      <div class="ed-cat" onclick="shopCat('Blouse','Women')">
         <div class="ed-cat-num">02</div>
         <img src="https://ik.imagekit.io/megharaj/Blouse/BL02RD/BL02RD-2.png?tr=w-800,q-90,f-auto" alt="Red Zardosi Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
         <div class="ed-cat-vert">Red Floral</div>
@@ -299,7 +299,7 @@ const HOME_HTML = `
           <div class="cb">Explore <i class="ti ti-arrow-right"></i></div>
         </div>
       </div>
-      <div class="ed-cat" onclick="shopCat('Blouse')">
+      <div class="ed-cat" onclick="shopCat('Blouse','Women')">
         <div class="ed-cat-num">03</div>
         <img src="https://ik.imagekit.io/megharaj/Blouse/BL04WI/BL04WI-7.png?tr=w-800,q-90,f-auto" alt="Wine Beads Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
         <div class="ed-cat-vert">Wine Beads</div>
@@ -309,7 +309,7 @@ const HOME_HTML = `
           <div class="cb">Explore <i class="ti ti-arrow-right"></i></div>
         </div>
       </div>
-      <div class="ed-cat" onclick="shopCat('Blouse')">
+      <div class="ed-cat" onclick="shopCat('Blouse','Women')">
         <div class="ed-cat-num">04</div>
         <img src="https://ik.imagekit.io/megharaj/Blouse/BL05BL/BL05BL-8.png?tr=w-800,q-90,f-auto" alt="Black Copper Zardosi Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
         <div class="ed-cat-vert">Black Copper</div>
