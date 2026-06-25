@@ -23,7 +23,7 @@ var IMG_CAT_BLZ = homeImg("BZ10BL", 1, 800);  // Blazers
 var IMG_CAT_BND = homeImg("BG17WI", 1, 800);  // Bandhgala
 var IMG_CAT_IW  = homeImg("IW01BL", 1, 800);  // Indo Western
 var IMG_CAT_SH  = homeImg("SH01WH", 1, 800);  // Shirts
-var IMG_HERO    = "https://ik.imagekit.io/megharaj/Menswear/IMG_9399.JPG.jpeg?tr=w-1000,q-92,f-auto"; // SS25 hero
+var IMG_HERO    = "https://ik.imagekit.io/megharaj/Menswear/IMG_9399.JPG.jpeg?updatedAt=1779871598499&tr=w-1000,q-92,f-auto"; // SS25 hero
 
 const HOME_HTML = `
   <style>
