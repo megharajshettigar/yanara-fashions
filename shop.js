@@ -431,7 +431,7 @@ async function placeOrder(){
   const customer={fname,lname,email,phone,address,city,state,pincode,country:"India"};
 
   if(isCOD){
-    await saveOrderToFirebase(customer,total,"COD","Order Placed (COD)",null);
+    await saveOrderToFirebase(customer,total,"COD","pending",null);
     return;
   }
 
@@ -464,7 +464,7 @@ async function placeOrder(){
           });
           const verify=await verifyRes.json();
           if(verify.verified){
-            await saveOrderToFirebase(customer,total,"Razorpay","Payment Successful",response.razorpay_payment_id);
+            await saveOrderToFirebase(customer,total,"Razorpay","pending",response.razorpay_payment_id);
           }else{
             toast("Payment verification failed. Contact support.");
           }
@@ -483,7 +483,11 @@ async function placeOrder(){
 async function saveOrderToFirebase(customer,total,method,status,paymentId){
   if(!window.db){toast("Service unavailable");return;}
   try{
+    const now=new Date();
+    const orderId="YF"+now.getFullYear()+String(now.getMonth()+1).padStart(2,"0")+String(now.getDate()).padStart(2,"0")+"-"+Math.floor(1000+Math.random()*9000);
+    const dateStr=now.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
     const order={
+      orderId,date:dateStr,
       customer,items:cart.map(i=>({id:i.id,code:i.code,name:i.name,price:i.price,qty:i.qty})),
       total,paymentMethod:method,status,paymentId:paymentId||"",
       createdAt:Date.now()
