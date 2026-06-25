@@ -142,7 +142,7 @@ const HOME_HTML = `
       .ed-pcard{width:calc(46vw - 10px)}
       .ed-prod-row{gap:12px}
       .ed-prod-head{padding-top:20px!important}
-      .ed-pcard-img{height:clamp(180px,26vh,280px)}
+      .ed-pcard-img{height:clamp(240px,34vh,320px)}
       .ed-shape-arch .ed-pcard-img{border-radius:12px 90px 12px 12px}
       .ed-shape-pill .ed-pcard-img{border-radius:12px 100px 12px 12px}
       .ed-pcard:nth-child(even){margin-top:0px}
