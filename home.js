@@ -216,7 +216,6 @@ const HOME_HTML = `
         <div class="ed-feat-mainimg"><img id="feat-mainimg" src="" alt="Wine Bandhgala Set"></div>
         <div class="ed-feat-thumb t1"><img id="feat-t1" src="" alt="detail"></div>
         <div class="ed-feat-thumb t2"><img id="feat-t2" src="" alt="detail"></div>
-        <div class="ed-feat-price">${FEAT_PRICE}</div>
       </div>
     <div class="ed-scroll-hint" onclick="this.closest('.ed-stack-item').nextElementSibling.scrollIntoView({behavior:'smooth'})">
       <span>Scroll</span><i class="ti ti-chevron-down"></i>
