@@ -447,7 +447,7 @@ function setupFeaturedColors(){
     var active = wrap.querySelector('.dot[data-code="'+c.code+'"]');
     if(active) active.classList.add("on");
     // clicking the image takes the user to the Bandhgala category in Shop
-    right.onclick = function(){ if(typeof shopCat === "function") shopCat('Bandhgala Sets'); };
+    right.onclick = function(){ if(typeof shopCat === "function") shopCat('Jodhpuri Bandhgala'); };
   }
 
   // Build the dots
