@@ -1007,7 +1007,6 @@
       <div class="page" id="page-orders">
         <div class="section-header">
           <div class="section-title">All Orders (<span id="orders-count">0</span>)</div>
-          <button class="btn-secondary" onclick="addSampleOrders()">Add Sample Orders</button>
         </div>
         <div class="table-wrap">
           <table>
@@ -1328,13 +1327,25 @@ let editingId = null;
 function init() {
   const saved = localStorage.getItem('yanara_products');
   if (saved) products = JSON.parse(saved);
-  const savedOrders = localStorage.getItem('yanara_orders');
-  if (savedOrders) orders = JSON.parse(savedOrders);
   const savedCreds = localStorage.getItem('yanara_creds');
   if (savedCreds) CREDS = JSON.parse(savedCreds);
 }
 
 init();
+
+async function loadOrdersFromFirebase(){
+  try{
+    const snap = await window.fsGetDocs(window.fsCollection(window.db,"orders"));
+    orders = [];
+    snap.forEach(d => orders.push({...d.data(), docId: d.id}));
+    orders.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    renderOrders();
+    renderDashboard();
+  }catch(e){
+    showToast('Error loading orders: '+e.message,'error');
+  }
+}
+loadOrdersFromFirebase();
 
 // ── AUTO-LOGIN (if admin authenticated via login.html) ──
 (function checkAdminAuth(){
@@ -1872,52 +1883,48 @@ function renderOrders(){
       <div class="empty-state">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         <h3>No orders yet</h3>
-        <p>Click "Add Sample Orders" to see how the orders page works</p>
+        <p>Orders placed on the website will appear here</p>
       </div>
     </td></tr>`;
     return;
   }
 
-  tbody.innerHTML = [...orders].reverse().map(o => `
+  tbody.innerHTML = [...orders].reverse().map(o => {
+    const c = o.customer || {};
+    const fullName = ((c.fname||'') + ' ' + (c.lname||'')).trim() || 'Guest';
+    const itemsText = (o.items||[]).map(i => `${i.name} × ${i.qty}`).join(', ') || '1 item';
+    const statusVal = (o.status||'pending').toLowerCase();
+    return `
     <tr>
-      <td style="color:var(--text);font-weight:600">#${o.id}</td>
+      <td style="color:var(--text);font-weight:600">#${o.orderId||o.docId}</td>
       <td>
-        <div style="color:var(--text)">${o.customer}</div>
-        <div style="font-size:11px;color:var(--text-dim)">${o.phone || ''}</div>
+        <div style="color:var(--text)">${fullName}</div>
+        <div style="font-size:11px;color:var(--text-dim)">${c.phone || ''}</div>
       </td>
-      <td style="color:var(--text-mid)">${o.items || '1 item'}</td>
-      <td class="price-text">₹${o.total.toLocaleString('en-IN')}</td>
-      <td style="color:var(--text-dim);font-size:12px">${o.date}</td>
+      <td style="color:var(--text-mid)">${itemsText}</td>
+      <td class="price-text">₹${Number(o.total||0).toLocaleString('en-IN')}</td>
+      <td style="color:var(--text-dim);font-size:12px">${o.date||'—'}</td>
       <td>
-        <select class="order-status-select" onchange="updateOrderStatus('${o.id}', this.value)">
-          ${['Pending','Processing','Shipped','Delivered','Cancelled'].map(s =>
-            `<option value="${s}" ${o.status===s?'selected':''}>${s}</option>`
+        <select class="order-status-select" onchange="updateOrderStatus('${o.docId}', this.value)">
+          ${['pending','shipped','delivered','cancelled'].map(s =>
+            `<option value="${s}" ${statusVal===s?'selected':''}>${s.charAt(0).toUpperCase()+s.slice(1)}</option>`
           ).join('')}
         </select>
       </td>
-    </tr>
-  `).join('');
+    </tr>`;
+  }).join('');
 }
 
-function updateOrderStatus(id, status) {
-  orders = orders.map(o => o.id === id ? {...o, status} : o);
-  localStorage.setItem('yanara_orders', JSON.stringify(orders));
-  showToast('Order status updated', 'success');
-  renderDashboard();
-}
-
-function addSampleOrders() {
-  const samples = [
-    {id:'YN1001',customer:'Priya Sharma',phone:'+91 98765 43210',items:'1x Blazer Set (BZ01BL, L)',total:24900,date:'10 May 2026',status:'Pending'},
-    {id:'YN1002',customer:'Arjun Mehta',phone:'+91 87654 32109',items:'2x Bandhgala Set (JB01BL, M)',total:58000,date:'9 May 2026',status:'Processing'},
-    {id:'YN1003',customer:'Kavitha Nair',phone:'+91 76543 21098',items:'1x Indo Western (IW01BL, XL)',total:31500,date:'8 May 2026',status:'Shipped'},
-    {id:'YN1004',customer:'Rohit Verma',phone:'+91 65432 10987',items:'1x Shirt (SH01WH, M)',total:12900,date:'7 May 2026',status:'Delivered'},
-  ];
-  orders = [...samples];
-  localStorage.setItem('yanara_orders', JSON.stringify(orders));
-  renderOrders();
-  renderDashboard();
-  showToast('Sample orders added!', 'success');
+async function updateOrderStatus(docId, status) {
+  try{
+    const ref = window.fsDoc(window.db, "orders", docId);
+    await ref.set({status}, {merge:true});
+    orders = orders.map(o => o.docId === docId ? {...o, status} : o);
+    showToast('Order status updated', 'success');
+    renderDashboard();
+  }catch(e){
+    showToast('Error updating status: '+e.message, 'error');
+  }
 }
 
 // ── SETTINGS ──
