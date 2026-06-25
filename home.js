@@ -446,8 +446,8 @@ function setupFeaturedColors(){
     wrap.querySelectorAll(".dot").forEach(function(d){ d.classList.remove("on"); });
     var active = wrap.querySelector('.dot[data-code="'+c.code+'"]');
     if(active) active.classList.add("on");
-    // clicking the image opens THIS colour's product
-    right.onclick = function(){ if(typeof openP === "function") openP(c.id); };
+    // clicking the image takes the user to the Bandhgala category in Shop
+    right.onclick = function(){ if(typeof shopCat === "function") shopCat('Bandhgala Sets'); };
   }
 
   // Build the dots
