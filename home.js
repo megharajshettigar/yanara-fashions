@@ -179,7 +179,6 @@ const HOME_HTML = `
     </div>
     <div class="ed-hero-arch">
       <img src="${IMG_HERO}" alt="YANARA SS25 Collection" loading="eager">
-      <div class="ed-hero-archlabel">SS25 Collection</div>
     </div>
     <div class="ed-scroll-hint" onclick="this.closest('.ed-stack-item').nextElementSibling.scrollIntoView({behavior:'smooth'})">
       <span>Scroll</span><i class="ti ti-chevron-down"></i>
