@@ -124,21 +124,15 @@ const HOME_HTML = `
       transition:background .25s,color .25s}
     .ed-pcard-cta:hover{background:var(--gold);color:var(--bg)}
 
-    /* ═══ STACKING SECTIONS (cross-browser, works on iPhone) ═══
-       Each section is sticky and pins at the top; the next section
-       scrolls up and stacks over it. A scroll listener scales the
-       pinned section down slightly for depth. Pure position:sticky
-       → works on ALL browsers including Safari/iPhone. */
-   .ed-stack-item{position:sticky;top:0;min-height:100dvh;height:auto;
-      display:block;background:var(--bg);overflow:visible;
-      transform-origin:center top;will-change:transform;
-      box-shadow:0 -20px 50px rgba(0,0,0,.5)}
+    /* ═══ FADE-IN SECTIONS ═══
+       Each section scrolls normally (natural content height, no
+       sticky/pinning). A fade+slide-up animation plays once when
+       the section scrolls into view, using IntersectionObserver. */
+   .ed-stack-item{display:block;background:var(--bg);
+      opacity:0;transform:translateY(28px);
+      transition:opacity .6s ease,transform .6s ease}
+    .ed-stack-item.in{opacity:1;transform:translateY(0)}
     .ed-stack-item.ed-reviews{background:var(--bg2)}
-    .ed-stack-item.ed-hero{box-shadow:none}
-
-    @media (max-width:768px){
-      .ed-stack-item{min-height:100dvh}
-    }
 
     @media (max-width:768px){
       .ed-cats-head{padding-top:20px!important;margin-bottom:20px!important}
@@ -473,46 +467,28 @@ function setupFeaturedColors(){
   applyColour(FEAT_GROUP[0]);
 }
 
-// ── STACKING SECTIONS: scale down the pinned section as the next
-//    one scrolls up over it (cross-browser, works on iPhone) ──
+// ── FADE-IN SECTIONS: each section fades + slides up once when
+//    it scrolls into view (normal scroll, no pinning/height-lock) ──
 function setupStackScale(){
-  var items = Array.prototype.slice.call(document.querySelectorAll("#page-home .ed-stack-item"));
+  var items = document.querySelectorAll("#page-home .ed-stack-item");
   if(!items.length) return;
 
-  var ticking = false;
-
-  function update(){
-    ticking = false;
-    var vh = window.innerHeight;
-    for(var i = 0; i < items.length; i++){
-      var el = items[i];
-      // how far this section has been scrolled PAST the top of the viewport
-      var rect = el.getBoundingClientRect();
-      // when the section is pinned (top at 0) and the NEXT one is coming up,
-      // rect.top stays ~0 and we measure how much of the next has covered it.
-      // Use the section's own scroll progress: 0 = just pinned, 1 = fully passed
-      var passed = Math.min(Math.max(-rect.top / vh, 0), 1);
-      // last item shouldn't shrink (nothing stacks over it within the group)
-      var isLast = (i === items.length - 1);
-      var scale = isLast ? 1 : (1 - passed * 0.08);   // shrink up to 8%
-      var fade  = isLast ? 1 : (1 - passed * 0.25);   // dim slightly
-      el.style.transform = "scale(" + scale + ")";
-      el.style.opacity = fade;
-    }
+  if(!("IntersectionObserver" in window)){
+    items.forEach(function(el){ el.classList.add("in"); });
+    return;
   }
 
-  function onScroll(){
-    if(!ticking){
-      window.requestAnimationFrame(update);
-      ticking = true;
-    }
-  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add("in");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
 
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll, { passive: true });
-  update(); // initial
+  items.forEach(function(el){ obs.observe(el); });
 }
-
 // Build one product card for the home rows.
 // shapeClass = "ed-shape-arch" (New Arrivals) or "ed-shape-pill" (Best Sellers)
 function homeCard(p, shapeClass){
