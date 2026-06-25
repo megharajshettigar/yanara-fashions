@@ -148,7 +148,7 @@ const HOME_HTML = `
       .ed-cat-row{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
       .ed-cat{height:auto!important;width:100%!important;flex:none!important;display:flex!important;flex-direction:column!important;border-radius:12px 44px 12px 12px!important}
       .ed-cat-vert{display:none!important}
-      .ed-cat-img{position:relative!important;height:110px!important;opacity:1!important}
+      .ed-cat-img{position:relative!important;height:150px!important;opacity:1!important}
       .ed-cat-open{position:static!important;left:auto!important;bottom:auto!important;right:auto!important;inset:auto!important;padding:4px 12px 12px!important;opacity:1!important;max-height:none!important;transform:none!important;background:none!important;justify-content:flex-start!important}
       .ed-cat-open h3{font-size:16px!important}
       .ed-cat-open .ct{display:none!important}
