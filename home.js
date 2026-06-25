@@ -505,7 +505,7 @@ function homeCard(p, shapeClass){
     : '<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:40px">👔</div>';
   // badge now sits in the info area BELOW the image — never clipped by the shape
   var badge = '';
-  return '<div class="ed-pcard '+(shapeClass||"")+'" onclick="openP('+p.id+')">'+
+  return '<div class="ed-pcard '+(shapeClass||"")+'" onclick="shopCat(\''+p.cat+'\',\''+(p.section||"Men")+'\')">'+
     '<div class="ed-pcard-img">'+img+
     '</div>'+
     '<div class="ed-pcard-info">'+badge+
@@ -541,9 +541,12 @@ function renderHome(){
   buildHome();
   const na=document.getElementById("new-arrivals");
   const bs=document.getElementById("bestsellers");
+  // Resolve each card to its live Firebase version (if edited in admin) so its id matches what addCart() looks up via getAllProducts()
+  const allProds=(typeof getAllProducts==="function")?getAllProducts():products;
+  const resolveProd=p=>allProds.find(x=>x.code===p.code)||p;
   // New Arrivals = asymmetric arch shape; Best Sellers = pill/capsule shape
-  if(na)na.innerHTML=products.slice(0,6).map(p=>homeCard(p,"ed-shape-arch")).join("");
-  if(bs)bs.innerHTML=products.slice(4,10).map(p=>homeCard(p,"ed-shape-pill")).join("");
+  if(na)na.innerHTML=products.slice(0,6).map(p=>homeCard(resolveProd(p),"ed-shape-arch")).join("");
+  if(bs)bs.innerHTML=products.slice(4,10).map(p=>homeCard(resolveProd(p),"ed-shape-pill")).join("");
   setupCardReveal();
 }
 
