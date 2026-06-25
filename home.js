@@ -139,7 +139,9 @@ const HOME_HTML = `
       .ed-cats-head{padding-top:20px!important;margin-bottom:20px!important}
       .ed-cats{padding-top:10px!important}
       /* product cards: smaller, less stagger on mobile */
-      .ed-pcard{width:200px}
+      .ed-pcard{width:calc(46vw - 10px)}
+      .ed-prod-row{gap:12px}
+      .ed-prod-head{padding-top:20px!important}
       .ed-pcard-img{height:clamp(180px,26vh,280px)}
       .ed-shape-arch .ed-pcard-img{border-radius:12px 90px 12px 12px}
       .ed-shape-pill .ed-pcard-img{border-radius:12px 100px 12px 12px}
