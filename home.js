@@ -332,7 +332,7 @@ const HOME_HTML = `
     </div>
   </section>
   <section class="ed-stack-item" style="padding:0 0 80px;background:var(--bg2);position:relative">
-    <div class="ed-prod-head" style="padding:50px 4% 40px;display:flex;align-items:flex-end;justify-content:space-between"><div><div class="stag">Just In</div>
+    <div style="padding:50px 4% 40px;display:flex;align-items:flex-end;justify-content:space-between"><div><div class="stag">Just In</div><h2 class="stitle"><strong>New</strong> Arrivals</h2></div><a class="slink" onclick="go('shop')">View All →</a></div>
     <div style="padding:0 4%"><div class="ed-prod-row" id="new-arrivals"></div></div>
     <div class="ed-scroll-hint" onclick="this.closest('.ed-stack-item').nextElementSibling.scrollIntoView({behavior:'smooth'})">
       <span>Scroll</span><i class="ti ti-chevron-down"></i>
