@@ -3,9 +3,10 @@
 // Edit THIS file to change anything on the home page.
 
 // ── HOME IMAGE HELPER (ImageKit, high quality) ──
-function homeImg(code, n, w){
+function homeImg(code, n, w, folder){
   var width = w || 1100;
-  return "https://ik.imagekit.io/megharaj/" + code + "-" + n + ".jpg?tr=w-" + width + ",q-92,f-auto";
+  var path = folder ? folder + "/" + code + "/" : "";
+  return "https://ik.imagekit.io/megharaj/" + path + code + "-" + n + ".jpg?tr=w-" + width + ",q-92,f-auto";
 }
 
 // ── FEATURED: Wine Bandhgala group (Group E) — colours sync on click ──
@@ -19,10 +20,10 @@ var FEAT_GROUP = [
 var FEAT_PRICE = "₹38,000";
 
 // Category tile images (representative product per category)
-var IMG_CAT_BLZ = homeImg("BZ10BL", 1, 800);  // Blazers
-var IMG_CAT_BND = homeImg("BG17WI", 1, 800);  // Bandhgala
-var IMG_CAT_IW  = homeImg("IW01BL", 1, 800);  // Indo Western
-var IMG_CAT_SH  = homeImg("SH01WH", 1, 800);  // Shirts
+var IMG_CAT_BLZ = homeImg("BZ10BL", 1, 800, "Men/Blazers");  // Blazers
+var IMG_CAT_BND = homeImg("BG17WI", 1, 800, "Men/Jodhpuri%20Bandhgala");  // Bandhgala
+var IMG_CAT_IW  = homeImg("IW01BL", 1, 800, "Men/Indo%20Western");  // Indo Western
+var IMG_CAT_SH  = homeImg("SH01WH", 1, 800, "Men/Shirts");  // Shirts
 var IMG_HERO    = "https://ik.imagekit.io/megharaj/Menswear/IMG_9399.JPG.jpeg?updatedAt=1779871598499&tr=w-1000,q-92,f-auto"; // SS25 hero
 
 const HOME_HTML = `
@@ -285,7 +286,7 @@ const HOME_HTML = `
     <div class="ed-cat-row ed-cat-panel ed-panel-hidden" data-panel="women">
       <div class="ed-cat" onclick="shopCat('Blouse','Women')">
         <div class="ed-cat-num">01</div>
-        <img src="https://ik.imagekit.io/megharaj/Blouse/BL01DG/BL01DG-5.png?tr=w-800,q-90,f-auto" alt="Dark Green Zardosi Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
+        <img src="https://ik.imagekit.io/megharaj/Women/Blouse/BL01DG/BL01DG-5.jpg?tr=w-800,q-90,f-auto" alt="Dark Green Zardosi Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
         <div class="ed-cat-vert">Dark Green</div>
         <div class="ed-cat-open">
           <h3>Dark Green <em>Zardosi</em></h3>
@@ -295,7 +296,7 @@ const HOME_HTML = `
       </div>
       <div class="ed-cat" onclick="shopCat('Blouse','Women')">
         <div class="ed-cat-num">02</div>
-        <img src="https://ik.imagekit.io/megharaj/Blouse/BL02RD/BL02RD-2.png?tr=w-800,q-90,f-auto" alt="Red Zardosi Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
+        <img src="https://ik.imagekit.io/megharaj/Women/Blouse/BL02RD/BL02RD-2.jpg?tr=w-800,q-90,f-auto" alt="Red Zardosi Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
         <div class="ed-cat-vert">Red Floral</div>
         <div class="ed-cat-open">
           <h3>Red <em>Zardosi</em></h3>
@@ -305,7 +306,7 @@ const HOME_HTML = `
       </div>
       <div class="ed-cat" onclick="shopCat('Blouse','Women')">
         <div class="ed-cat-num">03</div>
-        <img src="https://ik.imagekit.io/megharaj/Blouse/BL04WI/BL04WI-7.png?tr=w-800,q-90,f-auto" alt="Wine Beads Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
+        <img src="https://ik.imagekit.io/megharaj/Women/Blouse/BL04WI/BL04WI-7.jpg?tr=w-800,q-90,f-auto" alt="Wine Beads Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
         <div class="ed-cat-vert">Wine Beads</div>
         <div class="ed-cat-open">
           <h3>Wine <em>Beads</em></h3>
@@ -315,7 +316,7 @@ const HOME_HTML = `
       </div>
       <div class="ed-cat" onclick="shopCat('Blouse','Women')">
         <div class="ed-cat-num">04</div>
-        <img src="https://ik.imagekit.io/megharaj/Blouse/BL05BL/BL05BL-8.png?tr=w-800,q-90,f-auto" alt="Black Copper Zardosi Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
+        <img src="https://ik.imagekit.io/megharaj/Women/Blouse/BL05BL/BL05BL-8.jpg?tr=w-800,q-90,f-auto" alt="Black Copper Zardosi Blouse" loading="lazy" class="ed-cat-img" onerror="this.style.display='none'">
         <div class="ed-cat-vert">Black Copper</div>
         <div class="ed-cat-open">
           <h3>Black <em>Copper</em></h3>
