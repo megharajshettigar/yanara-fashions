@@ -512,7 +512,7 @@ function homeCard(p, shapeClass){
       '<div class="ed-pcard-cat">'+p.cat+'</div>'+
       '<div class="ed-pcard-name">'+p.name+'</div>'+
       '<div class="ed-pcard-price">₹'+p.price.toLocaleString()+'</div>'+
-      '<button class="ed-pcard-cta" onclick="event.stopPropagation();addCart('+p.id+')">Add to Cart</button>'+
+      '<button class="ed-pcard-cta" onclick="event.stopPropagation();addCart(\''+p.id+'\')">Add to Cart</button>'+
     '</div>'+
   '</div>';
 }
