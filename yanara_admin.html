@@ -1379,9 +1379,7 @@ function doLogin() {
 
 function doLogout() {
   try{sessionStorage.removeItem("yanara-admin-auth");}catch(e){}
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('app').style.display = 'none';
-  document.getElementById('login-pass').value = '';
+  window.location.href = "login.html";
 }
 
 // ── NAVIGATION ──
