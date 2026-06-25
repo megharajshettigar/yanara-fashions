@@ -501,6 +501,7 @@ function homeCard(p, shapeClass){
     ? '<img src="'+imgUrl+'" alt="'+p.name+'" loading="lazy" onerror="this.parentElement.innerHTML=\'<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;font-size:40px&quot;>👔</div>\'">'
     : '<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:40px">👔</div>';
   // badge now sits in the info area BELOW the image — never clipped by the shape
+  var badge = p.badge ? '<div class="ed-pcard-badge">'+p.badge+'</div>' : '';
   return '<div class="ed-pcard '+(shapeClass||"")+'" onclick="openP('+p.id+')">'+
     '<div class="ed-pcard-img">'+img+
     '</div>'+
