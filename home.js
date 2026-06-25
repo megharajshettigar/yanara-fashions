@@ -146,6 +146,7 @@ const HOME_HTML = `
       .ed-shape-arch .ed-pcard-img{border-radius:12px 90px 12px 12px}
       .ed-shape-pill .ed-pcard-img{border-radius:12px 100px 12px 12px}
       .ed-pcard:nth-child(even){margin-top:0px}
+      .ed-pcard-name{min-height:40px;line-height:1.3}
       /* Category tiles: 2x2 grid, image on top, text below */
       .ed-cat-row{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
       .ed-cat{height:auto!important;width:100%!important;flex:none!important;display:flex!important;flex-direction:column!important;border-radius:12px 44px 12px 12px!important}
