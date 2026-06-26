@@ -194,6 +194,7 @@
 
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script>
 const firebaseConfig = {
@@ -205,6 +206,7 @@ const firebaseConfig = {
   appId: "1:1017878347517:web:31e4b2ccfcac5c4b634894"
 };
 firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 const db = firebase.firestore();
 </script>
 
@@ -218,12 +220,18 @@ function clearCurrentUser(){
 }
 
 // ── INIT ──
-(function init(){
-  const user = getCurrentUser();
-  if(!user){
+auth.onAuthStateChanged(function(fbUser){
+  if(!fbUser){
+    clearCurrentUser();
     window.location.href = "login.html";
     return;
   }
+  localStorage.setItem("yanara-current-user", JSON.stringify({name:fbUser.displayName||fbUser.email.split("@")[0],email:fbUser.email}));
+  initPage();
+});
+
+function initPage(){
+  const user = getCurrentUser();
   // Set profile header
   document.getElementById("acc-avatar").textContent = (user.name||"U").charAt(0).toUpperCase();
   document.getElementById("acc-name").textContent = user.name || "—";
@@ -244,12 +252,14 @@ function clearCurrentUser(){
   // Load wishlist and orders
   loadWishlist();
   loadOrders();
-})();
+}
 
 // ── LOGOUT ──
 function doLogout(){
-  clearCurrentUser();
-  window.location.href = "login.html";
+  auth.signOut().then(function(){
+    clearCurrentUser();
+    window.location.href = "login.html";
+  });
 }
 
 // ── TABS ──
