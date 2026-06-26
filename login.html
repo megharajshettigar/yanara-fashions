@@ -227,6 +227,22 @@ body{background:var(--bg);color:var(--white);font-family:var(--font);font-size:1
 
 </div>
 
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDZBP8TuqZOAOdW8jB4q65gL3rwWxnLonc",
+  authDomain: "yanarafashion-54acf.firebaseapp.com",
+  projectId: "yanarafashion-54acf",
+  storageBucket: "yanarafashion-54acf.firebasestorage.app",
+  messagingSenderId: "1017878347517",
+  appId: "1:1017878347517:web:31e4b2ccfcac5c4b634894"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+</script>
+
 <script>
 // ════════════════════════════════════════════
 // YANARA AUTH — DEMO VERSION (localStorage)
