@@ -1423,13 +1423,17 @@ function renderDashboard() {
   document.getElementById('recent-orders-table').innerHTML = `
     <table>
       <thead><tr><th>Order ID</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead>
-      <tbody>${recent.map(o => `
+      <tbody>${recent.map(o => {
+        const c = o.customer || {};
+        const fullName = ((c.fname||'') + ' ' + (c.lname||'')).trim() || 'Guest';
+        return `
         <tr>
-          <td style="color:var(--text)">#${o.id}</td>
-          <td>${o.customer}</td>
+          <td style="color:var(--text)">#${o.orderId||o.docId}</td>
+          <td>${fullName}</td>
           <td class="price-text">₹${o.total.toLocaleString('en-IN')}</td>
           <td><span class="order-status status-${o.status.toLowerCase()}">${o.status}</span></td>
-        </tr>`).join('')}
+        </tr>`;
+      }).join('')}
       </tbody>
     </table>`;
 }
