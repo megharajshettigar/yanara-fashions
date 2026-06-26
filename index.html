@@ -38,61 +38,11 @@ html{transition:none}
 body{background:var(--bg);color:var(--white);font-family:var(--font);overflow-x:hidden;font-size:14px;line-height:1.6;transition:background .3s ease,color .3s ease}
 .page{display:none;min-height:100vh}.page.active{display:block}
     
-.preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #0d0d0d;
-  z-index: 99999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-}
-.loader-shape-wrapper {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transform: scale(0.3);
-}
-.loader-shape {
-  width: 100%;
-  height: 100%;
-  fill: var(--gold);
-}
-.loader-title {
-  color: var(--white);
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 400;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  overflow: hidden;
-  position: relative;
-}
-.loader-title span {
-  display: inline-block;
-  transform: translateY(105%);
-}
+
 
 .ann
 <body>
-<div class="preloader">
-  <div class="loader-shape-wrapper">
-    <svg class="loader-shape" viewBox="0 0 100 100">
-      <path d="M50 0 L63 37 L100 50 L63 63 L50 100 L37 63 L0 50 L37 37 Z" />
-    </svg>
-  </div>
-  <h1 class="loader-title">
-    <span>YANARA FASHION</span>
-  </h1>
-</div>
+
 
 <div class="ann">BRAND NEW OCCASIONWEAR COLLECTION STYLING NOW</div>
 .ann{background:var(--gold);color:#000;text-align:center;padding:9px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase}    
@@ -927,59 +877,9 @@ renderHome();
 </script>  
 </body>
   <script>
-// ── INIT & PRELOADER ANIMATION ──
+// ── INIT ──
 window.addEventListener("DOMContentLoaded", () => {
-  // 1. Load shop data structures immediately
   renderHome();
-  
-  // 2. Lock page scrollbar actions while running intro cinematic scene
-  document.body.style.overflow = "hidden";
-  const tl = gsap.timeline();
-
-  // 3. Pop the luxury star icon into perspective view
-  tl.to(".loader-shape-wrapper", {
-    opacity: 1,
-    scale: 1,
-    duration: 1.2,
-    ease: "elastic.out(1, 0.75)"
-  });
-
-  // 4. Slide text content seamlessly out from hidden vector bounds
-  tl.to(".loader-title span", {
-    y: "0%",
-    duration: 0.9,
-    ease: "power4.out"
-  }, "-=0.5");
-
-  // 5. Hold visual layout, then execute rotation phase out
-  tl.to(".loader-shape-wrapper", {
-    rotation: 90,
-    scale: 0.5,
-    opacity: 0,
-    duration: 0.7,
-    ease: "power3.inOut"
-  }, "+=0.5");
-
-  // 6. Push typography bounds down out of view
-  tl.to(".loader-title span", {
-    y: "-105%",
-    duration: 0.5,
-    ease: "power4.in"
-  }, "-=0.5");
-
-  // 7. Transition the entire backdrop background upward out of perspective
-  tl.to(".preloader", {
-    yPercent: -100,
-    duration: 1.1,
-    ease: "power4.inOut"
-  }, "-=0.1");
-
-  // 8. Safely unlock layout scrolling capabilities for users
-  tl.to("body", {
-    overflow: "",
-    clearProps: "overflow"
-  }, "-=0.5");
 });
-</script>
-</body>
+</script></body>
 </html>
