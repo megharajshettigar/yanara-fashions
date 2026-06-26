@@ -346,16 +346,15 @@ function doSignIn(){
     return;
   }
 
-  // Customer check
-  var accounts=getAccounts();
-  var found=accounts.find(function(a){return a.email.toLowerCase()===email.toLowerCase()&&a.pass===pass;});
-  if(found){
-    setCurrentUser({name:found.name,email:found.email});
-    showMsg("Welcome back, "+found.name.split(" ")[0]+"! Redirecting...","ok");
+  // Customer check via Firebase
+  auth.signInWithEmailAndPassword(email,pass).then(function(cred){
+    var user=cred.user;
+    setCurrentUser({name:user.displayName||user.email.split("@")[0],email:user.email});
+    showMsg("Welcome back, "+(user.displayName||"").split(" ")[0]+"! Redirecting...","ok");
     setTimeout(function(){window.location.href="account.html";},900);
-  }else{
+  }).catch(function(err){
     showMsg("Invalid email or password. Please try again.");
-  }
+  });
 }
 
 // ── SIGN UP ──
