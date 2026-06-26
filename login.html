@@ -230,6 +230,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font);font-size:1
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyDZBP8TuqZOAOdW8jB4q65gL3rwWxnLonc",
@@ -241,8 +242,8 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+const db = firebase.firestore();
 </script>
-
 <script>
 // ════════════════════════════════════════════
 // YANARA AUTH — DEMO VERSION (localStorage)
@@ -371,16 +372,18 @@ function doSignUp(){
   if(pass!==pass2){showMsg("Passwords do not match.");return;}
   if(!/^[^@]+@[^@]+\.[^@]+$/.test(email)){showMsg("Please enter a valid email address.");return;}
 
-  var accounts=getAccounts();
-  if(accounts.find(function(a){return a.email.toLowerCase()===email.toLowerCase();})){
-    showMsg("An account with this email already exists. Please sign in.");
-    return;
-  }
-  accounts.push({name:name,email:email,phone:phone,pass:pass});
-  saveAccounts(accounts);
-  setCurrentUser({name:name,email:email});
-  showMsg("Account created! Welcome to YANARA, "+name.split(" ")[0]+"!","ok");
-  setTimeout(function(){window.location.href="account.html";},1000);
+  auth.createUserWithEmailAndPassword(email,pass).then(function(cred){
+    return cred.user.updateProfile({displayName:name}).then(function(){
+      return db.collection("customers").doc(cred.user.uid).set({name:name,email:email,phone:phone});
+    });
+  }).then(function(){
+    setCurrentUser({name:name,email:email});
+    showMsg("Account created! Welcome to YANARA, "+name.split(" ")[0]+"!","ok");
+    setTimeout(function(){window.location.href="account.html";},1000);
+  }).catch(function(err){
+    if(err.code==="auth/email-already-in-use"){showMsg("An account with this email already exists. Please sign in.");}
+    else{showMsg(err.message);}
+  });
 }
 
 // ── LOGOUT ──
