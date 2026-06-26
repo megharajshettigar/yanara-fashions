@@ -236,6 +236,13 @@ body{background:var(--bg);color:var(--white);font-family:var(--font);font-size:1
 // ── ADMIN CREDENTIAL (demo) ──
 var ADMIN_USER = "admin";
 var ADMIN_PASS = "yanara2024";
+try{
+  var savedAdminCreds = JSON.parse(localStorage.getItem("yanara_creds"));
+  if(savedAdminCreds && savedAdminCreds.user && savedAdminCreds.pass){
+    ADMIN_USER = savedAdminCreds.user;
+    ADMIN_PASS = savedAdminCreds.pass;
+  }
+}catch(e){}
 
 // ── THEME (reads site's saved choice) ──
 function applyTheme(theme){
