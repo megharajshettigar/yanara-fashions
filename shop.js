@@ -449,7 +449,7 @@ async function placeOrder(){
   const state=document.getElementById("ck-state").value;
   const pincode=document.getElementById("ck-pincode").value.trim();
 
-  if(!fname||!lname||!email||!phone||!address||!city||!state||!pincode){
+  if(!fname||!lname||!email||!phone||!address||!city||!pincode){
     toast("Please fill all required fields");return;
   }
 
