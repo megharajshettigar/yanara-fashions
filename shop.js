@@ -453,6 +453,14 @@ async function placeOrder(){
     toast("Please fill all required fields");return;
   }
 
+  let phoneDigits=phone.replace(/\D/g,"");
+  if(phoneDigits.length===12&&phoneDigits.startsWith("91"))phoneDigits=phoneDigits.slice(2);
+  if(phoneDigits.length!==10){
+    toast("Please enter a valid 10-digit phone number");return;
+  }
+  if(!/^\d{6}$/.test(pincode)){
+    toast("Please enter a valid 6-digit pincode");return;
+  }
   const sub=cart.reduce((a,b)=>a+(b.price*b.qty),0);
   const total=sub-disc;
   const isCOD=document.querySelector('.pm.on .pmn')?.textContent.includes("Cash on Delivery");
