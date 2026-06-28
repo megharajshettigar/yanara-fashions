@@ -111,6 +111,14 @@ let cart=[],disc=0,curProd=null,curImgIdx=0,shopFilter="All",occFilter="",qty=1,
 let shopPage=0,shopPageSize=8,shopFiltered=[],shopAllLoaded=false;
 try{cart=JSON.parse(localStorage.getItem("yanara-cart")||"[]");}catch(e){cart=[];}
 setTimeout(()=>updCC(),500);
+(function checkReturnToCheckout(){
+  try{
+    if(localStorage.getItem("yanara-redirect-after-login")==="checkout" && getCurrentUser()){
+      localStorage.removeItem("yanara-redirect-after-login");
+      setTimeout(()=>go("checkout"),600);
+    }
+  }catch(e){}
+})();
 // ── FIREBASE PRODUCTS ──
 var firebaseProducts = [];
 
