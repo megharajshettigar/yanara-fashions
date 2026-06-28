@@ -351,7 +351,8 @@ function doSignIn(){
     var user=cred.user;
     setCurrentUser({name:user.displayName||user.email.split("@")[0],email:user.email});
     showMsg("Welcome back, "+(user.displayName||"").split(" ")[0]+"! Redirecting...","ok");
-    setTimeout(function(){window.location.href="account.html";},900);
+    var goCheckout=localStorage.getItem("yanara-redirect-after-login")==="checkout";
+    setTimeout(function(){window.location.href=goCheckout?"index.html":"account.html";},900);
   }).catch(function(err){
     showMsg("Invalid email or password. Please try again.");
   });
@@ -378,7 +379,8 @@ function doSignUp(){
   }).then(function(){
     setCurrentUser({name:name,email:email});
     showMsg("Account created! Welcome to YANARA, "+name.split(" ")[0]+"!","ok");
-    setTimeout(function(){window.location.href="account.html";},1000);
+    var goCheckout=localStorage.getItem("yanara-redirect-after-login")==="checkout";
+    setTimeout(function(){window.location.href=goCheckout?"index.html":"account.html";},1000);
   }).catch(function(err){
     if(err.code==="auth/email-already-in-use"){showMsg("An account with this email already exists. Please sign in.");}
     else{showMsg(err.message);}
@@ -411,7 +413,10 @@ function showLoggedState(user){
 // ── ON LOAD: check if already logged in ──
 (function init(){
   var user=getCurrentUser();
-  if(user) window.location.href="account.html";
+  if(user){
+    var goCheckout=localStorage.getItem("yanara-redirect-after-login")==="checkout";
+    window.location.href=goCheckout?"index.html":"account.html";
+  }
 })();
 </script>
 </body>
