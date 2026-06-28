@@ -208,7 +208,67 @@ function card(p,fn){
 function shopCat(cat,section){ shopFilter=cat; occFilter=""; if(section) shopSection=section; go("shop"); }
 function shopOcc(occ){ occFilter=occ; shopFilter="All"; go("shop"); toast("Showing all "+occ+" styles 🎉"); }
 
+var lastDynMax=null;
+
+function getMaxPrice(){
+  var prices=getAllProducts().map(p=>p.price).filter(p=>typeof p==="number"&&p>0);
+  var highest=prices.length?Math.max(...prices):40000;
+  return Math.ceil(highest/10000)*10000;
+}
+
+function paintPriceFill(){
+  var smin=document.getElementById("price-slider-min");
+  var smax=document.getElementById("price-slider-max");
+  var fill=document.getElementById("price-range-fill");
+  if(!smin||!smax||!fill)return;
+  var max=parseInt(smin.max,10)||40000;
+  var lo=parseInt(smin.value,10),hi=parseInt(smax.value,10);
+  var pctMin=max?(lo/max)*100:0,pctMax=max?(hi/max)*100:100;
+  fill.style.left=pctMin+"%";
+  fill.style.width=(pctMax-pctMin)+"%";
+}
+
+function syncSliderToBoxes(){
+  var smin=document.getElementById("price-slider-min");
+  var smax=document.getElementById("price-slider-max");
+  var nmin=document.getElementById("price-min");
+  var nmax=document.getElementById("price-max");
+  if(!smin||!smax||!nmin||!nmax)return;
+  var step=parseInt(smin.step,10)||500;
+  var lo=parseInt(smin.value,10),hi=parseInt(smax.value,10);
+  if(lo>hi-step){lo=hi-step;smin.value=lo;}
+  nmin.value=lo;nmax.value=hi;
+  paintPriceFill();
+  renderShop();
+}
+
+function syncBoxesToSlider(){
+  var smin=document.getElementById("price-slider-min");
+  var smax=document.getElementById("price-slider-max");
+  var nmin=document.getElementById("price-min");
+  var nmax=document.getElementById("price-max");
+  if(!smin||!smax||!nmin||!nmax)return;
+  var sliderMax=parseInt(smin.max,10)||40000;
+  var lo=Math.max(0,Math.min(parseInt(nmin.value,10)||0,sliderMax));
+  var hi=Math.max(lo,Math.min(parseInt(nmax.value,10)||sliderMax,sliderMax));
+  smin.value=lo;smax.value=hi;
+  paintPriceFill();
+}
+
 function renderShop(){
+  var dynMax=getMaxPrice();
+  var smin=document.getElementById("price-slider-min");
+  var smax=document.getElementById("price-slider-max");
+  var nmaxEl=document.getElementById("price-max");
+  if(smin&&smax){
+    smin.max=dynMax;smax.max=dynMax;
+    if(nmaxEl&&(lastDynMax===null||parseInt(nmaxEl.value,10)===lastDynMax)){
+      nmaxEl.value=dynMax;
+      smax.value=dynMax;
+    }
+    lastDynMax=dynMax;
+    paintPriceFill();
+  }
   const section = shopSection || "Men";
   // Get extra categories from Firebase products
   const fbMenCats = [...new Set(firebaseProducts.filter(p=>(p.section||"Men")==="Men").map(p=>p.cat||p.category).filter(Boolean))];
@@ -245,7 +305,7 @@ function renderShop(){
   var maxEl=document.getElementById("price-max");
   if(minEl&&maxEl){
     var lo=parseInt(minEl.value,10)||0;
-    var hi=parseInt(maxEl.value,10)||999999;
+    var hi=parseInt(maxEl.value,10)||dynMax;
     if(lo<0)lo=0; if(hi<0)hi=0;
     if(lo>hi){var t=lo;lo=hi;hi=t;}
     filtered=filtered.filter(p=>p.price>=lo&&p.price<=hi);
