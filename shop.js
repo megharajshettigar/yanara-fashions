@@ -398,6 +398,12 @@ function applyPromo(){
 
 // ── CHECKOUT ──
 function renderCheckout(){
+  const user=getCurrentUser();
+   if(!user){
+     try{localStorage.setItem("yanara-redirect-after-login","checkout");}catch(e){}
+     window.location.href="login.html";
+     return;
+   }
   const sub=cart.reduce((a,b)=>a+(b.price*b.qty),0);
   document.getElementById("cksub").textContent="₹"+sub.toLocaleString();
   document.getElementById("cktot").textContent="₹"+(sub-disc).toLocaleString();
@@ -411,6 +417,12 @@ function renderCheckout(){
 function selPay(el){document.querySelectorAll(".pm").forEach(m=>m.classList.remove("on"));el.classList.add("on");el.querySelector("input").checked=true;}
 
 async function placeOrder(){
+  const user=getCurrentUser();
+   if(!user){
+     try{localStorage.setItem("yanara-redirect-after-login","checkout");}catch(e){}
+     window.location.href="login.html";
+     return;
+   }
   if(!cart.length){toast("Your cart is empty!");return;}
 
   const fname=document.getElementById("ck-fname").value.trim();
