@@ -153,6 +153,9 @@ footer{border-top:1px solid var(--border);padding:60px 4% 28px}
 .fgt{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
 .fops{display:flex;flex-direction:column;gap:7px}
 .fo{display:flex;align-items:center;gap:7px;cursor:pointer}
+#price-slider-min::-webkit-slider-thumb,#price-slider-max::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--gold);border:2px solid var(--bg);cursor:pointer;pointer-events:auto}
+#price-slider-min::-moz-range-thumb,#price-slider-max::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--gold);border:2px solid var(--bg);cursor:pointer;pointer-events:auto}
+#price-slider-min::-webkit-slider-runnable-track,#price-slider-max::-webkit-slider-runnable-track{background:transparent}
 .fo input{accent-color:var(--gold);width:12px;height:12px}
 .fo label{font-size:11px;color:var(--gray);cursor:pointer;transition:color .2s}
 .fo:hover label{color:var(--white)}
@@ -559,18 +562,24 @@ body.designer-mode .logo span{color:var(--gold2)}
     <div>
       <div class="fg"><div class="fgt">Category</div><div class="fops" id="filter-cats"></div></div>
       <div><div class="fgt">Price Range</div>
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
-          <div style="flex:1">
-            <div style="font-size:10px;color:var(--gray);margin-bottom:4px">MIN (₹)</div>
-            <input type="number" id="price-min" min="0" value="0" placeholder="0" style="width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--white);padding:6px 8px;font-size:12px;border-radius:6px" oninput="if(this.value<0)this.value=0;renderShop()">
-          </div>
-          <div style="font-size:12px;color:var(--gray);margin-top:16px">—</div>
-          <div style="flex:1">
-            <div style="font-size:10px;color:var(--gray);margin-bottom:4px">MAX (₹)</div>
-            <input type="number" id="price-max" min="0" value="999999" placeholder="999999" style="width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--white);padding:6px 8px;font-size:12px;border-radius:6px" oninput="if(this.value<0)this.value=0;renderShop()">
-          </div>
-        </div>
-      </div>
+  <div style="position:relative;height:20px;margin:8px 0 14px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:4px;background:var(--border);border-radius:2px"></div>
+    <div id="price-range-fill" style="position:absolute;top:8px;height:4px;background:var(--gold);border-radius:2px"></div>
+    <input type="range" id="price-slider-min" min="0" max="40000" step="500" value="0" oninput="syncSliderToBoxes()" style="position:absolute;width:100%;top:0;margin:0;height:20px;background:transparent;-webkit-appearance:none;pointer-events:none">
+    <input type="range" id="price-slider-max" min="0" max="40000" step="500" value="40000" oninput="syncSliderToBoxes()" style="position:absolute;width:100%;top:0;margin:0;height:20px;background:transparent;-webkit-appearance:none;pointer-events:none">
+  </div>
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+    <div style="flex:1">
+      <div style="font-size:10px;color:var(--gray);margin-bottom:4px">MIN (₹)</div>
+      <input type="number" id="price-min" min="0" value="0" placeholder="0" style="width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--white);padding:6px 8px;font-size:12px;border-radius:6px" oninput="if(this.value<0)this.value=0;syncBoxesToSlider();renderShop()">
+    </div>
+    <div style="font-size:12px;color:var(--gray);margin-top:16px">—</div>
+    <div style="flex:1">
+      <div style="font-size:10px;color:var(--gray);margin-bottom:4px">MAX (₹)</div>
+      <input type="number" id="price-max" min="0" value="40000" placeholder="40000" style="width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--white);padding:6px 8px;font-size:12px;border-radius:6px" oninput="if(this.value<0)this.value=0;syncBoxesToSlider();renderShop()">
+    </div>
+  </div>
+</div>
     </div>
     <div>
       <div class="stop"><div class="sct" id="sct">Loading...</div><select class="ssel" id="sort-sel" onchange="sortProducts()"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select></div>
