@@ -412,6 +412,13 @@ function renderCheckout(){
      window.location.href="login.html";
      return;
    }
+  const nameParts=(user.name||"").trim().split(" ");
+  const fnameEl=document.getElementById("ck-fname");
+  const lnameEl=document.getElementById("ck-lname");
+  const emailEl=document.getElementById("ck-email");
+  if(fnameEl&&!fnameEl.value)fnameEl.value=nameParts[0]||"";
+  if(lnameEl&&!lnameEl.value)lnameEl.value=nameParts.slice(1).join(" ")||"";
+  if(emailEl&&!emailEl.value)emailEl.value=user.email||"";
   const sub=cart.reduce((a,b)=>a+(b.price*b.qty),0);
   document.getElementById("cksub").textContent="₹"+sub.toLocaleString();
   document.getElementById("cktot").textContent="₹"+(sub-disc).toLocaleString();
