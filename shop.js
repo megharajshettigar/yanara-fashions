@@ -488,7 +488,7 @@ function renderCheckout(){
       <span style="color:var(--white)">₹${(i.price*i.qty).toLocaleString()}</span>
     </div>`).join("")||"<div style='font-size:11px;color:var(--gray)'>No items in cart</div>";
   const pinEl=document.getElementById("ck-pincode");
-  if(pinEl)pinEl.addEventListener("blur",function(){lookupPincode(this.value.trim());},{once:true});
+  if(pinEl)pinEl.addEventListener("blur",function(){lookupPincode(this.value.trim());});
 }
 
 function selPay(el){document.querySelectorAll(".pm").forEach(m=>m.classList.remove("on"));el.classList.add("on");el.querySelector("input").checked=true;}
