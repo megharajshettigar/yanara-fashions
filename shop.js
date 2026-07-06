@@ -593,6 +593,33 @@ async function saveOrderToFirebase(customer,total,method,status,paymentId){
     if(user)order.userEmail=user.email||"";
     await window.fsAddDoc(window.fsCollection(window.db,"orders"),order);
     toast("Order placed! Thank you 🙏");
+
+    // ── EMAIL NOTIFICATIONS ──
+    const itemsList=cart.map(i=>`${i.name} x${i.qty} — ₹${(i.price*i.qty).toLocaleString("en-IN")}`).join("\n");
+    const emailParams={
+      to_email:customer.email,
+      customer_name:customer.name,
+      customer_email:customer.email,
+      order_id:orderId,
+      order_date:dateStr,
+      payment_method:method,
+      items_list:itemsList,
+      subtotal:total.toLocaleString("en-IN"),
+      discount:"0",
+      total:total.toLocaleString("en-IN"),
+      shipping_address:customer.address,
+      city:customer.city,
+      state:customer.state,
+      pincode:customer.pincode,
+      phone:customer.phone
+    };
+    try{
+      await emailjs.send("service_hfnayu5","template_vmific1",emailParams);
+      await emailjs.send("service_hfnayu5","template_50d78vj",emailParams);
+    }catch(emailErr){
+      console.warn("Email notification failed:",emailErr);
+    }
+
     cart=[];disc=0;updCC();
     setTimeout(()=>go("home"),2000);
   }catch(e){
