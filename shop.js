@@ -487,9 +487,31 @@ function renderCheckout(){
       <span>${i.name.split(" ").slice(0,4).join(" ")}... ×${i.qty}</span>
       <span style="color:var(--white)">₹${(i.price*i.qty).toLocaleString()}</span>
     </div>`).join("")||"<div style='font-size:11px;color:var(--gray)'>No items in cart</div>";
+  const pinEl=document.getElementById("ck-pincode");
+  if(pinEl)pinEl.addEventListener("blur",function(){lookupPincode(this.value.trim());},{once:true});
 }
 
 function selPay(el){document.querySelectorAll(".pm").forEach(m=>m.classList.remove("on"));el.classList.add("on");el.querySelector("input").checked=true;}
+
+async function lookupPincode(pin){
+  if(!/^\d{6}$/.test(pin))return;
+  try{
+    const res=await fetch("https://api.postalpincode.in/pincode/"+pin);
+    const data=await res.json();
+    if(!data||!data[0]||data[0].Status!=="Success")return;
+    const info=data[0].PostOffice[0];
+    if(!info)return;
+    const cityEl=document.getElementById("ck-city");
+    const stateEl=document.getElementById("ck-state");
+    if(cityEl&&!cityEl.value.trim())cityEl.value=info.District||info.Name||"";
+    if(stateEl&&!stateEl.value){
+      const opts=stateEl.options;
+      for(let i=0;i<opts.length;i++){
+        if(opts[i].text.toLowerCase()===info.State.toLowerCase()){stateEl.value=opts[i].value;break;}
+      }
+    }
+  }catch(e){}
+}
 
 async function placeOrder(){
   const user=getCurrentUser();
