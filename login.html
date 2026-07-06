@@ -327,7 +327,14 @@ function togglePass(id,el){
   else{inp.type="password";el.className="ti ti-eye eye";}
 }
 function forgotPass(){
-  showMsg("Password recovery will be available soon. Please contact support.","ok");
+  var email=document.getElementById("si-email").value.trim();
+  if(!email){showMsg("Please enter your email address first, then click Forgot Password.");return;}
+  firebase.auth().sendPasswordResetEmail(email)
+    .then(function(){showMsg("Password reset email sent! Check your inbox.","ok");})
+    .catch(function(e){
+      if(e.code==="auth/user-not-found"){showMsg("No account found with that email.");}
+      else{showMsg("Something went wrong. Please try again.");}
+    });
 }
 function goHome(){ window.location.href="index.html"; }
 
