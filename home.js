@@ -449,9 +449,9 @@ function setupFeaturedColors(){
 
   // Show a colour's images + name
   function applyColour(c){
-    mainImg.src = homeImg(c.code, 1, 900);
-    t1.src = homeImg(c.code, 2, 500);
-    t2.src = homeImg(c.code, 3, 500);
+    mainImg.src = homeImg(c.code, 1, 900, "Men/Jodhpuri%20Bandhgala");
+    t1.src = homeImg(c.code, 2, 500, "Men/Jodhpuri%20Bandhgala");
+    t2.src = homeImg(c.code, 3, 500, "Men/Jodhpuri%20Bandhgala");
     if(nameEl) nameEl.textContent = c.name;
     // mark active dot
     wrap.querySelectorAll(".dot").forEach(function(d){ d.classList.remove("on"); });
@@ -468,7 +468,7 @@ function setupFeaturedColors(){
     dot.title = c.name + " Bandhgala";
     dot.setAttribute("data-code", c.code);
     var img = document.createElement("img");
-    img.src = homeImg(c.code, 1, 200);
+    img.src = homeImg(c.code, 1, 200, "Men/Jodhpuri%20Bandhgala");
     img.alt = c.name;
     var lbl = document.createElement("span");
     lbl.className = "dot-name";
