@@ -40,9 +40,11 @@ const HOME_HTML = `
     .ed-feat-mainimg img{width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:inherit;display:block;transition:opacity .35s}
     .ed-feat-thumb{overflow:hidden}
     .ed-feat-thumb img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;transition:opacity .35s}
-    .ed-feat-colors .dot{cursor:pointer;width:22px;height:22px;border-radius:50%;display:inline-block;border:2px solid transparent;transition:transform .2s,border-color .2s;vertical-align:middle}
-    .ed-feat-colors .dot:hover{transform:scale(1.15)}
-    .ed-feat-colors .dot.on{border-color:var(--gold);transform:scale(1.15)}
+    .ed-feat-colors .dot{cursor:pointer;width:54px;border-radius:8px;display:inline-flex;flex-direction:column;align-items:center;gap:5px;border:2px solid transparent;transition:border-color .2s,transform .2s;vertical-align:top;overflow:hidden;background:var(--bg2)}
+    .ed-feat-colors .dot:hover{border-color:var(--gold);transform:scale(1.04)}
+    .ed-feat-colors .dot.on{border-color:var(--gold)}
+    .ed-feat-colors .dot img{width:54px;height:66px;object-fit:cover;object-position:center top;border-radius:6px 6px 0 0;display:block}
+    .ed-feat-colors .dot-name{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gray);padding:4px 2px;text-align:center;line-height:1.2}
     #feat-colourname{color:var(--gold);font-weight:600}
 
     /* ═══ CATEGORY TILES — image fills, dark overlay for readable text ═══ */
@@ -216,7 +218,7 @@ const HOME_HTML = `
           </div>
         </div>
         <div class="ed-feat-colors" id="feat-colors">
-          <span class="lbl">Colour</span>
+          <span class="lbl">Designs</span>
           <!-- colour dots injected by JS so they sync with the image -->
         </div>
       </div>
@@ -458,13 +460,20 @@ function setupFeaturedColors(){
     right.onclick = function(){ if(typeof shopCat === "function") shopCat('Jodhpuri Bandhgala'); };
   }
 
-  // Build the dots
+  // Build the design chips
   FEAT_GROUP.forEach(function(c){
     var dot = document.createElement("span");
     dot.className = "dot";
-    dot.style.background = c.hex;
     dot.title = c.name + " Bandhgala";
     dot.setAttribute("data-code", c.code);
+    var img = document.createElement("img");
+    img.src = homeImg(c.code, 1, 200);
+    img.alt = c.name;
+    var lbl = document.createElement("span");
+    lbl.className = "dot-name";
+    lbl.textContent = c.name;
+    dot.appendChild(img);
+    dot.appendChild(lbl);
     dot.onclick = function(){ applyColour(c); };
     wrap.appendChild(dot);
   });
