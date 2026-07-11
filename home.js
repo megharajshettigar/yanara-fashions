@@ -12,11 +12,11 @@ function homeImg(code, n, w, folder){
 // ── FEATURED: Wine Bandhgala group (Group E) — colours sync on click ──
 // Default colour = Wine (BG17WI). All ₹38,000, 5 images each.
 var FEAT_GROUP = [
-  { code:"BG17WI", id:19, name:"Wine",      imgs:5 },
-  { code:"BG01BL", id:1,  name:"Classic",   imgs:5 },
-  { code:"BG05BL", id:5,  name:"Drape",     imgs:5 },
-  { code:"BG09NB", id:9,  name:"Navy Blue", imgs:4 },
-  { code:"BG13BL", id:13, name:"Embroidered", imgs:5 }
+  { code:"BG17WI", id:19, name:"Wine",        imgs:5, bg:"#5c1a2e" },
+  { code:"BG01BL", id:1,  name:"Classic",     imgs:5, bg:"#1a1a1a" },
+  { code:"BG05BL", id:5,  name:"Drape",       imgs:5, bg:"#2a2a2a" },
+  { code:"BG09NB", id:9,  name:"Navy Blue",   imgs:4, bg:"#1f2d50" },
+  { code:"BG13BL", id:13, name:"Embroidered", imgs:5, bg:"#2a2010" }
 ];
 var FEAT_PRICE = "₹38,000";
 
@@ -41,11 +41,9 @@ const HOME_HTML = `
     .ed-feat-mainimg img{width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:inherit;display:block;transition:opacity .35s}
     .ed-feat-thumb{overflow:hidden}
     .ed-feat-thumb img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;transition:opacity .35s}
-    .ed-feat-colors .dot{cursor:pointer;width:54px;border-radius:8px;display:inline-flex;flex-direction:column;align-items:center;gap:5px;border:2px solid transparent;transition:border-color .2s,transform .2s;vertical-align:top;overflow:hidden;background:var(--bg2)}
-    .ed-feat-colors .dot:hover{border-color:var(--gold);transform:scale(1.04)}
-    .ed-feat-colors .dot.on{border-color:var(--gold)}
-    .ed-feat-colors .dot img{width:54px;height:66px;object-fit:cover;object-position:center top;border-radius:6px 6px 0 0;display:block}
-    .ed-feat-colors .dot-name{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gray);padding:4px 2px;text-align:center;line-height:1.2}
+    .ed-feat-colors .dot{cursor:pointer;width:44px;height:44px;border-radius:50%;display:inline-block;border:2px solid transparent;transition:border-color .2s,transform .2s;vertical-align:middle}
+    .ed-feat-colors .dot:hover{border-color:var(--gold);transform:scale(1.12)}
+    .ed-feat-colors .dot.on{border-color:var(--gold);transform:scale(1.12)}
     #feat-colourname{color:var(--gold);font-weight:600}
 
     /* ═══ CATEGORY TILES — image fills, dark overlay for readable text ═══ */
@@ -467,14 +465,7 @@ function setupFeaturedColors(){
     dot.className = "dot";
     dot.title = c.name + " Bandhgala";
     dot.setAttribute("data-code", c.code);
-    var img = document.createElement("img");
-    img.src = homeImg(c.code, 1, 200, "Men/Jodhpuri%20Bandhgala");
-    img.alt = c.name;
-    var lbl = document.createElement("span");
-    lbl.className = "dot-name";
-    lbl.textContent = c.name;
-    dot.appendChild(img);
-    dot.appendChild(lbl);
+    dot.style.background = c.bg;
     dot.onclick = function(){ applyColour(c); };
     wrap.appendChild(dot);
   });
