@@ -12,10 +12,11 @@ function homeImg(code, n, w, folder){
 // ── FEATURED: Wine Bandhgala group (Group E) — colours sync on click ──
 // Default colour = Wine (BG17WI). All ₹38,000, 5 images each.
 var FEAT_GROUP = [
-  { code:"BG17WI", id:19, name:"Wine",      hex:"#5c1a2e", imgs:5 },
-  { code:"BG14DB", id:16, name:"Dark Blue", hex:"#1a2a4a", imgs:5 },
-  { code:"BG15PK", id:17, name:"Pink",      hex:"#e8a0b0", imgs:5 },
-  { code:"BG16GY", id:18, name:"Grey",      hex:"#6b6b6b", imgs:5 }
+  { code:"BG17WI", id:19, name:"Wine",      imgs:5 },
+  { code:"BG01BL", id:1,  name:"Classic",   imgs:5 },
+  { code:"BG05BL", id:5,  name:"Drape",     imgs:5 },
+  { code:"BG09NB", id:9,  name:"Navy Blue", imgs:4 },
+  { code:"BG13BL", id:13, name:"Embroidered", imgs:5 }
 ];
 var FEAT_PRICE = "₹38,000";
 
