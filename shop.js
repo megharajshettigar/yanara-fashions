@@ -172,9 +172,10 @@ const colorGroups = {
   "BG06MR":["BG05BL","BG06MR"],
   "BG09NB":["BG09NB","BG10BL"],
   "BG10BL":["BG09NB","BG10BL"],
-  "BG15PK":["BG15PK","BG16GY","BG17WI"],
-  "BG16GY":["BG15PK","BG16GY","BG17WI"],
-  "BG17WI":["BG15PK","BG16GY","BG17WI"],
+  "BG13BL":["BG13BL","BG15PK","BG16GY","BG17WI"],
+  "BG15PK":["BG13BL","BG15PK","BG16GY","BG17WI"],
+  "BG16GY":["BG13BL","BG15PK","BG16GY","BG17WI"],
+  "BG17WI":["BG13BL","BG15PK","BG16GY","BG17WI"],
   "IW01BL":["IW01BL","IW02GR","IW03DB"],
   "IW02GR":["IW01BL","IW02GR","IW03DB"],
   "IW03DB":["IW01BL","IW02GR","IW03DB"],
@@ -187,7 +188,7 @@ const colorDots = {
   "BZ05BL":"#1a1a1a","BZ06DB":"#1a2a4a","BZ07WI":"#5c1a2e","BZ08GY":"#6b6b6b","BZ12OP":"#c97d8a",
   "BG05BL":"#1a1a1a","BG06MR":"#6b1a1a",
   "BG09NB":"#1a2a4a","BG10BL":"#0d0d0d",
-  "BG15PK":"#c47a8a","BG16GY":"#6b6b6b","BG17WI":"#4a1a2a",
+  "BG13BL":"#1a1a1a","BG15PK":"#c47a8a","BG16GY":"#6b6b6b","BG17WI":"#4a1a2a",
   "IW01BL":"#1a1a1a","IW02GR":"#808080","IW03DB":"#1a2a4a",
   "IW06BL":"#1a1a1a","IW07DB":"#1a2a4a"
 };
