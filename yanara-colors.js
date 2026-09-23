@@ -162,7 +162,8 @@ function injectColorPicker(activeId) {
   var opts = document.createElement('div');
   opts.className = 'color-opts';
   group.codes.forEach(function(code) {
-    var p = products.find(function(x) { return x.code.toUpperCase() === code.toUpperCase(); });
+    var allProds = typeof getAllProducts === 'function' ? getAllProducts() : products;
+    var p = allProds.find(function(x) { return (x.code||'').toUpperCase() === code.toUpperCase(); });
     if (!p) return;
     var c = getColorFromCode(code);
     var isActive = p.id === activeId;
