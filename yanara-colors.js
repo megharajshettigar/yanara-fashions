@@ -217,12 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return html;
     };
 
-    // ── Patch renderShop to deduplicate ──
-    var _origRenderShop = window.renderShop;
-    window.renderShop = function() {
-      _origRenderShop();
-      setTimeout(function() { deduplicateGrid('shop-products'); }, 50);
-    };
+  
 
     // ── Patch renderHome to deduplicate ──
     var _origRenderHome = window.renderHome;
