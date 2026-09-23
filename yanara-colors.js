@@ -255,12 +255,14 @@ function deduplicateGrid(gridId) {
   var grid = document.getElementById(gridId);
   if (!grid) return;
   var seen = {};
+  var allP = typeof getAllProducts === 'function' ? getAllProducts() : products;
   grid.querySelectorAll('.pcard').forEach(function(card) {
     var oc = card.getAttribute('onclick') || '';
-    var match = oc.match(/\d+/);
+    var match = oc.match(/openP\(['"]?([^'")\s]+)['"]?\)/);
     if (!match) return;
-    var id = parseInt(match[0]);
-    var prod = products.find(function(p) { return p.id === id; });
+    var id = match[1];
+    var numId = parseInt(id);
+    var prod = allP.find(function(p) { return p.id === id || p.id === numId; });
     if (!prod) return;
     var group = getGroupForProduct(prod);
     if (!group || group.codes.length <= 1) return;
