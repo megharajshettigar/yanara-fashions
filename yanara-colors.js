@@ -71,7 +71,8 @@ function getGroupForProduct(p) {
 
 // ── SWATCH CLICK ON CARD ──
 window.swatchClick = function(productId, swatchEl, fn) {
-  var prod = products.find(function(p) { return p.id === productId; });
+    var allP = typeof getAllProducts === 'function' ? getAllProducts() : products;
+  var prod = allP.find(function(p) { return p.id === productId; });
   if (!prod) return;
   var card = swatchEl.closest('.pcard');
   if (!card) return;
@@ -105,7 +106,8 @@ window.swatchClick = function(productId, swatchEl, fn) {
 
 // ── SWITCH COLOR IN DETAIL PAGE ──
 function switchDetailColor(newId) {
-  var prod = products.find(function(p) { return p.id === newId; });
+    var allP = typeof getAllProducts === 'function' ? getAllProducts() : products;
+  var prod = allP.find(function(p) { return p.id === newId; });
   if (!prod) return;
   window.curProd = prod;
   window.curImgIdx = 0;
@@ -145,7 +147,8 @@ function injectColorPicker(activeId) {
   var existing = document.getElementById('color-picker-section');
   if (existing) existing.remove();
 
-  var prod = products.find(function(p) { return p.id === activeId; });
+  var allP = typeof getAllProducts === 'function' ? getAllProducts() : products;
+  var prod = allP.find(function(p) { return p.id === activeId; });
   if (!prod) return;
   var group = getGroupForProduct(prod);
   // No group, or a group with only one item = this product has NO color
@@ -196,7 +199,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // Build swatches
       var swatchHtml = '<div class="color-swatches">';
       group.codes.forEach(function(code) {
-        var gp = products.find(function(x) { return x.code.toUpperCase() === code.toUpperCase(); });
+        var allP2 = typeof getAllProducts === 'function' ? getAllProducts() : products;
+        var gp = allP2.find(function(x) { return (x.code||'').toUpperCase() === code.toUpperCase(); });
         if (!gp) return;
         var c = getColorFromCode(code);
         var isOn = code.toUpperCase() === p.code.toUpperCase();
