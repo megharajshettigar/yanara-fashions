@@ -229,10 +229,11 @@ var DESIGNER_HTML = `
         </div>
       </div>
 
-      <!-- 7. The Artist -->
+            <!-- 7. The Artist -->
       <div class="dz-hl dz-rev">
         <div class="dz-hl-yr">Fine Art</div>
         <div class="dz-hl-title">The Artist</div>
+        <div class="dz-hl-desc">A painter and portrait artist at heart, Ramya's fine art practice reflects the same attention to detail and creative expression that defines her work in fashion.</div>
                 <div class="dz-work-grid">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Artist/IMG_5509.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Artist/IMG_8759.PNG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
