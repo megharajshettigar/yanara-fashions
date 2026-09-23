@@ -318,6 +318,16 @@ function renderShop(){
     filtered=filtered.filter(p=>p.price>=lo&&p.price<=hi);
   }
 
+    // Show only one card per colour group
+  const seenGroup={};
+  filtered=filtered.filter(p=>{
+    const g=colorGroups[(p.code||"").toUpperCase()];
+    if(!g||g.length<=1)return true;
+    if(seenGroup[g[0]])return false;
+    seenGroup[g[0]]=true;
+    return true;
+  });
+
   const ct=document.getElementById("sct");
   if(ct)ct.textContent=`${filtered.length} product${filtered.length!==1?"s":""}${occFilter?" — "+occFilter+" Collection":""}`;
   shopPage=0;shopFiltered=filtered;shopAllLoaded=false;
