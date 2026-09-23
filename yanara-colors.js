@@ -140,7 +140,7 @@ function switchDetailColor(newId) {
 }
 
 // ── INJECT COLOR PICKER INTO DETAIL PAGE ──
-function injectColorPicker(activeId) {
+function injectColorPicker(activeId) { return;
   // ALWAYS remove any existing color picker FIRST, before any early return.
   // This prevents a previous product's color picker from "leaking" onto a
   // product that has no variants (the stale-state bug).
