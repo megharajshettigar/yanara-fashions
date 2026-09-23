@@ -114,7 +114,7 @@ section{padding:70px 4%}
 .pwish{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.5);border:none;color:var(--white);cursor:pointer;font-size:14px;transition:all .2s;padding:6px;z-index:2;border-radius:50%}
 .pwish:hover{background:var(--gold);color:#000}
 .pinfo{padding:14px 12px 18px}
-.pcode{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gray2);margin-bottom:3px}
+.pcode{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gray2);margin-bottom:3px} .pcard .pcode{display:none!important} .mr2.sku-row{display:none!important}
 .pcat{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gray);margin-bottom:5px}
 .pname{font-size:12px;font-weight:500;margin-bottom:8px;color:var(--white);line-height:1.4}
 .pcur{font-size:14px;font-weight:600;color:var(--gold)}
@@ -611,7 +611,7 @@ body.designer-mode .logo span{color:var(--gold2)}
       <div class="qrow"><div class="qctrl"><button class="qb" onclick="chQ(-1)">−</button><div class="qv" id="qv">1</div><button class="qb" onclick="chQ(1)">+</button></div></div>
       <div class="dacts"><button class="bfull" onclick="addCur()">Add to Cart</button><button class="bwish" onclick="curProd&&toggleWishlist(curProd.id)"><i class="ti ti-heart"></i></button></div>
       <div class="dmeta">
-        <div class="mr2"><span class="ml2">SKU</span><span id="dcode"></span></div>
+        <div class="mr2 sku-row"><span class="ml2">SKU</span><span id="dcode"></span></div>
         <div class="mr2"><span class="ml2">Designer</span><span style="color:var(--gold)">Ramya — YANARA Fashion</span></div>
         <div class="mr2"><span class="ml2">Craft</span><span>Handcrafted by skilled artisans</span></div>
         <div class="mr2"><span class="ml2">Delivery</span><span>5–7 business days</span></div>
