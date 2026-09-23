@@ -233,14 +233,13 @@ var DESIGNER_HTML = `
       <div class="dz-hl dz-rev">
         <div class="dz-hl-yr">Fine Art</div>
         <div class="dz-hl-title">The Artist</div>
-        <!-- ADD PAINTING IMAGES BELOW — replace PLACEHOLDER_URL with real ImageKit URLs -->
-        <div class="dz-work-grid">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+                <div class="dz-work-grid">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Artist/IMG_5509.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Artist/IMG_8759.PNG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Artist/IMG_5492.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Artist/IMG_7657.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Artist/IMG_3823.HEIC?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Artist/IMG_4476.HEIC?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
         </div>
       </div>
 
