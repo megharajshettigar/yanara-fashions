@@ -220,14 +220,12 @@ var DESIGNER_HTML = `
       <div class="dz-hl dz-rev">
         <div class="dz-hl-yr">Competition</div>
         <div class="dz-hl-title">JD Got Talent</div>
-        <!-- ADD JD GOT TALENT IMAGES BELOW — replace PLACEHOLDER_URL with real ImageKit URLs -->
-        <div class="dz-work-grid">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+                <div class="dz-work-grid">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/JD%20Got%20Talent/IMG_1218.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/JD%20Got%20Talent/01%20Ramya%20N_%20One%20Minute%20Talent_%20Winner.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/JD%20Got%20Talent/IMG_8269.HEIC?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/JD%20Got%20Talent/IMG_1219.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/JD%20Got%20Talent/IMG_1231.HEIC?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
         </div>
       </div>
 
