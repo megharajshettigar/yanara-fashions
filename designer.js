@@ -194,14 +194,10 @@ var DESIGNER_HTML = `
         <div class="dz-hl-yr">Awards · 2022</div>
         <div class="dz-hl-title">Best South Indian Fashion Designer</div>
         <div class="dz-hl-desc">Grabbed the title of Best South Indian Fashion Designer at Tirupur Fashion Week 2022 — recognised for her distinctive collection and creative design expression.</div>
-        <!-- ADD TFW IMAGES BELOW — replace PLACEHOLDER_URL with real ImageKit URLs -->
-        <div class="dz-work-grid">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+                <div class="dz-work-grid">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/TFW/IMG_0304(3).JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/TFW/IMG_0302.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/TFW/IMG_1235.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
         </div>
       </div>
 
