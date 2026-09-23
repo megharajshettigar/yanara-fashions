@@ -161,6 +161,13 @@ function getStyleVariants(p){
 // ── CARD ──
 // ── COLOR GROUPS ──
 const colorGroups = {
+  "BZ01BL":["BZ01BL","BZ02MR"],
+  "BZ02MR":["BZ01BL","BZ02MR"],
+  "BZ05BL":["BZ05BL","BZ06DB","BZ07WI","BZ08GY","BZ12OP"],
+  "BZ06DB":["BZ05BL","BZ06DB","BZ07WI","BZ08GY","BZ12OP"],
+  "BZ07WI":["BZ05BL","BZ06DB","BZ07WI","BZ08GY","BZ12OP"],
+  "BZ08GY":["BZ05BL","BZ06DB","BZ07WI","BZ08GY","BZ12OP"],
+  "BZ12OP":["BZ05BL","BZ06DB","BZ07WI","BZ08GY","BZ12OP"],
   "BG05BL":["BG05BL","BG06MR"],
   "BG06MR":["BG05BL","BG06MR"],
   "BG09NB":["BG09NB","BG10BL"],
@@ -176,6 +183,8 @@ const colorGroups = {
 };
 
 const colorDots = {
+  "BZ01BL":"#1a1a1a","BZ02MR":"#6d1a2a",
+  "BZ05BL":"#1a1a1a","BZ06DB":"#1a2a4a","BZ07WI":"#5c1a2e","BZ08GY":"#6b6b6b","BZ12OP":"#c97d8a",
   "BG05BL":"#1a1a1a","BG06MR":"#6b1a1a",
   "BG09NB":"#1a2a4a","BG10BL":"#0d0d0d",
   "BG15PK":"#c47a8a","BG16GY":"#6b6b6b","BG17WI":"#4a1a2a",
