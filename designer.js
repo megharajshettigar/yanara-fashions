@@ -179,14 +179,13 @@ var DESIGNER_HTML = `
         <div class="dz-work-video">
           <iframe src="https://www.youtube.com/embed/p6PGIWIg8Pw" title="Iykki Berry — MAMA" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <!-- ADD IYKKI BERRY IMAGES BELOW — replace PLACEHOLDER_URL with real ImageKit URLs -->
-        <div class="dz-work-grid">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+                <div class="dz-work-grid">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/IYKK/IMG_1295.PNG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/IYKK/IMG_9527.PNG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/IYKK/IMG_1229.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/IYKK/IMG_9542.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/IYKK/IMG20221003201829.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/IYKK/IMG_0932.PNG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
         </div>
       </div>
 
