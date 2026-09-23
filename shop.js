@@ -179,8 +179,9 @@ const colorGroups = {
   "IW01BL":["IW01BL","IW02GR","IW03DB"],
   "IW02GR":["IW01BL","IW02GR","IW03DB"],
   "IW03DB":["IW01BL","IW02GR","IW03DB"],
-  "IW06BL":["IW06BL","IW07DB"],
-  "IW07DB":["IW06BL","IW07DB"]
+  "IW05WI":["IW05WI","IW06BL","IW07DB"],
+  "IW06BL":["IW05WI","IW06BL","IW07DB"],
+  "IW07DB":["IW05WI","IW06BL","IW07DB"]
 };
 
 const colorDots = {
@@ -190,7 +191,7 @@ const colorDots = {
   "BG09NB":"#1a2a4a","BG10BL":"#0d0d0d",
   "BG13BL":"#1a1a1a","BG15PK":"#c47a8a","BG16GY":"#6b6b6b","BG17WI":"#4a1a2a",
   "IW01BL":"#1a1a1a","IW02GR":"#808080","IW03DB":"#1a2a4a",
-  "IW06BL":"#1a1a1a","IW07DB":"#1a2a4a"
+  "IW05WI":"#5c1a2e","IW06BL":"#1a1a1a","IW07DB":"#1a2a4a"
 };
 
 // ── CARD ──
