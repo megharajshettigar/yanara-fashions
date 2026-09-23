@@ -136,14 +136,82 @@ var DESIGNER_HTML = `
 
     <!-- HIGHLIGHTS (flowing, minimal) -->
     <div class="dz-highlights">
-      <div class="dz-tag">Selected Work</div>
+            <div class="dz-tag">Selected Work</div>
 
+      <!-- 1. BCHH Film -->
       <div class="dz-hl dz-rev">
-        <div class="dz-hl-yr">Awards</div>
+        <div class="dz-hl-yr">Film</div>
+        <div class="dz-hl-title">Bili Chukki Halli Hakki — Senior Stylist</div>
+        <div class="dz-hl-desc">Worked as Senior Stylist for the Kannada feature film <em>Bili Chukki Halli Hakki</em> (BCHH), shaping the on-screen wardrobe and character looks.</div>
+        <div class="dz-work-video">
+          <iframe src="https://www.youtube.com/embed/uT6Mm5fxwbE" title="Bili Chukki Halli Hakki" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <!-- ADD BCHH IMAGES BELOW — replace PLACEHOLDER_URL with real ImageKit URLs -->
+        <div class="dz-work-grid">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+        </div>
+      </div>
+
+      <!-- 2. Bigg Boss Tamil -->
+      <div class="dz-hl dz-rev">
+        <div class="dz-hl-yr">Television</div>
+        <div class="dz-hl-title">Bigg Boss Tamil — Season 6</div>
+        <div class="dz-hl-desc">Designed and styled costumes for Big Boss Season 6 Tamil contestants — looks seen by millions across the season.</div>
+        <div class="dz-work-grid">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img89.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img92.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img90.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img91.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img103.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img97.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+        </div>
+      </div>
+
+      <!-- 3. Iykki Berry -->
+      <div class="dz-hl dz-rev">
+        <div class="dz-hl-yr">2022 · International</div>
+        <div class="dz-hl-title">Iykki Berry — London</div>
+        <div class="dz-hl-desc">Designed a garment for celebrity rapper, singer and doctor Iykki Berry for her Diwali concert in London, fusing Tamil Nadu culture into the design — and later worked as Designer &amp; Stylist for her Tamil album song <strong>MAMA</strong>, shot in London.</div>
+        <div class="dz-work-video">
+          <iframe src="https://www.youtube.com/embed/p6PGIWIg8Pw" title="Iykki Berry — MAMA" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <!-- ADD IYKKI BERRY IMAGES BELOW — replace PLACEHOLDER_URL with real ImageKit URLs -->
+        <div class="dz-work-grid">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+        </div>
+      </div>
+
+      <!-- 4. Tiruppur Fashion Week -->
+      <div class="dz-hl dz-rev">
+        <div class="dz-hl-yr">Awards · 2022</div>
         <div class="dz-hl-title">Best South Indian Fashion Designer</div>
-        <div class="dz-hl-desc">Honoured at Tirupur Fashion Week 2022, where her collection walked the runway to critical acclaim — a recognition of her distinctive design voice in South Indian fashion.</div>
-        <div class="dz-hl-title" style="margin-top:26px">SHUI — JD Design Awards 2022</div>
-        <div class="dz-hl-desc">An eight-garment collection inspired by China's Yellow River, reflecting on the harmful effects of chemical waste — a statement on sustainability told through couture fusion-wear.</div>
+        <div class="dz-hl-desc">Grabbed the title of Best South Indian Fashion Designer at Tirupur Fashion Week 2022 — a recognition of her distinctive design voice in South Indian fashion.</div>
+        <!-- ADD TFW IMAGES BELOW — replace PLACEHOLDER_URL with real ImageKit URLs -->
+        <div class="dz-work-grid">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+        </div>
+      </div>
+
+      <!-- 5. SHUI Collection -->
+      <div class="dz-hl dz-rev">
+        <div class="dz-hl-yr">JD Design Awards · 2022</div>
+        <div class="dz-hl-title">SHUI — Collection</div>
+        <div class="dz-hl-desc">Designed a collection of 8 garments for the JD Design Awards. The collection, named Shui, was inspired by China's Yellow River — a statement on sustainability and the harmful effects of chemical waste, told through couture fusion-wear.</div>
         <div class="dz-work-grid">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img138.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img74.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
@@ -154,55 +222,39 @@ var DESIGNER_HTML = `
         </div>
       </div>
 
+      <!-- 6. JD Got Talent -->
       <div class="dz-hl dz-rev">
-        <div class="dz-hl-yr">Television</div>
-        <div class="dz-hl-title">Bigg Boss Tamil — Season 6</div>
-        <div class="dz-hl-desc">Designed garments for contestants of one of Tamil Nadu's most-watched reality shows, styling looks seen by millions across the season.</div>
+        <div class="dz-hl-yr">Competition</div>
+        <div class="dz-hl-title">JD Got Talent</div>
+        <!-- ADD JD GOT TALENT IMAGES BELOW — replace PLACEHOLDER_URL with real ImageKit URLs -->
         <div class="dz-work-grid">
-          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img89.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img92.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img90.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img91.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img103.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img97.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
         </div>
       </div>
-      
+
+      <!-- 7. The Artist -->
       <div class="dz-hl dz-rev">
-        <div class="dz-hl-yr">2022 · International</div>
-        <div class="dz-hl-title">Iykki Berry — London</div>
-        <div class="dz-hl-desc">Created a garment for celebrity rapper and singer Iykki Berry's Diwali concert in London, fusing Tamil Nadu culture into the design — and later styled her Tamil album song <strong>MAMA</strong>, shot in London.</div>
-        <div class="dz-work-video">
-          <iframe src="https://www.youtube.com/embed/p6PGIWIg8Pw" title="Iykki Berry — MAMA" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      
-
-     <div class="dz-hl dz-rev">
-        <div class="dz-hl-yr">Film</div>
-        <div class="dz-hl-title">BCHH — Senior Stylist</div>
-        <div class="dz-hl-desc">Worked as Senior Stylist for the Kannada feature film <em>Bili Chukki Halli Hakki</em>, shaping the on-screen wardrobe and character looks.</div>
-        <div class="dz-work-video">
-          <iframe src="https://www.youtube.com/embed/uT6Mm5fxwbE" title="Bili Chukki Halli Hakki" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      
-
-      <div class="dz-hl dz-rev">
-        <div class="dz-hl-yr">Industry</div>
-        <div class="dz-hl-title">Fashion Designer · TheEthnic.Co</div>
-        <div class="dz-hl-desc">Designed for the menswear ethnic brand TheEthnic.Co, sharpening a craft that now defines YANARA's signature men's silhouettes.</div>
+        <div class="dz-hl-yr">Fine Art</div>
+        <div class="dz-hl-title">The Artist</div>
+        <!-- ADD PAINTING IMAGES BELOW — replace PLACEHOLDER_URL with real ImageKit URLs -->
         <div class="dz-work-grid">
-          <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9398.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_E0809.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9399.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9394.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9395.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="https://ik.imagekit.io/megharaj/Menswear/IMG_9393.JPG.jpeg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
         </div>
       </div>
+
+    </div><!-- /dz-highlights -->
+
+    <!-- SKILLS -->
 
     
     <!-- SKILLS -->
