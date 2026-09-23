@@ -142,7 +142,7 @@ var DESIGNER_HTML = `
       <div class="dz-hl dz-rev">
         <div class="dz-hl-yr">Film</div>
         <div class="dz-hl-title">Bili Chukki Halli Hakki — Senior Stylist</div>
-        <div class="dz-hl-desc">Worked as Senior Stylist for the Kannada feature film <em>Bili Chukki Halli Hakki</em> (BCHH), shaping the on-screen wardrobe and character looks.</div>
+        <div class="dz-hl-desc">Worked as Senior Stylist for the Kannada feature film <em>Bili Chukki Halli Hakki</em>, crafting the costume styling and defining the visual identity of each character on screen.</div>
         <div class="dz-work-video">
           <iframe src="https://www.youtube.com/embed/uT6Mm5fxwbE" title="Bili Chukki Halli Hakki" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -161,7 +161,7 @@ var DESIGNER_HTML = `
       <div class="dz-hl dz-rev">
         <div class="dz-hl-yr">Television</div>
         <div class="dz-hl-title">Bigg Boss Tamil — Season 6</div>
-        <div class="dz-hl-desc">Designed and styled costumes for Big Boss Season 6 Tamil contestants — looks seen by millions across the season.</div>
+        <div class="dz-hl-desc">Designed and styled costumes for the contestants, creating distinctive looks suited to their individual personalities.</div>
         <div class="dz-work-grid">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img89.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img92.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
@@ -176,7 +176,7 @@ var DESIGNER_HTML = `
       <div class="dz-hl dz-rev">
         <div class="dz-hl-yr">2022 · International</div>
         <div class="dz-hl-title">Iykki Berry — London</div>
-        <div class="dz-hl-desc">Designed a garment for celebrity rapper, singer and doctor Iykki Berry for her Diwali concert in London, fusing Tamil Nadu culture into the design — and later worked as Designer &amp; Stylist for her Tamil album song <strong>MAMA</strong>, shot in London.</div>
+        <div class="dz-hl-desc">Designed a custom concert garment for Iykki Berry, combining creative fashion with a distinctive stage aesthetic — and later designed and styled looks for her Tamil album song <strong>MAMA</strong>, shot in London, creating a distinctive visual identity for the project.</div>
         <div class="dz-work-video">
           <iframe src="https://www.youtube.com/embed/p6PGIWIg8Pw" title="Iykki Berry — MAMA" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -195,7 +195,7 @@ var DESIGNER_HTML = `
       <div class="dz-hl dz-rev">
         <div class="dz-hl-yr">Awards · 2022</div>
         <div class="dz-hl-title">Best South Indian Fashion Designer</div>
-        <div class="dz-hl-desc">Grabbed the title of Best South Indian Fashion Designer at Tirupur Fashion Week 2022 — a recognition of her distinctive design voice in South Indian fashion.</div>
+        <div class="dz-hl-desc">Grabbed the title of Best South Indian Fashion Designer at Tirupur Fashion Week 2022 — recognised for her distinctive collection and creative design expression.</div>
         <!-- ADD TFW IMAGES BELOW — replace PLACEHOLDER_URL with real ImageKit URLs -->
         <div class="dz-work-grid">
           <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
@@ -211,7 +211,7 @@ var DESIGNER_HTML = `
       <div class="dz-hl dz-rev">
         <div class="dz-hl-yr">JD Design Awards · 2022</div>
         <div class="dz-hl-title">SHUI — Collection</div>
-        <div class="dz-hl-desc">Designed a collection of 8 garments for the JD Design Awards. The collection, named Shui, was inspired by China's Yellow River — a statement on sustainability and the harmful effects of chemical waste, told through couture fusion-wear.</div>
+        <div class="dz-hl-desc">Designed an eight-garment collection named <em>Shui</em>, inspired by China's Yellow River — exploring sustainability and creativity through contemporary couture garment design.</div>
         <div class="dz-work-grid">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img138.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img74.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
