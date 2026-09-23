@@ -181,7 +181,7 @@ const colorDots = {
   "BG05BL":"#1a1a1a","BG06MR":"#6b1a1a",
   "BG09NB":"#1a2a4a","BG10BL":"#0d0d0d",
   "BG14DB":"#1a2a5a","BG15PK":"#c47a8a","BG16GY":"#6b6b6b","BG17WI":"#4a1a2a",
-  "IW01BL":"#1a1a1a","IW02GR":"#1a4a2a","IW03DB":"#1a2a4a",
+  "IW01BL":"#1a1a1a","IW02GR":"#808080","IW03DB":"#1a2a4a",
   "IW06BL":"#1a1a1a","IW07DB":"#1a2a4a"
 };
 
