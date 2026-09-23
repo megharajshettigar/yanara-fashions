@@ -44,6 +44,9 @@ VARIANT_GROUPS.forEach(function(g) {
 // ── GET COLOR FROM CODE ──
 function getColorFromCode(code) {
   var suffix = code.slice(-2).toUpperCase();
+  var allProds = typeof getAllProducts === 'function' ? getAllProducts() : (typeof products !== 'undefined' ? products : []);
+  var prod = allProds.find(function(x){ return (x.code||'').toUpperCase() === code.toUpperCase(); });
+  if (prod && prod.colorHex) return { name: prod.color || (COLOR_MAP[suffix]||{}).name || code, hex: prod.colorHex };
   return COLOR_MAP[suffix] || { name: code, hex: '#888' };
 }
 
