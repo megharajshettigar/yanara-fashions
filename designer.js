@@ -146,14 +146,13 @@ var DESIGNER_HTML = `
         <div class="dz-work-video">
           <iframe src="https://www.youtube.com/embed/uT6Mm5fxwbE" title="Bili Chukki Halli Hakki" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <!-- ADD BCHH IMAGES BELOW — replace PLACEHOLDER_URL with real ImageKit URLs -->
         <div class="dz-work-grid">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
-          <img src="PLACEHOLDER_URL" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Movie%20BCHH/IMG_5226.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Movie%20BCHH/IMG_2768.PNG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Movie%20BCHH/IMG_8196.HEIC?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Movie%20BCHH/IMG_2835.HEIC?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Movie%20BCHH/IMG_2736.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/Movie%20BCHH/IMG_5599.JPG?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
         </div>
       </div>
 
