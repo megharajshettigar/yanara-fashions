@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!gp) return;
         var c = getColorFromCode(code);
         var isOn = code.toUpperCase() === p.code.toUpperCase();
-        swatchHtml += '<div class="cswatch ' + (isOn ? 'on' : '') + '" style="background:' + c.hex + '" title="' + c.name + '" onclick="event.stopPropagation();swatchClick(' + gp.id + ',this,\'' + fn + '\')"></div>';
+        swatchHtml += '<div class="cswatch ' + (isOn ? 'on' : '') + '" style="background:' + c.hex + '" title="' + c.name + '" onclick="event.stopPropagation();swatchClick(\'' + gp.id + '\',this,\'' + fn + '\')"></div>';
       });
       swatchHtml += '</div>';
       // Insert before last </div></div>
