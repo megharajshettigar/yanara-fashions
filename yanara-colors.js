@@ -30,7 +30,7 @@ var VARIANT_GROUPS = [
   // Bandhgala colour variants
   { codes: ['BG05BL','BG06MR'] },                              // Black + Maroon
   { codes: ['BG09NB','BG10BL'] },                              // Navy Blue + Black Velvet
-  { codes: ['BG15PK','BG16GY','BG17WI'] },                    // Pink + Grey + Wine
+  { codes: ['BG13BL','BG15PK','BG16GY','BG17WI'] },                    // Pink + Grey + Wine
   // Indo Western colour variants
   { codes: ['IW01BL','IW02GR','IW03DB'] },                    // Black + Green + Dark Blue
   { codes: ['IW06BL','IW07DB'] }                               // Black Printed + Dark Blue Printed
