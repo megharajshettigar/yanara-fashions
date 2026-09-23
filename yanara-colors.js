@@ -193,8 +193,8 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(function() {
     if (typeof products === 'undefined') return;
 
-        // ── Patch card() to add swatches ──
-    var _origCard = window.card.bind({});
+            // ── Patch card() to add swatches ──
+    var _origCard = (function(fn){ return function(p,f){ return fn(p,f); }; })(window.card);
     window.card = function(p, fn) {
       var html = _origCard(p, fn);
       var group = getGroupForProduct(p);
