@@ -24,13 +24,16 @@ var COLOR_MAP = {
 // TO EDIT LATER: just add/remove codes in a group, or add a new
 // { codes: ['CODE1','CODE2'] } line. Single-code entries = standalone.
 var VARIANT_GROUPS = [
+  // Blazer colour variants
+  { codes: ['BZ01BL','BZ02MR'] },                              // Draped Collar: Black + Maroon
+  { codes: ['BZ05BL','BZ06DB','BZ07WI','BZ08GY','BZ12OP'] },  // Applique Zari: Black + Dark Blue + Wine + Grey + Onion Pink
   // Bandhgala colour variants
-  { codes: ['BG05BL','BG06MR'] },                  // Black + Maroon
-  { codes: ['BG09NB','BG10BL'] },                  // Navy Blue + Black Velvet
-  { codes: ['BG15PK','BG16GY','BG17WI'] },// Dark Blue + Pink + Grey + Wine
+  { codes: ['BG05BL','BG06MR'] },                              // Black + Maroon
+  { codes: ['BG09NB','BG10BL'] },                              // Navy Blue + Black Velvet
+  { codes: ['BG15PK','BG16GY','BG17WI'] },                    // Pink + Grey + Wine
   // Indo Western colour variants
-  { codes: ['IW01BL','IW02GR','IW03DB'] },         // Black + Green + Dark Blue
-  { codes: ['IW06BL','IW07DB'] }                   // Black Printed + Dark Blue Printed
+  { codes: ['IW01BL','IW02GR','IW03DB'] },                    // Black + Green + Dark Blue
+  { codes: ['IW06BL','IW07DB'] }                               // Black Printed + Dark Blue Printed
 ];
 
 // ── BUILD CODE → GROUP LOOKUP ──
