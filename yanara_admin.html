@@ -1653,7 +1653,7 @@ function openProductModal(id) {
   ikUploadedUrls = [];
   document.getElementById('ik-preview-list').innerHTML = '';
   if (id) {
-    const p = products.find(x => x.id === id);
+    const p = (typeof firebaseProducts !== 'undefined' && firebaseProducts.find(x => x.id === id)) || products.find(x => x.id === id);
     document.getElementById('p-name').value = p.name;
     document.getElementById('p-code').value = p.code;
     document.getElementById('p-cat').value = p.category;
