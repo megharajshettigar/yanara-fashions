@@ -207,7 +207,7 @@ var DESIGNER_HTML = `
         <div class="dz-hl-title">SHUI — Collection</div>
         <div class="dz-hl-desc">Designed an eight-garment collection named <em>Shui</em>, inspired by China's Yellow River — exploring sustainability and creativity through contemporary couture garment design.</div>
         <div class="dz-work-grid">
-          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img138.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/SHUI/_DSC5002_Jerin.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img74.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img83.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img82.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
