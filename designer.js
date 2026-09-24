@@ -22,10 +22,8 @@ var DESIGNER_HTML = `
     .dz-hero{position:sticky;top:0;height:100vh;min-height:560px;overflow:hidden;
       display:flex;align-items:flex-end;z-index:0}
       .dz-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
-    .dz-hero-bg{display:none}
     @media (min-width:769px){
-      .dz-hero-bg{display:block;position:absolute;top:-60px;left:-60px;width:calc(100% + 120px);height:calc(100% + 120px);object-fit:cover;filter:blur(40px);opacity:.55}
-      .dz-hero-img{object-fit:contain;object-position:center}
+            .dz-hero{background:#fff}      .dz-hero-img{object-fit:contain;object-position:center}
     }
     .dz-hero-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
       background:radial-gradient(circle at 50% 40%,var(--bg3),var(--bg))}
@@ -121,7 +119,7 @@ var DESIGNER_HTML = `
     <!-- HERO: full-screen designer photo -->
     <div class="dz-hero">
       ${DESIGNER_PHOTO
-                ? `<img class="dz-hero-bg" src="${DESIGNER_PHOTO}" alt="" aria-hidden="true"><img class="dz-hero-img" src="${DESIGNER_PHOTO}" alt="Designer Ramya">`
+                               ? `<img class="dz-hero-img" src="${DESIGNER_PHOTO}" alt="Designer Ramya">`
         : `<div class="dz-hero-ph"><i class="ti ti-camera"></i></div>`}
     
       <div class="dz-scroll-hint"><i class="ti ti-chevron-down"></i></div>
