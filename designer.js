@@ -164,7 +164,7 @@ var DESIGNER_HTML = `
         <div class="dz-work-grid">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img89.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img92.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
-          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img90.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
+          <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img98.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img91.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img103.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
           <img src="https://ik.imagekit.io/megharaj/DESIGNER%20PHOTO/img97.jpg?tr=w-700,q-85,f-auto" alt="" loading="lazy" class="dz-work-img">
