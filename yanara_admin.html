@@ -1652,6 +1652,9 @@ function openProductModal(id) {
   document.getElementById('modal-title').textContent = id ? 'Edit Product' : 'Add New Product';
   ikUploadedUrls = [];
   document.getElementById('ik-preview-list').innerHTML = '';
+  ikThumbnailUrl = '';
+  document.getElementById('ik-thumb-preview').innerHTML = '';
+  document.getElementById('ik-thumb-status').textContent = '';
   if (id) {
     const p = (typeof firebaseProducts !== 'undefined' && firebaseProducts.find(x => x.id === id)) || products.find(x => x.id === id);
     document.getElementById('p-name').value = p.name;
@@ -1669,6 +1672,11 @@ function openProductModal(id) {
     // images — load existing URLs into preview
     ikUploadedUrls = (p.images || []).slice();
     renderIKPreviews();
+    // thumbnail — load existing into preview
+    ikThumbnailUrl = p.thumbnail || '';
+    if (ikThumbnailUrl) {
+      document.getElementById('ik-thumb-preview').innerHTML = `<div class="ik-thumb-wrap"><img src="${ikThumbnailUrl}" alt="thumbnail"><button class="ik-thumb-remove" onclick="ikThumbnailUrl='';document.getElementById('ik-thumb-preview').innerHTML='';document.getElementById('ik-thumb-status').textContent=''">×</button></div>`;
+    }
   } else {
     document.getElementById('p-name').value = '';
     document.getElementById('p-code').value = '';
