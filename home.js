@@ -248,7 +248,7 @@ const HOME_HTML = `
   <!-- EDITORIAL HERO -->
   <div class="ed-stack">
   <div class="ed-stack-item ed-hero" style="position:relative">
-    <div class="ed-kicker">Premium Ethnic Wear · Est. 2025</div>
+    <div class="ed-kicker">Premium Ethnic Wear </div>
     <div class="ed-bigtype">
       <span class="l1">YANARA</span>
       <span class="l2">Fashion by Ramya</span>
