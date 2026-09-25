@@ -27,6 +27,27 @@ var IMG_CAT_IW  = homeImg("IW01BL", 1, 800, "Men/Indo%20Western");  // Indo West
 var IMG_CAT_SH  = homeImg("SH01WH", 1, 800, "Men/Shirts");  // Shirts
 var IMG_HERO    = "https://ik.imagekit.io/megharaj/Menswear/IMG_9399.JPG.jpeg?updatedAt=1779871598499&tr=w-1000,q-92,f-auto"; // SS25 hero
 
+// ── INSTAGRAM REELS (home page) ──
+// To change reels: replace, add, remove or reorder the links below.
+// Empty the list [] to hide the whole section.
+var INSTA_REELS = [
+  "https://www.instagram.com/reel/C_5asaOv77i/",
+  "https://www.instagram.com/reel/DERf9ZnpcO7/",
+  "https://www.instagram.com/reel/DYrjQwxuavs/",
+  "https://www.instagram.com/reel/DEpmd4xywLa/",
+  "https://www.instagram.com/reel/DFNYdT-yc1r/",
+  "https://www.instagram.com/reel/DYvhBCdvudL/",
+  "https://www.instagram.com/reel/DcXn58CzeXy/"
+];
+// (no need to edit below this line)
+function buildReelsHTML(){
+  var codes=(INSTA_REELS||[]).map(function(u){var m=String(u).match(/instagram\.com\/(?:reel|reels|p)\/([A-Za-z0-9_-]+)/);return m?m[1]:null;}).filter(Boolean);
+  if(!codes.length)return "";
+  return '<section class="yr-sec"><div class="yr-head"><div class="stag">Follow Along</div><h2 class="stitle">Watch on <strong>Instagram</strong></h2>'
+    +'<a class="yr-link" href="https://www.instagram.com/yanara_fashion" target="_blank" rel="noopener"><i class="ti ti-brand-instagram"></i> @yanara_fashion</a></div>'
+    +'<div class="yr-row">'+codes.map(function(c){return '<div class="yr-card"><iframe src="https://www.instagram.com/reel/'+c+'/embed" loading="lazy" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media; picture-in-picture; clipboard-write" title="YANARA Instagram reel"></iframe></div>';}).join("")+'</div></section>';
+}
+
 const HOME_HTML = `
   <style>
     /* ═══ HERO IMAGE — fit cleanly, no harsh crop ═══ */
@@ -171,7 +192,18 @@ const HOME_HTML = `
     .ed-scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;z-index:10;animation:bounceDown 2s infinite}
     .ed-scroll-hint span{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
     .ed-scroll-hint i{font-size:22px;color:var(--gold)}
-    @keyframes bounceDown{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+        @keyframes bounceDown{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+    /* ═══ INSTAGRAM REELS ═══ */
+    .yr-sec{padding:clamp(50px,7vw,90px) 4%;--yr-ratio:9/17}
+    .yr-head{text-align:center;margin-bottom:clamp(24px,4vw,40px)}
+    .yr-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:clamp(12px,1.2vw,13px);letter-spacing:1.5px;color:var(--gold);text-decoration:none}
+    .yr-link i{font-size:clamp(16px,1.6vw,18px)}
+    .yr-row{display:flex;gap:clamp(12px,1.6vw,20px);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:12px;scrollbar-width:thin}
+    .yr-row>.yr-card:first-child{margin-left:auto}
+    .yr-row>.yr-card:last-child{margin-right:auto}
+    .yr-card{flex:0 0 clamp(280px,calc((100% - 60px) / 4),340px);aspect-ratio:var(--yr-ratio);border-radius:12px;overflow:hidden;background:var(--bg2);scroll-snap-align:center}
+    .yr-card iframe{width:100%;height:100%;border:0;display:block}
   </style>
   <!-- EDITORIAL HERO -->
   <div class="ed-stack">
@@ -379,7 +411,9 @@ const HOME_HTML = `
       </div>
     </div>
   </section>
-  </div><!-- /ed-stack -->
+    </div><!-- /ed-stack -->
+
+  ${buildReelsHTML()}
 
   <div class="mq"><div class="mtrack">
     <span class="mi">Blazer Sets</span><span class="mdot"> ✦ </span><span class="mi">Bandhgala Sets</span><span class="mdot"> ✦ </span><span class="mi">Indo Western</span><span class="mdot"> ✦ </span><span class="mi">Hand Painted Shirts</span><span class="mdot"> ✦ </span><span class="mi">Award Winning Designer</span><span class="mdot"> ✦ </span><span class="mi">Free Shipping ₹2999+</span><span class="mdot"> ✦ </span><span class="mi">Blazer Sets</span><span class="mdot"> ✦ </span><span class="mi">Bandhgala Sets</span><span class="mdot"> ✦ </span><span class="mi">Indo Western</span><span class="mdot"> ✦ </span><span class="mi">Hand Painted Shirts</span><span class="mdot"> ✦ </span><span class="mi">Award Winning Designer</span><span class="mdot"> ✦ </span><span class="mi">Free Shipping ₹2999+</span><span class="mdot"> ✦ </span>
