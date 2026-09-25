@@ -205,6 +205,10 @@ const HOME_HTML = `
     .yr-card{flex:0 0 clamp(280px,calc((100% - 60px) / 4),340px);aspect-ratio:var(--yr-ratio);border-radius:12px;overflow:hidden;background:var(--bg2);scroll-snap-align:center}
     .yr-card iframe{width:100%;height:100%;border:0;display:block}
   </style>
+    <div class="mq"><div class="mtrack">
+    <span class="mi">Blazer Sets</span><span class="mdot"> ✦ </span><span class="mi">Bandhgala Sets</span><span class="mdot"> ✦ </span><span class="mi">Indo Western</span><span class="mdot"> ✦ </span><span class="mi">Hand Painted Shirts</span><span class="mdot"> ✦ </span><span class="mi">Award Winning Designer</span><span class="mdot"> ✦ </span><span class="mi">Free Shipping ₹2999+</span><span class="mdot"> ✦ </span><span class="mi">Blazer Sets</span><span class="mdot"> ✦ </span><span class="mi">Bandhgala Sets</span><span class="mdot"> ✦ </span><span class="mi">Indo Western</span><span class="mdot"> ✦ </span><span class="mi">Hand Painted Shirts</span><span class="mdot"> ✦ </span><span class="mi">Award Winning Designer</span><span class="mdot"> ✦ </span><span class="mi">Free Shipping ₹2999+</span><span class="mdot"> ✦ </span>
+  </div></div>
+
   <!-- EDITORIAL HERO -->
   <div class="ed-stack">
   <div class="ed-stack-item ed-hero" style="position:relative">
@@ -415,9 +419,6 @@ const HOME_HTML = `
 
   ${buildReelsHTML()}
 
-  <div class="mq"><div class="mtrack">
-    <span class="mi">Blazer Sets</span><span class="mdot"> ✦ </span><span class="mi">Bandhgala Sets</span><span class="mdot"> ✦ </span><span class="mi">Indo Western</span><span class="mdot"> ✦ </span><span class="mi">Hand Painted Shirts</span><span class="mdot"> ✦ </span><span class="mi">Award Winning Designer</span><span class="mdot"> ✦ </span><span class="mi">Free Shipping ₹2999+</span><span class="mdot"> ✦ </span><span class="mi">Blazer Sets</span><span class="mdot"> ✦ </span><span class="mi">Bandhgala Sets</span><span class="mdot"> ✦ </span><span class="mi">Indo Western</span><span class="mdot"> ✦ </span><span class="mi">Hand Painted Shirts</span><span class="mdot"> ✦ </span><span class="mi">Award Winning Designer</span><span class="mdot"> ✦ </span><span class="mi">Free Shipping ₹2999+</span><span class="mdot"> ✦ </span>
-  </div></div>
 
   <div class="strip">
     <div class="strip-item"><div class="strip-icon"><i class="ti ti-needle-thread"></i></div><div class="strip-title">Handcrafted</div><div class="strip-desc">Skilled artisans, premium fabrics</div></div>
