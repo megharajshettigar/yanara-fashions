@@ -45,9 +45,34 @@ function buildReelsHTML(){
   var play='<span class="yr-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"></path></svg></span>';
   return '<section class="yr-sec"><div class="yr-head"><div class="stag">Follow Along</div><h2 class="stitle">Watch on <strong>Instagram</strong></h2>'
     +'<a class="yr-link" href="https://www.instagram.com/yanara_fashion" target="_blank" rel="noopener"><i class="ti ti-brand-instagram"></i> @yanara_fashion</a></div>'
-    +'<div class="yr-grid">'+items.map(function(x,n){var src=x.cover+(x.cover.indexOf('?')>-1?'&':'?')+'tr=w-600,q-80,f-auto';return '<a class="yr-card" href="'+x.reel+'" target="_blank" rel="noopener" aria-label="Watch reel '+(n+1)+' on Instagram"><img src="'+src+'" alt="" loading="lazy">'+play+'</a>';}).join("")+'</div>'
+    +'<div class="yr-grid">'+items.map(function(x,n){var src=x.cover+(x.cover.indexOf('?')>-1?'&':'?')+'tr=w-600,q-80,f-auto';return '<a class="yr-card" href="'+x.reel+'" target="_blank" rel="noopener" onclick="return yrOpen(this)" aria-label="Watch reel '+(n+1)+'"><img src="'+src+'" alt="" loading="lazy">'+play+'</a>';}).join("")+'</div>'
     +'<div class="yr-all"><a href="https://www.instagram.com/yanara_fashion" target="_blank" rel="noopener">VIEW ALL ON INSTAGRAM</a></div></section>';
 }
+// ── reel popup ──
+function yrOpen(a){
+  var m=String(a.getAttribute('href')||'').match(/\/(?:reel|reels|p)\/([A-Za-z0-9_-]+)/);
+  if(!m)return true;
+  var ov=document.getElementById('yr-pop');
+  if(!ov){
+    ov=document.createElement('div');ov.id='yr-pop';ov.className='yr-pop';
+    ov.innerHTML='<div class="yr-pop-box" role="dialog" aria-modal="true" aria-label="Instagram reel"><button type="button" class="yr-pop-x" aria-label="Close" onclick="yrClose()">&times;</button><div class="yr-pop-frame"></div></div>';
+    ov.addEventListener('click',function(e){if(e.target===ov)yrClose();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')yrClose();});
+    document.body.appendChild(ov);
+  }
+  ov.querySelector('.yr-pop-frame').innerHTML='<iframe src="https://www.instagram.com/reel/'+m[1]+'/embed" allow="autoplay; encrypted-media; picture-in-picture; clipboard-write" allowtransparency="true" title="YANARA Instagram reel"></iframe>';
+  ov.classList.add('on');
+  document.documentElement.style.overflow='hidden';
+  return false;
+}
+function yrClose(){
+  var ov=document.getElementById('yr-pop');
+  if(!ov||!ov.classList.contains('on'))return;
+  ov.classList.remove('on');
+  ov.querySelector('.yr-pop-frame').innerHTML='';
+  document.documentElement.style.overflow='';
+}
+
 const HOME_HTML = `
   <style>
     /* ═══ HERO IMAGE — fit cleanly, no harsh crop ═══ */
@@ -208,7 +233,13 @@ const HOME_HTML = `
     .yr-play{position:absolute;top:clamp(8px,1vw,12px);right:clamp(8px,1vw,12px);width:clamp(26px,2.4vw,32px);height:clamp(26px,2.4vw,32px);border-radius:50%;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center}
     .yr-play svg{width:45%;height:45%;fill:#fff}
     .yr-all{display:flex;justify-content:center;margin-top:clamp(24px,3.5vw,36px)}
-    .yr-all a{display:inline-flex;align-items:center;min-height:44px;padding:0 26px;border:1px solid var(--gold);color:var(--gold);font-size:11px;letter-spacing:3px;text-decoration:none}
+        .yr-all a{display:inline-flex;align-items:center;min-height:44px;padding:0 26px;border:1px solid var(--gold);color:var(--gold);font-size:11px;letter-spacing:3px;text-decoration:none}
+    .yr-pop{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;box-sizing:border-box;padding:clamp(60px,9vh,76px) 4% 20px}
+    .yr-pop.on{display:flex}
+    .yr-pop-box{position:relative;width:min(100%,400px)}
+    .yr-pop-x{position:absolute;top:-54px;right:0;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(0,0,0,.5);color:#fff;font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+    .yr-pop-frame{max-height:calc(100vh - 110px);max-height:calc(100dvh - 110px);overflow-y:auto;-webkit-overflow-scrolling:touch;border-radius:10px;background:#fff}
+    .yr-pop-frame iframe{display:block;width:100%;height:calc(min(92vw,400px) * 1.25 + 250px);border:0}
   </style>
     <div class="mq"><div class="mtrack">
     <span class="mi">Blazer Sets</span><span class="mdot"> ✦ </span><span class="mi">Bandhgala Sets</span><span class="mdot"> ✦ </span><span class="mi">Indo Western</span><span class="mdot"> ✦ </span><span class="mi">Hand Painted Shirts</span><span class="mdot"> ✦ </span><span class="mi">Award Winning Designer</span><span class="mdot"> ✦ </span><span class="mi">Free Shipping ₹2999+</span><span class="mdot"> ✦ </span><span class="mi">Blazer Sets</span><span class="mdot"> ✦ </span><span class="mi">Bandhgala Sets</span><span class="mdot"> ✦ </span><span class="mi">Indo Western</span><span class="mdot"> ✦ </span><span class="mi">Hand Painted Shirts</span><span class="mdot"> ✦ </span><span class="mi">Award Winning Designer</span><span class="mdot"> ✦ </span><span class="mi">Free Shipping ₹2999+</span><span class="mdot"> ✦ </span>
