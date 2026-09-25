@@ -31,23 +31,23 @@ var IMG_HERO    = "https://ik.imagekit.io/megharaj/Menswear/IMG_9399.JPG.jpeg?up
 // To change reels: replace, add, remove or reorder the links below.
 // Empty the list [] to hide the whole section.
 var INSTA_REELS = [
-  "https://www.instagram.com/reel/C_5asaOv77i/",
-  "https://www.instagram.com/reel/DERf9ZnpcO7/",
-  "https://www.instagram.com/reel/DYrjQwxuavs/",
-  "https://www.instagram.com/reel/DEpmd4xywLa/",
-  "https://www.instagram.com/reel/DFNYdT-yc1r/",
-  "https://www.instagram.com/reel/DYvhBCdvudL/",
-  "https://www.instagram.com/reel/DcXn58CzeXy/"
+  { reel: "https://www.instagram.com/reel/C_5asaOv77i/", cover: "https://ik.imagekit.io/megharaj/Reels_Cover/IMG_5278.PNG" },
+  { reel: "https://www.instagram.com/reel/DERf9ZnpcO7/", cover: "https://ik.imagekit.io/megharaj/Reels_Cover/IMG_5285.PNG" },
+  { reel: "https://www.instagram.com/reel/DYrjQwxuavs/", cover: "https://ik.imagekit.io/megharaj/Reels_Cover/IMG_5284.PNG" },
+  { reel: "https://www.instagram.com/reel/DEpmd4xywLa/", cover: "https://ik.imagekit.io/megharaj/Reels_Cover/IMG_5286.PNG" },
+  { reel: "https://www.instagram.com/reel/DYvhBCdvudL/", cover: "https://ik.imagekit.io/megharaj/Reels_Cover/IMG_5277.PNG" },
+  { reel: "https://www.instagram.com/reel/DcXn58CzeXy/", cover: "https://ik.imagekit.io/megharaj/Reels_Cover/IMG_5290.PNG" }
 ];
 // (no need to edit below this line)
 function buildReelsHTML(){
-  var codes=(INSTA_REELS||[]).map(function(u){var m=String(u).match(/instagram\.com\/(?:reel|reels|p)\/([A-Za-z0-9_-]+)/);return m?m[1]:null;}).filter(Boolean);
-  if(!codes.length)return "";
+  var items=(INSTA_REELS||[]).filter(function(x){return x&&x.reel&&x.cover;});
+  if(!items.length)return "";
+  var play='<span class="yr-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"></path></svg></span>';
   return '<section class="yr-sec"><div class="yr-head"><div class="stag">Follow Along</div><h2 class="stitle">Watch on <strong>Instagram</strong></h2>'
     +'<a class="yr-link" href="https://www.instagram.com/yanara_fashion" target="_blank" rel="noopener"><i class="ti ti-brand-instagram"></i> @yanara_fashion</a></div>'
-    +'<div class="yr-row">'+codes.map(function(c){return '<div class="yr-card"><iframe src="https://www.instagram.com/reel/'+c+'/embed" loading="lazy" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media; picture-in-picture; clipboard-write" title="YANARA Instagram reel"></iframe></div>';}).join("")+'</div></section>';
+    +'<div class="yr-grid">'+items.map(function(x,n){var src=x.cover+(x.cover.indexOf('?')>-1?'&':'?')+'tr=w-600,q-80,f-auto';return '<a class="yr-card" href="'+x.reel+'" target="_blank" rel="noopener" aria-label="Watch reel '+(n+1)+' on Instagram"><img src="'+src+'" alt="" loading="lazy">'+play+'</a>';}).join("")+'</div>'
+    +'<div class="yr-all"><a href="https://www.instagram.com/yanara_fashion" target="_blank" rel="noopener">VIEW ALL ON INSTAGRAM</a></div></section>';
 }
-
 const HOME_HTML = `
   <style>
     /* ═══ HERO IMAGE — fit cleanly, no harsh crop ═══ */
@@ -194,16 +194,21 @@ const HOME_HTML = `
     .ed-scroll-hint i{font-size:22px;color:var(--gold)}
         @keyframes bounceDown{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 
-    /* ═══ INSTAGRAM REELS ═══ */
-    .yr-sec{padding:clamp(50px,7vw,90px) 4%;--yr-ratio:9/17}
+        /* ═══ INSTAGRAM REELS ═══ */
+    .yr-sec{padding:clamp(50px,7vw,90px) 4%}
     .yr-head{text-align:center;margin-bottom:clamp(24px,4vw,40px)}
     .yr-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:clamp(12px,1.2vw,13px);letter-spacing:1.5px;color:var(--gold);text-decoration:none}
     .yr-link i{font-size:clamp(16px,1.6vw,18px)}
-    .yr-row{display:flex;gap:clamp(12px,1.6vw,20px);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:12px;scrollbar-width:thin}
-    .yr-row>.yr-card:first-child{margin-left:auto}
-    .yr-row>.yr-card:last-child{margin-right:auto}
-    .yr-card{flex:0 0 clamp(280px,calc((100% - 60px) / 4),340px);aspect-ratio:var(--yr-ratio);border-radius:12px;overflow:hidden;background:var(--bg2);scroll-snap-align:center}
-    .yr-card iframe{width:100%;height:100%;border:0;display:block}
+    .yr-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(10px,1.4vw,18px);max-width:1400px;margin:0 auto}
+    @media(max-width:1024px){.yr-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:600px){.yr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    .yr-card{position:relative;display:block;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:var(--bg2)}
+    .yr-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+    .yr-card:hover img{transform:scale(1.04)}
+    .yr-play{position:absolute;top:clamp(8px,1vw,12px);right:clamp(8px,1vw,12px);width:clamp(26px,2.4vw,32px);height:clamp(26px,2.4vw,32px);border-radius:50%;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center}
+    .yr-play svg{width:45%;height:45%;fill:#fff}
+    .yr-all{display:flex;justify-content:center;margin-top:clamp(24px,3.5vw,36px)}
+    .yr-all a{display:inline-flex;align-items:center;min-height:44px;padding:0 26px;border:1px solid var(--gold);color:var(--gold);font-size:11px;letter-spacing:3px;text-decoration:none}
   </style>
     <div class="mq"><div class="mtrack">
     <span class="mi">Blazer Sets</span><span class="mdot"> ✦ </span><span class="mi">Bandhgala Sets</span><span class="mdot"> ✦ </span><span class="mi">Indo Western</span><span class="mdot"> ✦ </span><span class="mi">Hand Painted Shirts</span><span class="mdot"> ✦ </span><span class="mi">Award Winning Designer</span><span class="mdot"> ✦ </span><span class="mi">Free Shipping ₹2999+</span><span class="mdot"> ✦ </span><span class="mi">Blazer Sets</span><span class="mdot"> ✦ </span><span class="mi">Bandhgala Sets</span><span class="mdot"> ✦ </span><span class="mi">Indo Western</span><span class="mdot"> ✦ </span><span class="mi">Hand Painted Shirts</span><span class="mdot"> ✦ </span><span class="mi">Award Winning Designer</span><span class="mdot"> ✦ </span><span class="mi">Free Shipping ₹2999+</span><span class="mdot"> ✦ </span>
