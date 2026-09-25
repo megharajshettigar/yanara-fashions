@@ -1625,8 +1625,8 @@ function renderProducts() {
   tbody.innerHTML = filtered.map(p => `
     <tr>
       <td>
-        ${p.images && p.images[0]
-          ? `<img src="${p.images[0]}" class="product-img-thumb" onerror="this.style.display='none'">`
+                ${(p.thumbnail || (p.images && p.images[0]))
+          ? `<img src="${p.thumbnail || p.images[0]}" class="product-img-thumb" onerror="this.style.display='none'">`
           : `<div class="product-img-thumb" style="display:flex;align-items:center;justify-content:center;font-size:20px;">👔</div>`}
       </td>
       <td>
